@@ -12,4 +12,14 @@ services:
     volumes:
       - ./frontend/:/app
       - /app/node_modules
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=c348isveryawesomeandcool
+      - POSTGRES_USER=cs348_user
+      - POSTGRES_DB=cs348_db
   
