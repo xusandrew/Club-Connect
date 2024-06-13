@@ -1,25 +1,16 @@
 services:
-  frontend:
-    container_name: frontend
-    image: frontend
-    build:
-      context: ./frontend/
-      dockerfile: Dockerfile
-    ports:
-      - 3000:3000
-    env_file:
-      - ./frontend/.env
-    volumes:
-      - ./frontend/:/app
-      - /app/node_modules
   postgres:
-    image: postgres:14-alpine
+    image: postgres:latest
+    restart: always
+    container_name: my-db
     ports:
-      - 5432:5432
+      - 5555:5432
     volumes:
-      - ~/apps/postgres:/var/lib/postgresql/data
+      - my-db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=c348isveryawesomeandcool
-      - POSTGRES_USER=cs348_user
-      - POSTGRES_DB=cs348_db
-  
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+volumes:
+  my-db:
+    driver: local
