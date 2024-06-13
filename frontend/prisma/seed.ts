@@ -1,6 +1,5 @@
 //used to seed the database
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import prisma from '../lib/prisma'
 
 async function main() {
   await prisma.user.create({
@@ -12,7 +11,7 @@ async function main() {
 }
 
 main()
-  .catch(e => {
+  .catch((e) => {
     console.error(e)
     process.exit(1)
   })
