@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import db from '../../../../../backend/lib/prisma'
+import db from '../../../../lib/prisma'
 
 export async function GET(req: Request) {
   return NextResponse.json({
@@ -9,7 +9,6 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   const body = req.body
-  console.log("received")
   const user = await db.user.findUnique({
     where:{
         id: 1
