@@ -1,3 +1,4 @@
+//sample api route
 import { NextResponse } from 'next/server'
 import db from '../../../../lib/prisma'
 
@@ -16,6 +17,6 @@ export async function POST(req: Request) {
   })
 
   return NextResponse.json({
-    message: user.email,
+    message: user?.email,
   })
 }
