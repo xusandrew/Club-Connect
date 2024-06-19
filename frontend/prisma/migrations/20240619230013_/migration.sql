@@ -15,6 +15,10 @@ CREATE TABLE "Club" (
     "cid" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "description" TEXT,
+    "Instagram" TEXT,
+    "Discord" TEXT,
 
     CONSTRAINT "Club_pkey" PRIMARY KEY ("cid")
 );
@@ -48,23 +52,11 @@ CREATE TABLE "ClubCategory" (
     CONSTRAINT "ClubCategory_pkey" PRIMARY KEY ("cid","type")
 );
 
--- CreateTable
-CREATE TABLE "ClubInfo" (
-    "cid" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-    "description" TEXT,
-    "Instagram" TEXT,
-    "Discord" TEXT
-);
-
 -- CreateIndex
 CREATE UNIQUE INDEX "Club_email_key" ON "Club"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "ClubInfo_cid_key" ON "ClubInfo"("cid");
-
--- CreateIndex
-CREATE UNIQUE INDEX "ClubInfo_name_key" ON "ClubInfo"("name");
+CREATE UNIQUE INDEX "Club_name_key" ON "Club"("name");
 
 -- AddForeignKey
 ALTER TABLE "Event" ADD CONSTRAINT "Event_cid_fkey" FOREIGN KEY ("cid") REFERENCES "Club"("cid") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -74,6 +66,3 @@ ALTER TABLE "ClubCategory" ADD CONSTRAINT "ClubCategory_cid_fkey" FOREIGN KEY ("
 
 -- AddForeignKey
 ALTER TABLE "ClubCategory" ADD CONSTRAINT "ClubCategory_type_fkey" FOREIGN KEY ("type") REFERENCES "Category"("type") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ClubInfo" ADD CONSTRAINT "ClubInfo_cid_fkey" FOREIGN KEY ("cid") REFERENCES "Club"("cid") ON DELETE RESTRICT ON UPDATE CASCADE;

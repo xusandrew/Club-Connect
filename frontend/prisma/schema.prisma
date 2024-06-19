@@ -12,16 +12,19 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres:postgres@localhost:5555/DATABASE"
+  url      = env("DATABASE_URL")
 }
 
 model Club {
   cid      String         @id @default(uuid())
   email    String         @unique
   password String
+  name        String	  @unique
+  description String?
+  Instagram   String?
+  Discord     String?
   event    Event[] // Event referencing Club, one-to-many relation
   category ClubCategory[] // ClubCategory, many-to-many relation
-  ClubInfo ClubInfo? // Defines a one-to-one relationship, optional (idk why)
 }
 
 model Event {
@@ -48,13 +51,4 @@ model ClubCategory {
   category Category @relation(fields: [type], references: [type])
 
   @@id([cid, type]) // Identify by club and their category
-}
-
-model ClubInfo {
-  cid         String  @unique
-  club        Club    @relation(fields: [cid], references: [cid])
-  name        String  @unique
-  description String?
-  Instagram   String?
-  Discord     String?
 }
