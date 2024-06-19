@@ -10,7 +10,7 @@ Sample description of the project.
 - cd into "frontend", this folder contains the entire app but it is named frontend because git has an aneurysm whenever I try to rename it to something else
 - Install dependencies: `npm i`
 - Generate the prisma client: `npx prisma generate`
-- Sync up postgres database with our schema (i.e, run migrations): `npx prisma run migrate`
+- Sync up postgres database with our schema (i.e, run migrations): `npx prisma migrate dev`
 - Load our sample data into the database: `npx tsx ./prisma/seed.ts`
 - Run development server: `npm run dev`
 - Preview app at: http://localhost:3000
