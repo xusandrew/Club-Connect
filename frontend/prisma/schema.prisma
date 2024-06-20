@@ -34,8 +34,8 @@ model Event {
   title       String
   description String?
   location    String?
-  start_time  DateTime
-  end_time    DateTime
+  start_time  DateTime?
+  end_time    DateTime?
   posted_time DateTime @default(now())
 }
 
