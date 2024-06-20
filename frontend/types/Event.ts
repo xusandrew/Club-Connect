@@ -1,11 +1,13 @@
+import { Club } from './Club'
+
 export type Event = {
-  id: number
-  clubId: number
+  eid: number
+  cid: number
   title: string
-  club: string
-  description: string
-  location: string
-  startTime: Date
-  endTime: Date
-  createdAt: Date
+  description: string | null
+  location: string | null
+  start_time: Date | null
+  end_time: Date | null
+  posted_time: Date
+  club: Club
 }

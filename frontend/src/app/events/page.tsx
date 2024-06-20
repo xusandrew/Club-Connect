@@ -1,7 +1,9 @@
 import { Card } from '../components/events/post-card'
-import { mockEvents } from 'types/mockEventData'
+import { fetchEvents } from '../lib/data'
 
-export default function Component() {
+export default async function Component() {
+  const posts = await fetchEvents()
+
   return (
     <div className='bg-gray-900 text-white min-h-screen'>
       <header className='flex items-center justify-between p-4 border-b border-gray-700'>
@@ -24,7 +26,7 @@ export default function Component() {
           <h2 className='text-4xl font-bold'>Week of Jun 2</h2>
         </section>
         <section className='space-y-8'>
-          {mockEvents.map((event, index) => (
+          {posts.map((event, index) => (
             <Card key={index} event={event} />
           ))}
         </section>

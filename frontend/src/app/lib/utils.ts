@@ -17,11 +17,15 @@ export const formatDate = (date: Date): string => {
   return date.toLocaleDateString('en-US', options)
 }
 
-export const formatTimeRange = (startTime: Date, endTime: Date): string => {
+export const formatTimeRange = (startTime: Date, endTime: Date | null): string => {
   const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric', hour12: true }
 
   const start = startTime.toLocaleTimeString('en-US', options)
-  const end = endTime.toLocaleTimeString('en-US', options)
+  if (endTime) {
+    const end = endTime.toLocaleTimeString('en-US', options)
 
-  return `${start} - ${end}`
+    return `${start} - ${end}`
+  } else {
+    return start
+  }
 }
