@@ -21,8 +21,8 @@ model Club {
   password String
   name        String	  @unique
   description String?
-  Instagram   String?
-  Discord     String?
+  instagram   String?
+  discord     String?
   event    Event[] // Event referencing Club, one-to-many relation
   category ClubCategory[] // ClubCategory, many-to-many relation
 }

@@ -13,8 +13,8 @@ async function main() {
       password: 'password1',
       name: 'Tech Club',
       description: 'A club for tech enthusiasts.',
-      Instagram: 'https://instagram.com/techclub',
-      Discord: 'https://discord.gg/techclub',
+      instagram: 'https://instagram.com/techclub',
+      discord: 'https://discord.gg/techclub',
       category: {
         create: [{ category: { connect: { type: 'Tech' } } }],
       },
@@ -27,8 +27,8 @@ async function main() {
       password: 'password2',
       name: 'Art Club',
       description: 'A club for art lovers.',
-      Instagram: 'https://instagram.com/artclub',
-      Discord: 'https://discord.gg/artclub',
+      instagram: 'https://instagram.com/artclub',
+      discord: 'https://discord.gg/artclub',
       category: {
         create: [{ category: { connect: { type: 'Art' } } }],
       },
@@ -41,8 +41,8 @@ async function main() {
       password: 'password3',
       name: 'Sports Club',
       description: 'A club for sports enthusiasts.',
-      Instagram: 'https://instagram.com/sportsclub',
-      Discord: 'https://discord.gg/sportsclub',
+      instagram: 'https://instagram.com/sportsclub',
+      discord: 'https://discord.gg/sportsclub',
       category: {
         create: [{ category: { connect: { type: 'Sports' } } }],
       },
@@ -55,8 +55,8 @@ async function main() {
       password: 'password4',
       name: 'Music Club',
       description: 'A club for music lovers.',
-      Instagram: 'https://instagram.com/musicclub',
-      Discord: 'https://discord.gg/musicclub',
+      instagram: 'https://instagram.com/musicclub',
+      discord: 'https://discord.gg/musicclub',
       category: {
         create: [{ category: { connect: { type: 'Music' } } }],
       },
