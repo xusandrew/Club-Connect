@@ -1,4 +1,6 @@
 export type Event = {
+  id: number
+  clubId: number
   title: string
   club: string
   description: string

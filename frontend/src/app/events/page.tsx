@@ -1,8 +1,6 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/qm7OR4pdqtu
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
+import { Card } from '../components/events/post-card'
+import { mockEvents } from 'types/mockEventData'
+
 export default function Component() {
   return (
     <div className='bg-gray-900 text-white min-h-screen'>
@@ -26,50 +24,9 @@ export default function Component() {
           <h2 className='text-4xl font-bold'>Week of Jun 2</h2>
         </section>
         <section className='space-y-8'>
-          <div className='p-4 border border-gray-700 rounded-lg'>
-            <h3 className='text-2xl font-bold'>Prod Club: Track Roast</h3>
-            <p className='text-yellow-500'>@JamNetwork</p>
-            <p className='mt-2'>
-              What’s burning JamNetworkians? Production Club is bringing a classic Track Roast
-              session to you this Thursday at 6pm in AL 210. For those who don’t know, our “track
-              roast” sessions provide a space for people to share their tracks and gain constructive
-              criticism! This event is open to all—so bring your tracks (or come without one!) and
-              be ready to share in a fun learning environment!
-            </p>
-            <div className='flex items-center mt-4 space-x-4'>
-              <div className='flex items-center space-x-2'>
-                <CalendarIcon className='h-5 w-5' />
-                <span>Thu, Jun 17 | 5:00 pm - 6:00 pm</span>
-              </div>
-              <div className='flex items-center space-x-2'>
-                <LocateIcon className='h-5 w-5' />
-                <span>AL 210</span>
-              </div>
-              <span className='ml-auto text-gray-500'>in 3 days</span>
-            </div>
-          </div>
-          <div className='p-4 border border-gray-700 rounded-lg'>
-            <h3 className='text-2xl font-bold'>Prod Club: Track Roast</h3>
-            <p className='text-yellow-500'>@JamNetwork</p>
-            <p className='mt-2'>
-              What’s burning JamNetworkians? Production Club is bringing a classic Track Roast
-              session to you this Thursday at 6pm in AL 210. For those who don’t know, our “track
-              roast” sessions provide a space for people to share their tracks and gain constructive
-              criticism! This event is open to all—so bring your tracks (or come without one!) and
-              be ready to share in a fun learning environment!
-            </p>
-            <div className='flex items-center mt-4 space-x-4'>
-              <div className='flex items-center space-x-2'>
-                <CalendarIcon className='h-5 w-5' />
-                <span>Thu, Jun 17 | 5:00 pm - 6:00 pm</span>
-              </div>
-              <div className='flex items-center space-x-2'>
-                <LocateIcon className='h-5 w-5' />
-                <span>Online</span>
-              </div>
-              <span className='ml-auto text-gray-500'>in 3 days</span>
-            </div>
-          </div>
+          {mockEvents.map((event, index) => (
+            <Card key={index} event={event} />
+          ))}
         </section>
       </main>
     </div>
