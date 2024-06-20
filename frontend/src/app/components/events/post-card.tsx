@@ -1,5 +1,5 @@
 import { Event } from 'types/Event'
-import { formatDate, formatTimeRange, timeFromNow } from '@/app/lib/utils'
+import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
 
 export function Card({ event }: { event: Event }) {
   return (
