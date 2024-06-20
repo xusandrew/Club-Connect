@@ -12,7 +12,6 @@ export async function fetchEvents() {
         club: true,
       },
     })
-    console.log(events)
     return events
   } catch (error) {
     console.error('Database Error:', error)
