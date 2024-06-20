@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Roboto_Mono } from 'next/font/google'
 import './globals.css'
-import NavLinks from './components/navbar'
+import NavLinks from '../components/navbar'
 
 const roboto = Roboto_Mono({ subsets: ['latin'], weight: ['400', '700'] })
 

@@ -1,4 +1,4 @@
-import { Event } from 'types/Event'
+import { Event } from '@/types/Event'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
 
 export function Card({ event }: { event: Event }) {

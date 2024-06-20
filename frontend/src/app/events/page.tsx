@@ -1,4 +1,4 @@
-import { Card } from '../components/events/post-card'
+import { Card } from '../../components/events/post-card'
 import { fetchEvents } from '../../lib/data'
 
 export default async function Component() {
