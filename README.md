@@ -25,3 +25,4 @@ Sample description of the project.
 - To have a visual representation of the database through Prisma: `npx prisma studio`
 - Read this link if you want to learn about migrations: https://www.prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate/mental-model
 - **Important**: If you make changes to the prisma schema, you need to run `npx prisma migrate dev --name <migration-name>` to create a new migration. This will create a new migration file in the prisma/migrations folder. You can then run `npx prisma migrate dev` to apply the migration to the database.
+- If you are getting `Unique constraint failed on the fields` error when seeding the database, you can run `npx prisma migrate reset`  delete all the data in the database (Be careful with this command, it will delete all the data in the database)
