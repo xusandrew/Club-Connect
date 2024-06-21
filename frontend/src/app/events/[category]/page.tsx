@@ -2,7 +2,11 @@ import Filter from '@/components/events/filter-bar'
 import { Card } from '@/components/events/post-card'
 import { fetchCategories, fetchEvents } from '@/lib/data'
 
-export default async function Component({ params }: { params: { category?: string | undefined } }) {
+export default async function FilteredPage({
+  params,
+}: {
+  params: { category?: string | undefined }
+}) {
   const category = params.category || ''
 
   const [posts, categories] = await Promise.all([fetchEvents(category), fetchCategories()])

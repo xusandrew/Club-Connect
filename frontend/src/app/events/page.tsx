@@ -1,4 +1,4 @@
-import Component from './[category]/page'
+import FilteredPage from './[category]/page'
 
 export default function Page({
   searchParams,
@@ -7,5 +7,5 @@ export default function Page({
     category?: string
   }
 }) {
-  return <Component params={searchParams} />
+  return <FilteredPage params={searchParams} />
 }
