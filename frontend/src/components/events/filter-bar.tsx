@@ -26,11 +26,11 @@ export default function Filter({ categories }: FilterProps) {
   }
 
   return (
-    <div className='bg-background p-4 rounded-lg'>
+    <div className='bg-background p-4 rounded-lg flex-col align-middle'>
       <div className='flex items-center justify-between mb-4'>
-        <h3 className='text-lg font-semibold '>Categories</h3>
+        <h3 className='text-2xl font-semibold '>Categories</h3>
       </div>
-      <div className='grid gap-2'>
+      <div className='grid gap-3 mt-20'>
         {categories.map((category, index) => {
           const isActive = searchParams.get('category') === category.type
           return (
@@ -51,9 +51,9 @@ export default function Filter({ categories }: FilterProps) {
         })}
         <button
           onClick={() => handleFilter('')}
-          className='rounded-md bg-black px-4 py-2 text-white hover:text-gray-600 hover:bg-white transition-colors duration-300'
+          className='rounded-lg bg-black px-4 py-2 flex items-center gap-2 justify-center md:justify-start text-white hover:text-gray-600 hover:bg-white transition-colors duration-300'
         >
-          Reset
+          reset
         </button>
       </div>
     </div>

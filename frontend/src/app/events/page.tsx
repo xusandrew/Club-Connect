@@ -3,7 +3,7 @@ import Component from './[category]/page'
 export default function Page({
   searchParams,
 }: {
-  searchParams?: {
+  searchParams: {
     category?: string
   }
 }) {
