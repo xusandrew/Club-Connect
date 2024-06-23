@@ -85,7 +85,10 @@ async function main() {
       instagram: 'https://instagram.com/dramaclub',
       discord: 'https://discord.gg/dramaclub',
       category: {
-        create: [{ category: { connect: { type: 'Cultural' } } }],
+        create: [
+          { category: { connect: { type: 'Cultural' } } },
+          { category: { connect: { type: 'Creative Arts' } } },
+        ],
       },
     },
   })
@@ -113,7 +116,10 @@ async function main() {
       instagram: 'https://instagram.com/literatureclub',
       discord: 'https://discord.gg/literatureclub',
       category: {
-        create: [{ category: { connect: { type: 'Academic' } } }],
+        create: [
+          { category: { connect: { type: 'Academic' } } },
+          { category: { connect: { type: 'Creative Arts' } } },
+        ],
       },
     },
   })
@@ -169,7 +175,10 @@ async function main() {
       instagram: 'https://instagram.com/photographyclub',
       discord: 'https://discord.gg/photographyclub',
       category: {
-        create: [{ category: { connect: { type: 'Creative Arts & Music' } } }],
+        create: [
+          { category: { connect: { type: 'Creative Arts & Music' } } },
+          { category: { connect: { type: 'Media' } } },
+        ],
       },
     },
   })
@@ -211,7 +220,7 @@ async function main() {
       instagram: 'https://instagram.com/travelclub',
       discord: 'https://discord.gg/travelclub',
       category: {
-        create: [{ category: { connect: { type: 'Environmental and Sustainability' } } }],
+        create: [{ category: { connect: { type: 'Games & Recreational' } } }],
       },
     },
   })
@@ -239,7 +248,10 @@ async function main() {
       instagram: 'https://instagram.com/fitnessclub',
       discord: 'https://discord.gg/fitnessclub',
       category: {
-        create: [{ category: { connect: { type: 'Health' } } }],
+        create: [
+          { category: { connect: { type: 'Health' } } },
+          { category: { connect: { type: 'Athletic' } } },
+        ],
       },
     },
   })
@@ -267,7 +279,10 @@ async function main() {
       instagram: 'https://instagram.com/filmclub',
       discord: 'https://discord.gg/filmclub',
       category: {
-        create: [{ category: { connect: { type: 'Media' } } }],
+        create: [
+          { category: { connect: { type: 'Media' } } },
+          { category: { connect: { type: 'Creative Arts & Music' } } },
+        ],
       },
     },
   })
