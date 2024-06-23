@@ -1,6 +1,5 @@
 'use client'
 import { Category } from '@prisma/client'
-import { useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
 
