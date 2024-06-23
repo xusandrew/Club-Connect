@@ -87,7 +87,7 @@ async function main() {
       category: {
         create: [
           { category: { connect: { type: 'Cultural' } } },
-          { category: { connect: { type: 'Creative Arts' } } },
+          { category: { connect: { type: 'Creative Arts & Music' } } },
         ],
       },
     },
@@ -118,7 +118,7 @@ async function main() {
       category: {
         create: [
           { category: { connect: { type: 'Academic' } } },
-          { category: { connect: { type: 'Creative Arts' } } },
+          { category: { connect: { type: 'Creative Arts & Music' } } },
         ],
       },
     },
