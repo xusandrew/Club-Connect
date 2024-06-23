@@ -315,6 +315,20 @@ async function main() {
     },
   })
 
+  const club21 = await prisma.club.create({
+    data: {
+      email: 'club21@example.com',
+      password: 'password21',
+      name: 'Business Club',
+      description: 'A club for business and entrepreneurial enthusiasts.',
+      instagram: 'https://instagram.com/businessclub',
+      discord: 'https://discord.gg/businessclub',
+      category: {
+        create: [{ category: { connect: { type: 'Business & Entrepreneurial' } } }],
+      },
+    },
+  })
+
   // Create Events
 
   // Club 1
@@ -1468,6 +1482,68 @@ async function main() {
   ]
 
   await prisma.event.createMany({ data: club20_events })
+
+  // Club 21
+  const club21_events = await prisma.event.createMany({
+    data: [
+      {
+        cid: club21.cid,
+        title: 'Startup Workshop',
+        description: 'A workshop on how to start your own business.',
+        location: 'Business Hall A',
+        start_time: new Date('2024-07-10T09:00:00Z'),
+        end_time: new Date('2024-07-10T11:00:00Z'),
+      },
+      {
+        cid: club21.cid,
+        title: 'Networking Night',
+        description: 'An event to network with business professionals.',
+        location: 'Business Hall B',
+        start_time: new Date('2024-07-17T18:00:00Z'),
+        end_time: new Date('2024-07-17T20:00:00Z'),
+      },
+      {
+        cid: club21.cid,
+        title: 'Business Plan Competition',
+        description: 'A competition to present your business plan.',
+        location: 'Business Hall C',
+        start_time: new Date('2024-07-24T14:00:00Z'),
+        end_time: new Date('2024-07-24T16:00:00Z'),
+      },
+      {
+        cid: club21.cid,
+        title: 'Guest Speaker: John Doe',
+        description: 'A talk by John Doe on entrepreneurial success.',
+        location: 'Business Hall D',
+        start_time: new Date('2024-07-31T10:00:00Z'),
+        end_time: new Date('2024-07-31T12:00:00Z'),
+      },
+      {
+        cid: club21.cid,
+        title: 'Marketing Strategies Workshop',
+        description: 'A workshop on effective marketing strategies.',
+        location: 'Business Hall E',
+        start_time: new Date('2024-08-07T13:00:00Z'),
+        end_time: new Date('2024-08-07T15:00:00Z'),
+      },
+      {
+        cid: club21.cid,
+        title: 'Finance for Startups',
+        description: 'A session on managing finances for startups.',
+        location: 'Business Hall F',
+        start_time: new Date('2024-08-14T11:00:00Z'),
+        end_time: new Date('2024-08-14T13:00:00Z'),
+      },
+      {
+        cid: club21.cid,
+        title: 'Pitching Your Idea',
+        description: 'A workshop on how to pitch your business idea.',
+        location: 'Business Hall G',
+        start_time: new Date('2024-08-21T15:00:00Z'),
+        end_time: new Date('2024-08-21T17:00:00Z'),
+      },
+    ],
+  })
   console.log('Seed data created successfully')
 }
 
