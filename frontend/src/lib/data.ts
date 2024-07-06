@@ -1,4 +1,4 @@
-import prisma from '../../lib/prisma'
+import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 
 export async function fetchEvents(category?: string) {

@@ -1,5 +1,6 @@
 import Filter from '@/components/events/filter-bar'
 import { Card } from '@/components/events/post-card'
+import EventsList from '@/components/events/events-list'
 import { fetchCategories, fetchEvents } from '@/lib/data'
 
 export default async function FilteredPage({

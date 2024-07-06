@@ -36,7 +36,7 @@ export default function Filter({ categories }: FilterProps) {
             <button
               onClick={() => handleFilter(category.type)}
               key={index}
-              className='flex items-center gap-2 flex-col md:flex-row justify-center md:justify-start'
+              className='flex gap-2 flex-col md:flex-row justify-start text-left'
             >
               <h1
                 className={clsx('text-gray-500', {
