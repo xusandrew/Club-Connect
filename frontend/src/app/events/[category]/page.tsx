@@ -1,5 +1,5 @@
-import Filter from '@/components/events/FilterBar'
-import EventsList from '@/components/events/EventsList'
+import Filter from '@/ui/events/FilterBar'
+import EventsList from '@/ui/events/EventsList'
 import { fetchCategories, fetchEvents } from '@/lib/data'
 
 const INITIAL_EVENTS_TO_FETCH = 10

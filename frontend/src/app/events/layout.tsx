@@ -1,4 +1,4 @@
-import ScrollTopButton from '@/components/events/BackToTopButton'
+import ScrollTopButton from '@/ui/events/BackToTopButton'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
