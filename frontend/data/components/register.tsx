@@ -40,15 +40,15 @@ export function Register() {
         </CardHeader>
         <CardContent className='space-y-4'>
           <div className='space-y-2'>
-            <Label htmlFor='email'>Email</Label>
+            <Label htmlFor='email'>Email*</Label>
             <Input name='email' id='email' type='email' placeholder='m@example.com' required />
           </div>
           <div className='space-y-2'>
-            <Label htmlFor='password'>Password</Label>
+            <Label htmlFor='password'>Password*</Label>
             <Input name='password' id='password' type='password' required />
           </div>
           <div className='space-y-2'>
-            <Label htmlFor='name'>Club Name</Label>
+            <Label htmlFor='name'>Club Name*</Label>
             <Input name='name' id='name' placeholder='John Doe' required />
           </div>
           <div className='space-y-2'>
