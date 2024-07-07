@@ -9,7 +9,7 @@ export async function middleware(request: NextRequest) {
 
   if (restrictedUrls.includes(request.nextUrl.pathname)) {
     if (session) {
-      return NextResponse.redirect('/')
+      return NextResponse.rewrite(new URL('/', request.url))
     }
   }
 
