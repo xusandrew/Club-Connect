@@ -1,4 +1,4 @@
-import { fetchEvents } from '@/lib/data' // Adjust the import path according to your project structure
+import { fetchEvents } from '@/lib/data'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
