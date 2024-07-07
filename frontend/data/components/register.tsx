@@ -52,22 +52,21 @@ export function Register() {
             <Input name='name' id='name' placeholder='John Doe' required />
           </div>
           <div className='space-y-2'>
-            <Label htmlFor='description'>Description*</Label>
+            <Label htmlFor='description'>Description</Label>
             <Textarea
               id='description'
               placeholder='Club description...'
               name='description'
               className='min-h-[100px]'
-              required
             />
           </div>
           <div className='space-y-2'>
             <Label htmlFor='instagram'>Instagram</Label>
-            <Input name='instagram' id='instagram' placeholder='@username' required />
+            <Input name='instagram' id='instagram' placeholder='@username' />
           </div>
           <div className='space-y-2'>
             <Label htmlFor='discord'>Discord</Label>
-            <Input name='discord' id='discord' placeholder='discord.gg/' required />
+            <Input name='discord' id='discord' placeholder='discord.gg/' />
           </div>
         </CardContent>
         <CardFooter>
