@@ -1,6 +1,8 @@
-import Filter from '@/components/events/filter-bar'
-import { Card } from '@/components/events/post-card'
+import Filter from '@/components/events/FilterBar'
+import EventsList from '@/components/events/EventsList'
 import { fetchCategories, fetchEvents } from '@/lib/data'
+
+const INITIAL_EVENTS_TO_FETCH = 10
 
 export default async function FilteredPage({
   params,
@@ -8,8 +10,10 @@ export default async function FilteredPage({
   params: { category?: string | undefined }
 }) {
   const category = params.category || ''
-
-  const [posts, categories] = await Promise.all([fetchEvents(category), fetchCategories()])
+  const [posts, categories] = await Promise.all([
+    fetchEvents(INITIAL_EVENTS_TO_FETCH, undefined, category),
+    fetchCategories(),
+  ])
 
   return (
     <div className='flex h-screen flex-col md:flex-row'>
@@ -21,11 +25,7 @@ export default async function FilteredPage({
           <p className='text-gray-400'>{posts.length} event(s) taking place!</p>
           <h2 className='text-4xl font-bold'>Week of Jun 2</h2>
         </section>
-        <section className='space-y-8'>
-          {posts.map((event, index) => (
-            <Card key={index} event={event} />
-          ))}
-        </section>
+        <EventsList initialEvents={posts} category={category} />
       </main>
     </div>
   )

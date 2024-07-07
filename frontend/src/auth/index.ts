@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers'
 import bcrypt from 'bcryptjs'
-import prisma from 'lib/prisma'
+import prisma from '../lib/prisma'
 import { SignJWT, jwtVerify } from 'jose'
 import { NextRequest, NextResponse } from 'next/server'
 import { redirect } from 'next/navigation'

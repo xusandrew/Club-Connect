@@ -1,31 +1,36 @@
-import prisma from '../../lib/prisma'
+import { Event } from '@/types/Event'
+import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 
-export async function fetchEvents(category?: string) {
+export async function fetchEvents(limit: number, idCursor?: number, category?: string) {
   noStore()
 
   try {
     let events
+    let queryOptions: any = {
+      take: limit,
+      include: { club: true },
+    }
+
+    if (idCursor) {
+      queryOptions.cursor = { eid: idCursor }
+      queryOptions.skip = 1
+    }
 
     if (category) {
-      events = await prisma.event.findMany({
-        where: {
-          club: {
-            category: {
-              some: {
-                type: category,
-              },
+      queryOptions.where = {
+        club: {
+          category: {
+            some: {
+              type: category,
             },
           },
         },
-        include: { club: true },
-      })
-    } else {
-      events = await prisma.event.findMany({
-        include: { club: true },
-      })
+      }
     }
-    return events
+
+    events = await prisma.event.findMany(queryOptions)
+    return events as Event[]
   } catch (error) {
     console.error('Database Error:', error)
     throw new Error('Failed to fetch post data.')
