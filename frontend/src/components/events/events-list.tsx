@@ -59,7 +59,22 @@ export default function EventsList({ initialEvents, category }: EventsListProps)
       {events.map((event) => (
         <Card key={event.eid} event={event} />
       ))}
-      {hasMoreData && <div ref={ref}>Loading...</div>}
+      {hasMoreData && (
+        <div ref={ref}>
+          <div className='flex justify-center items-center py-10 mb-8 '>
+            <div className='flex items-center space-x-2'>
+              <div className='w-3 h-3 bg-white rounded-full animate-bounce' />
+              <div className='w-3 h-3 bg-white rounded-full animate-bounce animation-delay-200' />
+              <div className='w-3 h-3 bg-white rounded-full animate-bounce animation-delay-400' />
+            </div>
+          </div>
+        </div>
+      )}
+      {!hasMoreData && (
+        <div className='flex flex-col items-center justify-center py-10 mb-8'>
+          <p className='text-muted-foreground'>That&apos;s all the events!</p>
+        </div>
+      )}
     </div>
   )
 }

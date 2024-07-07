@@ -3,10 +3,10 @@ import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
 
 export function Card({ event }: { event: Event }) {
   return (
-    <div className='p-4 border border-gray-700 rounded-lg'>
+    <div className='p-4 border border-gray-700 rounded-lg w-[800px]'>
       <h3 className='text-2xl font-bold'>{event.title}</h3>
       <p className='text-yellow-500'>@{event.club.name}</p>
-      <p className='mt-2'>{event.description}</p>
+      <p className='mt-2 '>{event.description}</p>
       <div className='flex items-center mt-4 space-x-4'>
         <div className='flex items-center space-x-2'>
           <CalendarIcon className='h-5 w-5' />
