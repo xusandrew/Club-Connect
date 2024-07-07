@@ -1,3 +1,4 @@
+import { Event } from '@/types/Event'
 import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 
@@ -29,7 +30,7 @@ export async function fetchEvents(limit: number, idCursor?: number, category?: s
     }
 
     events = await prisma.event.findMany(queryOptions)
-    return events
+    return events as Event[]
   } catch (error) {
     console.error('Database Error:', error)
     throw new Error('Failed to fetch post data.')

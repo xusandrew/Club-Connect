@@ -1,5 +1,5 @@
 'use client'
-import { Card } from './post-card'
+import { Card } from './PostCard'
 import type { Event } from '@/types/Event'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
