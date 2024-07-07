@@ -2,7 +2,7 @@ import Filter from '@/components/events/filter-bar'
 import EventsList from '@/components/events/events-list'
 import { fetchCategories, fetchEvents } from '@/lib/data'
 
-const INITIAL_EVENTS_TO_FETCH = 4
+const INITIAL_EVENTS_TO_FETCH = 10
 
 export default async function FilteredPage({
   params,
