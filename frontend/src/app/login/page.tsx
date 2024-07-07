@@ -1,4 +1,5 @@
 import { login } from '@/auth'
+import Link from 'next/link'
 
 const LoginPage: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const LoginPage: React.FC = () => {
         </div>
         <button type='submit'>Login</button>
       </form>
+      <Link href='/register'>Click here to register your club</Link>
     </div>
   )
 }

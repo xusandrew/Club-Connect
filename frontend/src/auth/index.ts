@@ -6,6 +6,7 @@ import prisma from 'lib/prisma'
 import { SignJWT, jwtVerify } from 'jose'
 import { NextRequest, NextResponse } from 'next/server'
 import { redirect } from 'next/navigation'
+import type { Club } from '@/types/Club'
 
 const secretKey = new TextEncoder().encode(process.env.JWT_SECRET)
 const saltRounds = 10
@@ -35,7 +36,7 @@ export const getSession = async () => {
   const session = cookies().get('session')?.value
   if (!session) return
 
-  return await decrypt(session)
+  return (await decrypt(session)) as { club: Club; [key: string]: any }
 }
 
 export const updateSession = async (request: NextRequest) => {
@@ -89,6 +90,7 @@ export const login = async (formData: FormData) => {
 
 export const logout = () => {
   cookies().set('session', '', { expires: new Date(0) })
+  redirect('/login') // TODO: Redirect to club page
 }
 
 export const register = async (formData: FormData) => {
@@ -113,7 +115,7 @@ export const register = async (formData: FormData) => {
   })
   clubData.password = hash
 
-  const club_db = await prisma.club
+  const club = await prisma.club
     .create({
       data: clubData,
     })
@@ -127,8 +129,8 @@ export const register = async (formData: FormData) => {
   //   const expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) // 1 year
   const expires = new Date(Date.now() + 10000) // 10 seconds
 
-  const session = await encrypt({ club_db, expires })
+  const session = await encrypt({ club, expires })
 
   cookies().set('session', session, { expires, httpOnly: true })
-  redirect('/')
+  redirect('/') // TODO: Redirect to club page
 }
