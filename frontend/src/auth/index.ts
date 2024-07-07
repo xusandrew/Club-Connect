@@ -84,6 +84,7 @@ export const login = async (formData: FormData) => {
   const session = await encrypt({ club, expires })
 
   cookies().set('session', session, { expires, httpOnly: true })
+  redirect('/')
 }
 
 export const logout = () => {

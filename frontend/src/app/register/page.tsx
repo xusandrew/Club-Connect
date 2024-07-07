@@ -1,5 +1,3 @@
-'use client'
-
 import { register } from '@/auth'
 
 const RegisterPage: React.FC = () => {
