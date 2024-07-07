@@ -52,7 +52,7 @@ export function Register() {
             <Input name='name' id='name' placeholder='John Doe' required />
           </div>
           <div className='space-y-2'>
-            <Label htmlFor='description'>Description</Label>
+            <Label htmlFor='description'>Description*</Label>
             <Textarea
               id='description'
               placeholder='Club description...'
