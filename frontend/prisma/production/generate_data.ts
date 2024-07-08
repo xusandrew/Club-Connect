@@ -5,7 +5,7 @@ import path from 'path'
 
 import type { Club } from '@/types/Club'
 import type { Event } from '@/types/Event'
-import type { RVSP } from '@/types/RVSP'
+import type { RSVP } from '@/types/RSVP'
 
 const CATEGORIES = [
   { type: 'Academic' },
@@ -50,7 +50,7 @@ const generateClubs = (numClubs: number): Omit<Club, 'cid'>[] => {
     clubs.push({
       name: name,
       description: faker.company.catchPhrase(),
-      category: CATEGORIES[categoryIndex].type,
+      category: [CATEGORIES[categoryIndex]],
       email: email,
       password: faker.internet.password(),
       instagram: faker.internet.url(),
@@ -62,7 +62,7 @@ const generateClubs = (numClubs: number): Omit<Club, 'cid'>[] => {
 
 const generateEvents = (
   numEvents: number,
-): Omit<Event, 'eid' | 'cid' | 'club' | 'rvsp_emails'>[] => {
+): Omit<Event, 'eid' | 'cid' | 'club' | 'rsvp_emails'>[] => {
   const dateOptions = {
     years: 1,
   }
@@ -96,11 +96,11 @@ const generateEvents = (
   return events
 }
 
-const generateRVSPs = (numRVSP: number): Omit<RVSP, 'eid'>[] => {
+const generateRSVPs = (numRSVP: number): Omit<RSVP, 'eid'>[] => {
   const rsvps = []
   const uniqueEmails = new Set<string>()
 
-  for (let i = 0; i < numRVSP; i++) {
+  for (let i = 0; i < numRSVP; i++) {
     let email
     do {
       email = faker.internet.email()
@@ -115,11 +115,11 @@ const generateRVSPs = (numRVSP: number): Omit<RVSP, 'eid'>[] => {
 const main = async () => {
   const numClubs = 200
   const numEvents = 1000
-  const numRVSP = 5000
+  const numRSVP = 5000
 
   const clubs = generateClubs(numClubs)
   const events = generateEvents(numEvents)
-  const rsvps = generateRVSPs(numRVSP)
+  const rsvps = generateRSVPs(numRSVP)
 
   await saveToCSV(clubs, path.join(__dirname, './clubs.csv'))
   await saveToCSV(events, path.join(__dirname, './events.csv'))

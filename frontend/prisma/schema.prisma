@@ -36,7 +36,7 @@ model Event {
   location    String?
   start_time  DateTime?
   end_time    DateTime?
-  rvsp_emails RVSP[]
+  rsvp_emails RSVP[]
   posted_time DateTime @default(now())
 }
 
@@ -55,7 +55,7 @@ model ClubCategory {
 }
 
 
-model RVSP {
+model RSVP {
   eid     Int
   event   Event     @relation(fields: [eid], references: [eid])
   email  String

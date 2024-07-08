@@ -10,7 +10,7 @@ type CardProps = {
 }
 
 export function Card({ event, openModal, setModalEvent }: CardProps) {
-  const handleRVSPButton = () => {
+  const handleRSVPButton = () => {
     openModal()
     setModalEvent(event)
   }
@@ -38,7 +38,12 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
         </span>
       </div>
       <div className='flex items-center'>
-        <Button onClick={handleRVSPButton} className='w-[800px] mt-5 hover:bg-white hover:text-gray-600 transition-colors duration-300'>RSVP</Button>
+        <Button
+          onClick={handleRSVPButton}
+          className='w-[800px] mt-5 hover:bg-white hover:text-gray-600 transition-colors duration-300'
+        >
+          RSVP
+        </Button>
       </div>
     </div>
   )
