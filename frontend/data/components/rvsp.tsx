@@ -23,6 +23,7 @@ export function RVSP({ event }: { event: Event }) {
     setModal(!modal)
   }
 
+
   return (
     <>
       <Button onClick={toggleModal} className='w-full' variant='outline'>
