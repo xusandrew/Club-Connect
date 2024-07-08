@@ -1550,8 +1550,10 @@ async function main() {
   const events = await prisma.event.findMany()
   const rsvp: { email: string; eid: number }[] = []
 
-  for (let j = 0; j < 10; j++) {
+  for (let j = 0; j < 20; j++) {
     events.forEach((event, i) => {
+      if ((i + j) % 11 === 0) return
+      if ((i + j) % 7 === 0) return
       rsvp.push({
         eid: event.eid,
         email: `help${i + j}@example.com`,
