@@ -1561,6 +1561,18 @@ async function main() {
     })
   }
 
+  const club1_events_db = await prisma.event.findMany({
+    where: {
+      cid: club1.cid,
+    },
+  })
+  club1_events_db.forEach((event) => {
+    rsvp.push({
+      eid: event.eid,
+      email: 'balls1@example.com',
+    })
+  })
+
   await prisma.rSVP.createMany({ data: rsvp })
 
   console.log('Seed data created successfully')
