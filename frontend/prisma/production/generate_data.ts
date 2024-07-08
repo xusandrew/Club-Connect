@@ -3,10 +3,24 @@ import * as csvWriter from 'csv-writer'
 import prisma from '@/lib/prisma'
 import path from 'path'
 
-import type { Category } from '@/types/Category'
 import type { Club } from '@/types/Club'
 import type { Event } from '@/types/Event'
 import type { RVSP } from '@/types/RVSP'
+
+const CATEGORIES = [
+  { type: 'Academic' },
+  { type: 'Business & Entrepreneurial' },
+  { type: 'Charitable & Community Service' },
+  { type: 'Creative Arts & Music' },
+  { type: 'Cultural' },
+  { type: 'Environmental and Sustainability' },
+  { type: 'Games & Recreational' },
+  { type: 'Athletic' },
+  { type: 'Tech' },
+  { type: 'Health' },
+  { type: 'Media' },
+  { type: 'Political & Social' },
+]
 
 const saveToCSV = async (data: any[], filePath: string) => {
   const csvWriterInstance = csvWriter.createObjectCsvWriter({
@@ -17,30 +31,27 @@ const saveToCSV = async (data: any[], filePath: string) => {
   await csvWriterInstance.writeRecords(data)
 }
 
-const generateCategories = (numCategories: number): Category[] => {
-  const categories = []
-  for (let i = 0; i < numCategories; i++) {
-    categories.push({
-      type: faker.commerce.department(),
-    })
-  }
-  return categories
-}
-
-const generateClubs = (
-  numCategories: number,
-  categories: Category[],
-  numClubs: number,
-): Omit<Club, 'cid'>[] => {
+const generateClubs = (numClubs: number): Omit<Club, 'cid'>[] => {
   const clubs = []
-  for (let i = 0; i < numClubs; i++) {
-    const categoryIndex = Math.floor(Math.random() * numCategories)
+  const uniqueEmails = new Set<string>()
+  const uniqueNames = new Set<string>()
 
+  for (let i = 0; i < numClubs; i++) {
+    let name, email
+    do {
+      name = faker.company.name()
+      email = faker.internet.email()
+    } while (uniqueEmails.has(email) || uniqueNames.has(name))
+
+    uniqueEmails.add(email)
+    uniqueNames.add(name)
+
+    const categoryIndex = Math.floor(Math.random() * CATEGORIES.length)
     clubs.push({
-      name: faker.company.name(),
+      name: name,
       description: faker.company.catchPhrase(),
-      category: categories[categoryIndex].type,
-      email: faker.internet.email(),
+      category: CATEGORIES[categoryIndex].type,
+      email: email,
       password: faker.internet.password(),
       instagram: faker.internet.url(),
       discord: faker.internet.url(),
@@ -51,7 +62,7 @@ const generateClubs = (
 
 const generateEvents = (
   numEvents: number,
-): Omit<Event, 'eid' | 'cid' | 'club' | 'posted_time' | 'rvsp_emails'>[] => {
+): Omit<Event, 'eid' | 'cid' | 'club' | 'rvsp_emails'>[] => {
   const dateOptions = {
     years: 1,
   }
@@ -79,6 +90,7 @@ const generateEvents = (
       location: `${buildingCode} ${roomNumber}`,
       start_time: start_time,
       end_time: end_time,
+      posted_time: faker.date.past(dateOptions),
     })
   }
   return events
@@ -86,33 +98,33 @@ const generateEvents = (
 
 const generateRVSPs = (numRVSP: number): Omit<RVSP, 'eid'>[] => {
   const rsvps = []
+  const uniqueEmails = new Set<string>()
+
   for (let i = 0; i < numRVSP; i++) {
+    let email
+    do {
+      email = faker.internet.email()
+    } while (uniqueEmails.has(email))
     rsvps.push({
-      email: faker.internet.email(),
+      email,
     })
   }
   return rsvps
 }
 
 const main = async () => {
-  const numCategories = 100
-  const numClubs = 10000
-  const numEvents = 50000
-  const numRVSP = 100000
+  const numClubs = 200
+  const numEvents = 1000
+  const numRVSP = 5000
 
-  const SAVE_TO_CSV = true
-
-  const categories = generateCategories(numCategories)
-  const clubs = generateClubs(numCategories, categories, numClubs)
+  const clubs = generateClubs(numClubs)
   const events = generateEvents(numEvents)
   const rsvps = generateRVSPs(numRVSP)
 
-  if (SAVE_TO_CSV) {
-    await saveToCSV(categories, path.join(__dirname, './categories.csv'))
-    await saveToCSV(clubs, path.join(__dirname, './clubs.csv'))
-    await saveToCSV(events, path.join(__dirname, './events.csv'))
-    await saveToCSV(rsvps, path.join(__dirname, './rsvps.csv'))
-  }
+  await saveToCSV(clubs, path.join(__dirname, './clubs.csv'))
+  await saveToCSV(events, path.join(__dirname, './events.csv'))
+  await saveToCSV(rsvps, path.join(__dirname, './rsvps.csv'))
+  console.log('Data generated successfully')
 }
 
 main()
