@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import WeekList from './WeekList'
 import { addWeeks, startOfWeek } from 'date-fns'
+import { RVSP } from './Rvsp'
 
 type EventsListProps = {
   category: string
@@ -13,6 +14,8 @@ export default function EventsList({ category }: EventsListProps) {
   const [weekEvents, setWeekEvents] = useState<Event[][]>([])
   const [hasMoreData, setHasMoreData] = useState<boolean>(true)
   const [weekCursor, setWeekCursor] = useState<Date>(new Date())
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
+  const [modalEvent, setModalEvent] = useState<Event | undefined>()
 
   const { ref, inView } = useInView()
 
@@ -66,6 +69,14 @@ export default function EventsList({ category }: EventsListProps) {
 
   return (
     <div className='flex flex-col gap-3'>
+      {modalEvent && modalIsOpen && (
+        <RVSP
+          setIsOpen={setModalIsOpen}
+          isOpen={modalIsOpen}
+          event={modalEvent}
+          closeModal={() => setModalIsOpen(false)}
+        />
+      )}
       {weekEvents.map(
         (events, index) =>
           events[0].start_time && (
@@ -73,6 +84,8 @@ export default function EventsList({ category }: EventsListProps) {
               key={index}
               events={events}
               week={startOfWeek(new Date(events[0].start_time))}
+              openModal={() => setModalIsOpen(true)}
+              setModalEvent={setModalEvent}
             />
           ),
       )}
