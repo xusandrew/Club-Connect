@@ -1,63 +1,83 @@
 'use client'
-import { Card } from './PostCard'
 import type { Event } from '@/types/Event'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
+import WeekList from './WeekList'
+import { getStartOfWeek } from '@/lib/utils'
+
 type EventsListProps = {
-  initialEvents: Event[]
   category: string
 }
 
-const NUMBER_OF_EVENTS_TO_FETCH = 10
-
-export default function EventsList({ initialEvents, category }: EventsListProps) {
-  const [cursor, setCursor] = useState<number>(initialEvents[initialEvents.length - 1].eid)
-  const [events, setEvents] = useState<Event[]>(initialEvents)
+export default function EventsList({ category }: EventsListProps) {
+  const [weekEvents, setWeekEvents] = useState<Event[][]>([])
   const [hasMoreData, setHasMoreData] = useState<boolean>(true)
+  const [weekCursor, setWeekCursor] = useState<Date>(new Date())
+
   const { ref, inView } = useInView()
 
-  const loadMoreEvents = async () => {
-    if (!hasMoreData) return
-
-    const params = new URLSearchParams({
-      category: category,
-      limit: NUMBER_OF_EVENTS_TO_FETCH.toString(),
-      idCursor: cursor?.toString() || '',
-    })
-
-    const response = await fetch(`/api/events?${params.toString()}`)
-    const data = await response.json()
-    const newEvents = data.events.map((event: any) => ({
-      ...event,
-      start_time: event.start_time ? new Date(event.start_time) : null,
-      end_time: event.end_time ? new Date(event.end_time) : null,
-      posted_time: event.posted_time ? new Date(event.posted_time) : null,
-    }))
-    if (newEvents.length === 0) {
-      setHasMoreData(false)
-    } else {
-      setEvents([...events, ...newEvents])
-      setCursor(newEvents[newEvents.length - 1].eid)
-    }
-  }
-
-  // when category changes, reset states
+  // Reset states when category changes
   useEffect(() => {
-    setEvents(initialEvents)
+    setWeekEvents([])
     setHasMoreData(true)
-    setCursor(initialEvents[initialEvents.length - 1].eid)
-  }, [initialEvents])
+    setWeekCursor(new Date())
+  }, [category])
 
+  // Load more events when component is in view
   useEffect(() => {
+    const loadMoreEvents = async () => {
+      if (!hasMoreData) return
+
+      const params = new URLSearchParams({
+        category: category,
+        weekDate: weekCursor.toISOString(),
+      })
+
+      console.log({
+        category: category,
+        weekDate: weekCursor.toISOString(),
+      })
+
+      try {
+        const response = await fetch(`/api/events?${params.toString()}`)
+        const data = await response.json()
+
+        if (response.ok) {
+          const newEvents = data.events.map((event: any) => ({
+            ...event,
+            start_time: event.start_time ? new Date(event.start_time) : null,
+            end_time: event.end_time ? new Date(event.end_time) : null,
+            posted_time: event.posted_time ? new Date(event.posted_time) : null,
+          }))
+
+          console.log({ weekEvents, newEvents })
+
+          if (newEvents.length === 0) {
+            setHasMoreData(false)
+          } else {
+            setWeekEvents([...weekEvents, newEvents])
+            setWeekCursor(
+              new Date((weekCursor as Date).setDate((weekCursor as Date).getDate() + 7)),
+            )
+          }
+        } else {
+          console.error('Error loading more events:', data.error)
+        }
+      } catch (error) {
+        console.error('Fetch error:', error)
+      }
+    }
+
+    console.log('help', { inView })
     if (inView) {
       loadMoreEvents()
     }
-  }, [inView])
+  }, [inView, category, hasMoreData, weekCursor, weekEvents])
 
   return (
     <div className='flex flex-col gap-3'>
-      {events.map((event) => (
-        <Card key={event.eid} event={event} />
+      {weekEvents.map((events, index) => (
+        <WeekList key={index} events={events} week={getStartOfWeek(events[0].start_time)} />
       ))}
       {hasMoreData && (
         <div ref={ref}>
