@@ -27,3 +27,4 @@ FROM
 --  Art Exhibition | An exhibition of student artwork.       | Art Gallery | 2024-07-02 10:00:00 | 2024-07-02 12:00:00 | 2024-06-20 15:29:33.368 |   2 |   2
 --  Music Concert  | A concert featuring local bands.        | Auditorium  | 2024-07-04 10:00:00 | 2024-07-04 12:00:00 | 2024-06-20 15:29:33.368 |   4 |   4
 -- (3 rows)
+

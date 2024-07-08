@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import WeekList from './WeekList'
 import { addWeeks, startOfWeek } from 'date-fns'
-import { RVSP } from './Rvsp'
+import { RSVP } from './Rsvp'
 
 type EventsListProps = {
   category: string
@@ -70,7 +70,7 @@ export default function EventsList({ category }: EventsListProps) {
   return (
     <div className='flex flex-col gap-3'>
       {modalEvent && modalIsOpen && (
-        <RVSP
+        <RSVP
           setIsOpen={setModalIsOpen}
           isOpen={modalIsOpen}
           event={modalEvent}

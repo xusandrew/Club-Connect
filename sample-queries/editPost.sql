@@ -33,3 +33,8 @@ FROM
 --  Football Match | A friendly football match.        | Sports Field | 2024-07-03 10:00:00 | 2024-07-03 12:00:00 | 2024-06-20 16:12:00.022 |   3 |   3
 --  Music Concert  | A concert featuring local bands.  | Auditorium   | 2024-07-04 10:00:00 | 2024-07-04 12:00:00 | 2024-06-20 16:12:00.022 |   4 |   4
 --  Tech Talk      | BINGO CANCELLED                   | SLC          | 2024-06-30 18:00:00 | 2024-06-30 20:00:00 | 2024-06-20 18:00:00     |   1 |   1
+
+
+
+
+

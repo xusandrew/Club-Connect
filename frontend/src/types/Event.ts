@@ -1,5 +1,5 @@
 import type { Club } from './Club'
-import type { RVSP } from './RVSP'
+import type { RSVP } from './RSVP'
 
 export type Event = {
   eid: number
@@ -11,5 +11,5 @@ export type Event = {
   end_time: Date | null
   posted_time: Date
   club: Club
-  rvsp_emails: RVSP[]
+  rsvp_emails: RSVP[]
 }

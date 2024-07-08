@@ -62,7 +62,7 @@ const main = async () => {
     for (let index = 0; index < rsvps.length; index++) {
       const rsvp = rsvps[index]
       const eid = events_db[index % events_db.length].eid
-      await prisma.rVSP.create({ data: { ...rsvp, event: { connect: { eid } } } })
+      await prisma.rSVP.create({ data: { ...rsvp, event: { connect: { eid } } } })
     }
 
     console.log('Data loaded successfully')

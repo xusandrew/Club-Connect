@@ -1,3 +1,4 @@
+import { RSVP } from '@/types/RSVP'
 import prisma from '../src/lib/prisma'
 
 async function main() {
@@ -1484,7 +1485,7 @@ async function main() {
   await prisma.event.createMany({ data: club20_events })
 
   // Club 21
-  const club21_events = await prisma.event.createMany({
+  await prisma.event.createMany({
     data: [
       {
         cid: club21.cid,
@@ -1544,6 +1545,36 @@ async function main() {
       },
     ],
   })
+
+  // Adding rsvp
+  const events = await prisma.event.findMany()
+  const rsvp: { email: string; eid: number }[] = []
+
+  for (let j = 0; j < 20; j++) {
+    events.forEach((event, i) => {
+      if ((i + j) % 11 === 0) return
+      if ((i + j) % 7 === 0) return
+      rsvp.push({
+        eid: event.eid,
+        email: `help${i + j}@example.com`,
+      })
+    })
+  }
+
+  const club1_events_db = await prisma.event.findMany({
+    where: {
+      cid: club1.cid,
+    },
+  })
+  club1_events_db.forEach((event) => {
+    rsvp.push({
+      eid: event.eid,
+      email: 'balls1@example.com',
+    })
+  })
+
+  await prisma.rSVP.createMany({ data: rsvp })
+
   console.log('Seed data created successfully')
 }
 
