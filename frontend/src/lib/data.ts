@@ -108,7 +108,7 @@ export async function fetchClubs(category?: string) {
         },
       })
     }
-    return clubs as unknown as Club[]
+    return clubs as Club[]
   } catch (error) {
     console.error('Database Error:', error)
     throw new Error('Failed to fetch club data.')

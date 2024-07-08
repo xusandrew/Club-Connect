@@ -8,5 +8,5 @@ export type Club = {
   description: string | null
   instagram: string | null
   discord: string | null
-  category?: Category
+  category?: Category[]
 }

@@ -1,7 +1,6 @@
-import { Card } from '@/data/components/ui/card'
 import { Club } from '@/types/Club'
-import Link from 'next/link'
-import { DiscordIcon, InstagramIcon, UsersIcon } from '../icons/icons'
+import { DiscordIcon, InstagramIcon } from '../icons/icons'
+import { CategoryIcon } from '../icons/CategoryIcons'
 
 type ClubCardProps = {
   club: Club
@@ -10,9 +9,14 @@ type ClubCardProps = {
 export default function Component({ club }: ClubCardProps) {
   return (
     <div className='p-4 border border-gray-700 rounded-lg w-[800px]'>
-      <UsersIcon />
-      <h3 className=' text-2xl font-bold'>{club.name}</h3>
+      <section className='flex mr-6 gap-4'>
+        {club.category && club.category[0] && <CategoryIcon category={club.category[0].type} />}
+        <h3 className=' text-2xl font-bold'>{club.name}</h3>
+      </section>
+
       <p className='mt-2 '>{club.description}</p>
+      {!club.description && <p className='mt-2 text-gray-400'>No club description.</p>}
+
       <section className='flex mt-4 mr-6 gap-4 justify-end'>
         {club.instagram && (
           <a href={`${club.instagram}`} target='_blank' rel='noopener noreferrer'>
@@ -25,6 +29,7 @@ export default function Component({ club }: ClubCardProps) {
           </a>
         )}
       </section>
+      <div>More</div>
     </div>
   )
 }
