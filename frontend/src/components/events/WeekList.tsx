@@ -1,5 +1,5 @@
 import { Card } from './PostCard'
-import { Event } from '@/types/Event'
+import type { Event } from '@/types/Event'
 import { WeekCard } from './WeekCard'
 
 type WeekListProps = {
