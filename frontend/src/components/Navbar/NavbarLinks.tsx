@@ -4,12 +4,14 @@ import { HomeIcon, BookOpenIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
+import { CalendarIcon } from '../icons'
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Home', href: '/events', icon: HomeIcon },
   { name: 'Explore', href: '/explore', icon: BookOpenIcon },
+  { name: 'Calendar', href: '/calendar', icon: CalendarIcon},
 ]
 
 export default function NavbarLinks() {
