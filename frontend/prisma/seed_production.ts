@@ -44,8 +44,9 @@ const main = async () => {
 
     // Create Events
     const events = await readCSV('production/events.csv')
-    for (const event of events) {
-      const cid = clubs_db[Math.floor(Math.random() * clubs_db.length)].cid
+    for (let index = 0; index < events.length; index++) {
+      const event = events[index]
+      const cid = clubs_db[index % clubs_db.length].cid
 
       event.club = { connect: { cid } }
       event.start_time = new Date(event.start_time)
@@ -58,8 +59,9 @@ const main = async () => {
 
     // Create RSVPs
     const rsvps = await readCSV('production/rsvps.csv')
-    for (const rsvp of rsvps) {
-      const eid = events_db[Math.floor(Math.random() * events_db.length)].eid
+    for (let index = 0; index < rsvps.length; index++) {
+      const rsvp = rsvps[index]
+      const eid = events_db[index % events_db.length].eid
       await prisma.rVSP.create({ data: { ...rsvp, event: { connect: { eid } } } })
     }
 
