@@ -1,6 +1,7 @@
 import type { Event } from '@/types/Event'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
 import { CalendarIcon, LocateIcon } from '../icons'
+import { Button } from '@/data/components/ui/button'
 
 type CardProps = {
   event: Event
@@ -36,7 +37,9 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
           {event.start_time ? timeFromNow(event.start_time) : ''}
         </span>
       </div>
-      <button onClick={handleRVSPButton}>OPEN</button>
+      <div className='flex items-center'>
+        <Button onClick={handleRVSPButton} className='w-[800px] mt-5 hover:bg-white hover:text-gray-600 transition-colors duration-300'>RSVP</Button>
+      </div>
     </div>
   )
 }
