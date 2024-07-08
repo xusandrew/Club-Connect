@@ -1,5 +1,3 @@
-import { AcademicCapIcon } from '@heroicons/react/24/outline'
-
 export const timeFromNow = (date: Date): string => {
   const now = new Date()
   const differenceInTime = date.getTime() - now.getTime()

@@ -7,7 +7,7 @@ import {
   UserGroupIcon,
   BriefcaseIcon,
 } from '@heroicons/react/24/outline'
-import { SoccerBallIcon, GameControllerIcon, IconGlobalLine, LeafIcon } from './icons'
+import { SoccerBallIcon, GameControllerIcon, IconGlobalLine, LeafIcon } from '.'
 
 type CategoryIconProps = {
   category: string

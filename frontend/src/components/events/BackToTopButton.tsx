@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowUpIcon } from '../icons/icons'
+import { ArrowUpIcon } from '../icons'
 
 export default function ScrollTopButton() {
   const handleScrollToTop = () => {

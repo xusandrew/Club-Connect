@@ -1,5 +1,5 @@
 import { Club } from '@/types/Club'
-import { DiscordIcon, InstagramIcon } from '../icons/icons'
+import { DiscordIcon, InstagramIcon } from '../icons'
 import { CategoryIcon } from '../icons/CategoryIcons'
 
 type ClubCardProps = {

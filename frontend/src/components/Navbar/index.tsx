@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { getSession } from '@/auth'
 import NavbarLinks from './NavbarLinks'
 import LogoutButton from '../LogoutButton'
-import { RabbitIcon } from '../icons/icons'
+import { RabbitIcon } from '../icons'
 
 export default async function Navbar() {
   const session = await getSession()
