@@ -1,15 +1,17 @@
-CREATE INDEX idx_rsvp_eID ON "RSVP"(eID);
-CREATE INDEX idx_event_eID ON "Event"(eID);
+CREATE INDEX idx_rsvp_eID ON "RSVP" (eID);
 
-WITH RSVP_counts AS (
-    SELECT
-        eID,
-        COUNT(email) AS rsvp_count
-    FROM
-        "RSVP"
-    GROUP BY
-        eID
-)
+CREATE INDEX idx_event_eID ON "Event" (eID);
+
+WITH
+    RSVP_counts AS (
+        SELECT
+            eID,
+            COUNT(email) AS rsvp_count
+        FROM
+            "RSVP"
+        GROUP BY
+            eID
+    )
 SELECT
     e.eID,
     e.title,
@@ -21,8 +23,6 @@ FROM
     "Event" e
     LEFT JOIN RSVP_counts rc ON e.eID = rc.eID
 ORDER BY
-    rsvp_count DESC;
-
-
-
-    
+    rsvp_count DESC
+LIMIT
+    20;

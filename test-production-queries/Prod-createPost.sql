@@ -22,6 +22,6 @@ VALUES
 SELECT
     *
 FROM
-    "Event";
-
-
+    "Event"
+LIMIT
+    20;

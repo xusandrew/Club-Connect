@@ -1,5 +1,6 @@
-CREATE INDEX idx_event_eid ON "Event"(eID);
-CREATE INDEX idx_event_time ON "Event"(start_time, end_time);
+CREATE INDEX idx_event_eid ON "Event" (eID);
+
+CREATE INDEX idx_event_time ON "Event" (start_time, end_time);
 
 SELECT
   e1.eID,
@@ -21,7 +22,6 @@ WHERE
       AND e1.eID != e2.eID
       AND e1.start_time < e2.end_time
       AND e1.end_time > e2.start_time
-  );
-
-
-  
+  )
+LIMIT
+  20;

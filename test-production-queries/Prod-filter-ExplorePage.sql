@@ -1,9 +1,9 @@
-CREATE INDEX indx_club_cid ON "Club"("cid");
+CREATE INDEX indx_club_cid ON "Club" ("cid");
 
 SELECT
     "Club".description,
     "Club".instagram,
-    "Club".discord,
+    "Club".discord
 FROM
     "Club"
 WHERE

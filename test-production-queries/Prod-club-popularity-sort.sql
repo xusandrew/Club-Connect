@@ -1,7 +1,8 @@
-CREATE INDEX idx_event_cid ON "Event"(cID);
-CREATE INDEX idx_rsvp_eid ON "RSVP"(eID);
-CREATE INDEX idx_club_cid ON "Club"(cID);
+CREATE INDEX idx_event_cid ON "Event" (cID);
 
+CREATE INDEX idx_rsvp_eid ON "RSVP" (eID);
+
+CREATE INDEX idx_club_cid ON "Club" (cID);
 
 SELECT
     c.name,
@@ -22,7 +23,6 @@ FROM
 GROUP BY
     c.cID
 ORDER BY
-    avg_rsvp DESC;
-
-
-
+    avg_rsvp DESC
+LIMIT
+    20;
