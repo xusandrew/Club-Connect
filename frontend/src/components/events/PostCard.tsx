@@ -1,8 +1,20 @@
 import type { Event } from '@/types/Event'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
 import { CalendarIcon, LocateIcon } from '../icons'
+import { Button } from '@/data/components/ui/button'
 
-export function Card({ event }: { event: Event }) {
+type CardProps = {
+  event: Event
+  openModal: () => void
+  setModalEvent: React.Dispatch<React.SetStateAction<Event | undefined>>
+}
+
+export function Card({ event, openModal, setModalEvent }: CardProps) {
+  const handleRVSPButton = () => {
+    openModal()
+    setModalEvent(event)
+  }
+
   return (
     <div className='p-4 border border-gray-700 rounded-lg w-[800px]'>
       <h3 className='text-2xl font-bold'>{event.title}</h3>
@@ -24,6 +36,9 @@ export function Card({ event }: { event: Event }) {
         <span className='ml-auto text-gray-500'>
           {event.start_time ? timeFromNow(event.start_time) : ''}
         </span>
+      </div>
+      <div className='flex items-center'>
+        <Button onClick={handleRVSPButton} className='w-[800px] mt-5 hover:bg-white hover:text-gray-600 transition-colors duration-300'>RSVP</Button>
       </div>
     </div>
   )
