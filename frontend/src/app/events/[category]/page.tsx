@@ -1,6 +1,6 @@
 import Filter from '@/components/events/FilterBar'
 import EventsList from '@/components/events/EventsList'
-import { fetchCategories, fetchEventsInWeek } from '@/lib/data'
+import { fetchCategories } from '@/lib/data'
 
 export default async function FilteredPage({
   params,
