@@ -4,7 +4,7 @@ import type { Event } from '@/types/Event'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { RVSP } from './Rvsp'
-import { fetchPopularEvents } from '@/lib/data'
+import { FireIcon } from '../icons'
 
 type PopularEventsListProps = {
   category: string
@@ -18,6 +18,7 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [modalEvent, setModalEvent] = useState<Event | undefined>()
   const [hasMoreData, setHasMoreData] = useState<boolean>(true)
+
   const { ref, inView } = useInView()
 
   const loadMoreEvents = async () => {
@@ -64,6 +65,7 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
   return (
     <div>
       <h1 className='text-xl font-bold tracking-tighter sm:text-3xl mb-10'>Most Popular</h1>
+
       {modalEvent && modalIsOpen && (
         <RVSP
           setIsOpen={setModalIsOpen}

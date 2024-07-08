@@ -41,7 +41,7 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
           className='w-[70px] flex items-centerhover:bg-white hover:text-gray-600 transition-colors gap-2 duration-300 bg-black'
         >
           <EmailIcon />
-          {event.rvsp_emails.length}
+          {event.rvsp_emails && <p>{event.rvsp_emails.length}</p>}
         </Button>
       </div>
     </div>

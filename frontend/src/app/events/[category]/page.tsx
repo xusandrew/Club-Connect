@@ -9,7 +9,7 @@ export default async function FilteredPage({
   params: { category?: string; byPopularity?: boolean }
 }) {
   const category = params.category || ''
-  const byPopularity = params.byPopularity
+  const byPopularity = params.byPopularity || false
 
   const categories = await fetchCategories()
 
