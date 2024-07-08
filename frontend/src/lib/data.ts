@@ -1,7 +1,8 @@
 import { Event } from '@/types/Event'
-import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 import { endOfWeek, startOfWeek } from 'date-fns'
+import prisma from './prisma'
+import { Club } from '@/types/Club'
 
 export async function fetchEvents(limit: number, idCursor?: number, category?: string) {
   noStore()
@@ -81,5 +82,35 @@ export async function fetchCategories() {
   } catch (error) {
     console.error('Database Error:', error)
     throw new Error('Failed to fetch category data.')
+  }
+}
+
+export async function fetchClubs(category?: string) {
+  try {
+    let clubs
+    if (category) {
+      clubs = await prisma.club.findMany({
+        where: {
+          category: {
+            some: {
+              type: category,
+            },
+          },
+        },
+        include: {
+          category: true,
+        },
+      })
+    } else {
+      clubs = await prisma.club.findMany({
+        include: {
+          category: true,
+        },
+      })
+    }
+    return clubs as unknown as Club[]
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch club data.')
   }
 }
