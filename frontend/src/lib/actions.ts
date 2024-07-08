@@ -1,25 +1,25 @@
 'use server'
 
 import prisma from './prisma'
-import { RVSP } from '../types/RVSP'
+import { RSVP } from '../types/RSVP'
 import mailer from './nodemailer'
 
-export const rvsp = async (formData: FormData) => {
-  const rvspData: RVSP = {
+export const rsvp = async (formData: FormData) => {
+  const rsvpData: RSVP = {
     eid: Number(formData.get('eid') as string),
     email: formData.get('email') as string,
   }
 
-  if (!(rvspData.eid && rvspData.email)) {
+  if (!(rsvpData.eid && rsvpData.email)) {
     throw new Error('Missing required fields')
   }
 
   //create record
-  await prisma.rVSP.create({ data: rvspData })
+  await prisma.rSVP.create({ data: rsvpData })
 
   const mailOptions = {
     from: 'mxc.maggiechen@gmail.com',
-    to: rvspData.email,
+    to: rsvpData.email,
     subject: `RSVP to an event!`,
     text: "You've successfully RSVP'ed to an event!",
   }

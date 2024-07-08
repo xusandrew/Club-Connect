@@ -1545,17 +1545,17 @@ async function main() {
     ],
   })
 
-  // Adding Rvsp
+  // Adding rsvp
   const events = await prisma.event.findMany()
 
-  const rvsp = events.map((event, i) => {
+  const rsvp = events.map((event, i) => {
     return {
       eid: event.eid,
       email: `help${i}@example.com`,
     }
   })
 
-  await prisma.rVSP.createMany({ data: rvsp })
+  await prisma.rSVP.createMany({ data: rsvp })
 
   console.log('Seed data created successfully')
 }

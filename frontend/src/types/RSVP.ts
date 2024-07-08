@@ -1,4 +1,4 @@
-export type RVSP = {
+export type RSVP = {
   eid: number
   email: string
 }

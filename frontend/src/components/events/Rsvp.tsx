@@ -14,22 +14,22 @@ import { Input } from '@/data/components/ui/input'
 import { Button } from '@/data/components/ui/button'
 import React from 'react'
 import { Event } from '@/types/Event'
-import { rvsp } from '@/lib/actions'
+import { rsvp } from '@/lib/actions'
 
-type RVSPProps = {
+type RSVPProps = {
   event: Event
   closeModal: () => void
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
-export function RVSP({ event, closeModal, isOpen, setIsOpen }: RVSPProps) {
+export function RSVP({ event, closeModal, isOpen, setIsOpen }: RSVPProps) {
   const [email, setEmail] = useState('')
 
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
-          <form action={rvsp}>
+          <form action={rsvp}>
             <div className='flex items-center justify-center'>
               <Card className='w-full max-w-md border-0'>
                 <CardHeader className='space-y-1 text-center'>
