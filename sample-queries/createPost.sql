@@ -33,3 +33,4 @@ FROM
 --  Music Concert  | A concert featuring local bands.        | Auditorium   | 2024-07-04 10:00:00 | 2024-07-04 12:00:00 | 2024-06-20 15:29:33.368 |   4 |   4
 --  Bingo          | Come and play Bingo with us!            | SLC          | 2024-06-30 18:00:00 | 2024-06-30 20:00:00 | 2024-06-20 18:00:00     |   6 |   1
 -- (5 rows)
+
