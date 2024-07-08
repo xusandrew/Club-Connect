@@ -3,7 +3,7 @@ import type { Event } from '@/types/Event'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import WeekList from './WeekList'
-import { getStartOfWeek } from '@/lib/utils'
+import { addWeeks, startOfWeek } from 'date-fns'
 
 type EventsListProps = {
   category: string
@@ -33,11 +33,6 @@ export default function EventsList({ category }: EventsListProps) {
         weekDate: weekCursor.toISOString(),
       })
 
-      console.log({
-        category: category,
-        weekDate: weekCursor.toISOString(),
-      })
-
       try {
         const response = await fetch(`/api/events?${params.toString()}`)
         const data = await response.json()
@@ -50,15 +45,11 @@ export default function EventsList({ category }: EventsListProps) {
             posted_time: event.posted_time ? new Date(event.posted_time) : null,
           }))
 
-          console.log({ weekEvents, newEvents })
-
           if (newEvents.length === 0) {
             setHasMoreData(false)
           } else {
             setWeekEvents([...weekEvents, newEvents])
-            setWeekCursor(
-              new Date((weekCursor as Date).setDate((weekCursor as Date).getDate() + 7)),
-            )
+            setWeekCursor(startOfWeek(addWeeks(weekCursor, 1)))
           }
         } else {
           console.error('Error loading more events:', data.error)
@@ -68,7 +59,6 @@ export default function EventsList({ category }: EventsListProps) {
       }
     }
 
-    console.log('help', { inView })
     if (inView) {
       loadMoreEvents()
     }
@@ -76,9 +66,16 @@ export default function EventsList({ category }: EventsListProps) {
 
   return (
     <div className='flex flex-col gap-3'>
-      {weekEvents.map((events, index) => (
-        <WeekList key={index} events={events} week={getStartOfWeek(events[0].start_time)} />
-      ))}
+      {weekEvents.map(
+        (events, index) =>
+          events[0].start_time && (
+            <WeekList
+              key={index}
+              events={events}
+              week={startOfWeek(new Date(events[0].start_time))}
+            />
+          ),
+      )}
       {hasMoreData && (
         <div ref={ref}>
           <div className='flex justify-center items-center py-10 mb-8 '>

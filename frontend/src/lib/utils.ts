@@ -29,16 +29,3 @@ export const formatTimeRange = (startTime: Date, endTime: Date | null): string =
     return start
   }
 }
-
-export const getStartOfWeek = (date: Date | null): Date => {
-  if (!date) {
-    throw new Error('Invalid date')
-  }
-
-  const startOfWeek = new Date(date)
-  const day = startOfWeek.getDay()
-  const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1) // Adjust for Sunday being day 0
-  startOfWeek.setDate(diff)
-  startOfWeek.setHours(0, 0, 0, 0)
-  return startOfWeek
-}

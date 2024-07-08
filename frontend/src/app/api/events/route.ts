@@ -13,7 +13,13 @@ export async function GET(req: NextRequest) {
   try {
     const week = new Date(weekDate)
     if (isNaN(week.getTime())) {
-      return NextResponse.json({ error: 'Invalid weekDate parameter.' }, { status: 400 })
+      return NextResponse.json(
+        {
+          error:
+            'Invalid weekDate parameter. (Invalid date format, empty string, or null/undefined)',
+        },
+        { status: 400 },
+      )
     }
 
     const events = await fetchEventsInWeek(week, category ? String(category) : undefined)

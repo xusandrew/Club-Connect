@@ -1,6 +1,7 @@
 import { Event } from '@/types/Event'
 import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
+import { endOfWeek, startOfWeek } from 'date-fns'
 
 export async function fetchEvents(limit: number, idCursor?: number, category?: string) {
   noStore()
@@ -41,18 +42,12 @@ export async function fetchEventsInWeek(weekDate: Date, category?: string) {
   noStore()
 
   try {
-    const startOfWeek = new Date(weekDate)
-    console.log(startOfWeek)
-    startOfWeek.setDate(weekDate.getDate() - weekDate.getDay())
-    startOfWeek.setHours(0, 0, 0, 0)
-
-    const endOfWeek = new Date(startOfWeek)
-    endOfWeek.setDate(startOfWeek.getDate() + 6)
-    endOfWeek.setHours(23, 59, 59, 999)
+    const startOfWeekDate = startOfWeek(weekDate)
+    const endOfWeekDate = endOfWeek(weekDate)
 
     let queryOptions: any = {
       where: {
-        AND: [{ start_time: { gte: startOfWeek } }, { start_time: { lte: endOfWeek } }],
+        AND: [{ start_time: { gte: startOfWeekDate } }, { start_time: { lte: endOfWeekDate } }],
       },
       include: { club: true },
     }
