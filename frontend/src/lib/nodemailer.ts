@@ -12,13 +12,4 @@ const mailer = nodemailer.createTransport(
   }
 )
 
-// if (process.env.NODE_ENV === 'production') {
-
-// } else {
-//   if (!global.prisma) {
-//     global.prisma = new PrismaClient()
-//   }
-//   db = global.prisma
-// }
-
 export default mailer
