@@ -36,14 +36,15 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
         <span className='ml-auto text-gray-500'>
           {event.start_time ? timeFromNow(event.start_time) : ''}
         </span>
-      </div>
-      <div className='flex items-center'>
-        <Button
-          onClick={handleRSVPButton}
-          className='w-[800px] mt-5 hover:bg-white hover:text-gray-600 transition-colors duration-300'
-        >
-          RSVP
-        </Button>
+        <div className='flex items-center'>
+          <Button
+            onClick={handleRSVPButton}
+            className='w-[70px] flex items-centerhover:bg-white hover:text-gray-600 transition-colors gap-2 duration-300 bg-black'
+          >
+            <EmailIcon />
+            {event.rsvp_emails && <p>{event.rsvp_emails.length}</p>}
+          </Button>
+        </div>
       </div>
     </div>
   )
