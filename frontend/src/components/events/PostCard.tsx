@@ -20,7 +20,7 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
       <h3 className='text-2xl font-bold'>{event.title}</h3>
       <p className='text-yellow-500'>@{event.club.name}</p>
       <p className='mt-2 '>{event.description}</p>
-      <div className='flex items-center mt-4 space-x-4'>
+      <div className='flex items-center content-center mt-4 space-x-4'>
         <div className='flex items-center space-x-2'>
           <CalendarIcon className='h-5 w-5' />
           {event.start_time !== null && (
@@ -36,9 +36,12 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
         <span className='ml-auto text-gray-500'>
           {event.start_time ? timeFromNow(event.start_time) : ''}
         </span>
-      </div>
-      <div className='flex items-center'>
-        <Button onClick={handleRVSPButton} className='w-[800px] mt-5 hover:bg-white hover:text-gray-600 transition-colors duration-300'>RSVP</Button>
+        <Button
+          onClick={handleRVSPButton}
+          className='w-[100px] flex items-centerhover:bg-white hover:text-gray-600 transition-colors duration-300 bg-black'
+        >
+          RSVP
+        </Button>
       </div>
     </div>
   )
