@@ -1484,7 +1484,7 @@ async function main() {
   await prisma.event.createMany({ data: club20_events })
 
   // Club 21
-  const club21_events = await prisma.event.createMany({
+  await prisma.event.createMany({
     data: [
       {
         cid: club21.cid,
@@ -1544,6 +1544,19 @@ async function main() {
       },
     ],
   })
+
+  // Adding Rvsp
+  const events = await prisma.event.findMany()
+
+  const rvsp = events.map((event, i) => {
+    return {
+      eid: event.eid,
+      email: `help${i}@example.com`,
+    }
+  })
+
+  await prisma.rVSP.createMany({ data: rvsp })
+
   console.log('Seed data created successfully')
 }
 
