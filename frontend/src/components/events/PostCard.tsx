@@ -1,5 +1,6 @@
 import { Event } from '@/types/Event'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
+import { RVSP } from '@/data/components/rvsp'
 
 export function Card({ event }: { event: Event }) {
   return (
@@ -24,6 +25,7 @@ export function Card({ event }: { event: Event }) {
           {event.start_time ? timeFromNow(event.start_time) : ''}
         </span>
       </div>
+      <RVSP event={event}/>
     </div>
   )
 }
