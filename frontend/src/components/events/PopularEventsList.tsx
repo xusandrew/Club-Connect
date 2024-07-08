@@ -3,8 +3,7 @@ import { Card } from './PostCard'
 import type { Event } from '@/types/Event'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { RVSP } from './Rvsp'
-import { FireIcon } from '../icons'
+import { RSVP } from './Rsvp'
 
 type PopularEventsListProps = {
   category: string
@@ -67,7 +66,7 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
       <h1 className='text-xl font-bold tracking-tighter sm:text-3xl mb-10'>Most Popular</h1>
 
       {modalEvent && modalIsOpen && (
-        <RVSP
+        <RSVP
           setIsOpen={setModalIsOpen}
           isOpen={modalIsOpen}
           event={modalEvent}
