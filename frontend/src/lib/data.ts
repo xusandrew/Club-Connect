@@ -47,6 +47,9 @@ export async function fetchEventsInWeek(weekDate: Date, category?: string) {
     const endOfWeekDate = endOfWeek(weekDate)
 
     let queryOptions: any = {
+      orderBy: {
+        start_time: 'asc',
+      },
       where: {
         AND: [{ start_time: { gte: startOfWeekDate } }, { start_time: { lte: endOfWeekDate } }],
       },
