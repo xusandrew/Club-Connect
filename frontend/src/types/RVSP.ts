@@ -1,4 +1,4 @@
 export type RVSP = {
-    eid: number,
-    email: string,
+  eid: number
+  email: string
 }

@@ -3,7 +3,7 @@ import { Category } from '@prisma/client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
 
-interface FilterProps {
+type FilterProps = {
   categories: Category[]
 }
 
