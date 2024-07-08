@@ -9,7 +9,7 @@ export default function Page({
   }
 }) {
   return (
-    <div>
+    <div className='h-full mb-20'>
       <FilteredPage params={searchParams} />
       <ScrollTopButton />
     </div>
