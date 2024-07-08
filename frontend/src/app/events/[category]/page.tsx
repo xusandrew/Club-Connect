@@ -9,7 +9,7 @@ export default async function FilteredPage({
 }) {
   const category = params.category || ''
 
-  const [categories] = await Promise.all([fetchCategories()])
+  const categories = await fetchCategories()
 
   return (
     <div className='flex h-screen flex-col md:flex-row'>
