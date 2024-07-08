@@ -36,6 +36,7 @@ model Event {
   location    String?
   start_time  DateTime?
   end_time    DateTime?
+  rvsp_emails RVSP[]
   posted_time DateTime @default(now())
 }
 
@@ -51,4 +52,14 @@ model ClubCategory {
   category Category @relation(fields: [type], references: [type])
 
   @@id([cid, type]) // Identify by club and their category
+}
+
+
+model RVSP {
+  eid     Int
+  event   Event     @relation(fields: [eid], references: [eid])
+  email  String
+  createdAt DateTime @default(now())
+  @@id([eid, email])
+
 }
