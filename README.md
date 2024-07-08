@@ -18,6 +18,7 @@ Sample description of the project.
 ### Development
 - You do not need to generate the prisma client every time you want to run the app. You only need to do this when you make changes to the prisma schema.
 - You can also keep the postgres database running in the background, you only need to run `docker compose up -d` once. You can stop the database with `docker compose down`
+- To load production data into the database, you can run `npx tsx ./prisma/seed_production.ts`
 - **Important**: Pls download the prettier vscode extension to keep our code nice and tidy
 
 

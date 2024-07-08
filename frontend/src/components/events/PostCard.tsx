@@ -1,8 +1,18 @@
-import { Event } from '@/types/Event'
+import type { Event } from '@/types/Event'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
-import { RVSP } from '@/data/components/rvsp'
 
-export function Card({ event }: { event: Event }) {
+type CardProps = {
+  event: Event
+  openModal: () => void
+  setModalEvent: React.Dispatch<React.SetStateAction<Event | undefined>>
+}
+
+export function Card({ event, openModal, setModalEvent }: CardProps) {
+  const handleRVSPButton = () => {
+    openModal()
+    setModalEvent(event)
+  }
+
   return (
     <div className='p-4 border border-gray-700 rounded-lg w-[800px]'>
       <h3 className='text-2xl font-bold'>{event.title}</h3>
@@ -25,7 +35,7 @@ export function Card({ event }: { event: Event }) {
           {event.start_time ? timeFromNow(event.start_time) : ''}
         </span>
       </div>
-      <RVSP event={event}/>
+      <button onClick={handleRVSPButton}>OPEN</button>
     </div>
   )
 }
