@@ -1,3 +1,4 @@
+import { RSVP } from '@/types/RSVP'
 import prisma from '../src/lib/prisma'
 
 async function main() {
@@ -1547,13 +1548,16 @@ async function main() {
 
   // Adding rsvp
   const events = await prisma.event.findMany()
+  const rsvp: { email: string; eid: number }[] = []
 
-  const rsvp = events.map((event, i) => {
-    return {
-      eid: event.eid,
-      email: `help${i}@example.com`,
-    }
-  })
+  for (let j = 0; j < 10; j++) {
+    events.forEach((event, i) => {
+      rsvp.push({
+        eid: event.eid,
+        email: `help${i + j}@example.com`,
+      })
+    })
+  }
 
   await prisma.rSVP.createMany({ data: rsvp })
 
