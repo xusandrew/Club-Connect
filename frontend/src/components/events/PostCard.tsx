@@ -1,6 +1,6 @@
 import type { Event } from '@/types/Event'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
-import { CalendarIcon, LocateIcon } from '../icons'
+import { CalendarIcon, EmailIcon, LocateIcon } from '../icons'
 import { Button } from '@/data/components/ui/button'
 
 type CardProps = {
@@ -38,9 +38,10 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
         </span>
         <Button
           onClick={handleRVSPButton}
-          className='w-[100px] flex items-centerhover:bg-white hover:text-gray-600 transition-colors duration-300 bg-black'
+          className='w-[70px] flex items-centerhover:bg-white hover:text-gray-600 transition-colors gap-2 duration-300 bg-black'
         >
-          RSVP
+          <EmailIcon />
+          {event.rvsp_emails.length}
         </Button>
       </div>
     </div>

@@ -1,13 +1,15 @@
 import Filter from '@/components/events/FilterBar'
 import EventsList from '@/components/events/EventsList'
+import PopularEventsList from '@/components/events/PopularEventsList'
 import { fetchCategories } from '@/lib/data'
 
 export default async function FilteredPage({
   params,
 }: {
-  params: { category?: string | undefined }
+  params: { category?: string; byPopularity?: boolean }
 }) {
   const category = params.category || ''
+  const byPopularity = params.byPopularity
 
   const categories = await fetchCategories()
 
@@ -17,7 +19,11 @@ export default async function FilteredPage({
         <Filter categories={categories} />
       </div>
       <main>
-        <EventsList category={category} />
+        {byPopularity ? (
+          <PopularEventsList category={category} />
+        ) : (
+          <EventsList category={category} />
+        )}
       </main>
     </div>
   )
