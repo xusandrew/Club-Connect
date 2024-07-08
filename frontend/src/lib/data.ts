@@ -1,4 +1,4 @@
-import { Event } from '@/types/Event'
+import type { Event } from '@/types/Event'
 import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 import { endOfWeek, startOfWeek } from 'date-fns'
