@@ -1,4 +1,4 @@
-import { Event } from '@/types/Event'
+import type { Event } from '@/types/Event'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
 import { CalendarIcon, LocateIcon } from '../icons'
 

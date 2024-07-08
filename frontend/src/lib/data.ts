@@ -1,7 +1,7 @@
-import { Event } from '@/types/Event'
+import type { Event } from '@/types/Event'
+import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 import { endOfWeek, startOfWeek } from 'date-fns'
-import prisma from './prisma'
 import { Club } from '@/types/Club'
 
 export async function fetchEvents(limit: number, idCursor?: number, category?: string) {
