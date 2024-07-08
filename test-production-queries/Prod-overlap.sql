@@ -1,3 +1,6 @@
+CREATE INDEX idx_event_eid ON "Event"(eID);
+CREATE INDEX idx_event_time ON "Event"(start_time, end_time);
+
 SELECT
   e1.eID,
   e1.title,
