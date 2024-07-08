@@ -1,0 +1,139 @@
+ eid |                           title                            |                          description                           |     start_time      |      end_time       | rsvp_count 
+-----+------------------------------------------------------------+----------------------------------------------------------------+---------------------+---------------------+------------
+   2 | Web Development Bootcamp                                   | A hands-on bootcamp for building websites.                     | 2024-07-05 09:00:00 | 2024-07-07 17:00:00 |         18
+  69 | Cooking Club Potluck                                       | Bring and share your favorite dishes.                          | 2024-07-30 18:00:00 | 2024-07-30 20:00:00 |         17
+  79 | Robotics Workshop: Advanced Robotics Techniques            | Explore advanced techniques in robotics.                       | 2024-07-20 17:00:00 | 2024-07-20 19:00:00 |         17
+  58 | Chess Tournament                                           | Compete in a chess tournament.                                 | 2024-07-05 14:00:00 | 2024-07-05 18:00:00 |         17
+   1 | Intro to Coding Workshop                                   | Learn the basics of coding with Python.                        | 2024-07-01 10:00:00 | 2024-07-01 12:00:00 |         17
+   9 | Tech Club Social Night                                     | Social gathering for club members.                             | 2024-07-18 19:00:00 | 2024-07-18 22:00:00 |         17
+  65 | International Cuisine Night                                | Explore cuisines from around the world.                        | 2024-07-10 18:00:00 | 2024-07-10 20:00:00 |         17
+ 135 | Finance for Startups                                       | A session on managing finances for startups.                   | 2024-08-14 11:00:00 | 2024-08-14 13:00:00 |         17
+   3 | AI and Machine Learning Seminar                            | Explore the latest trends in AI and ML.                        | 2024-07-15 14:00:00 | 2024-07-15 16:00:00 |         17
+  68 | Cooking Class: Italian Cuisine                             | Master the art of Italian cooking.                             | 2024-07-25 19:00:00 | 2024-07-25 21:00:00 |         17
+  72 | Photowalk: City Exploration                                | Capture the essence of the city through photography.           | 2024-07-15 17:00:00 | 2024-07-15 19:00:00 |         17
+  75 | Photography Club Social Night                              | Socialize and share photography tips.                          | 2024-07-30 19:00:00 | 2024-07-30 21:00:00 |         16
+  71 | Photography Workshop: Landscape Photography                | Learn techniques for capturing stunning landscapes.            | 2024-07-10 16:00:00 | 2024-07-10 18:00:00 |         16
+  51 | Book Swap Event                                            | Exchange books and discuss favorites.                          | 2024-07-30 16:00:00 | 2024-07-30 18:00:00 |         16
+  80 | Robotics Club Social Night                                 | Socialize and network with fellow robotics enthusiasts.        | 2024-07-25 19:00:00 | 2024-07-25 21:00:00 |         16
+  70 | Photography Exhibition                                     | Showcase your best photographs in this exhibition.             | 2024-07-05 15:00:00 | 2024-07-05 17:00:00 |         16
+ 101 | Yoga and Meditation Workshop                               | Practice yoga and meditation techniques for relaxation.        | 2024-07-10 16:00:00 | 2024-07-10 18:00:00 |         16
+ 114 | Film Club Documentary Screening: Behind the Scenes         | Watch behind-the-scenes documentaries of famous films.         | 2024-07-15 18:00:00 | 2024-07-15 20:00:00 |         16
+  60 | Chess Club Social Night                                    | Socialize and play chess with fellow members.                  | 2024-07-15 19:00:00 | 2024-07-15 21:00:00 |         16
+ 112 | Film Screening: Classic Movies Night                       | Enjoy classic movies from different eras.                      | 2024-07-05 19:00:00 | 2024-07-05 22:00:00 |         16
+  59 | Chess Strategy Workshop                                    | Learn advanced chess strategies.                               | 2024-07-10 16:00:00 | 2024-07-10 18:00:00 |         16
+ 124 | Debate Club Current Affairs Debate                         | Engage in a debate on current political affairs.               | 2024-07-05 17:00:00 | 2024-07-05 19:00:00 |         16
+  73 | Photography Contest: Portrait Photography                  | Compete for the best portrait photograph.                      | 2024-07-20 18:00:00 | 2024-07-20 20:00:00 |         16
+  44 | Biology Field Trip                                         | Exploring biology in the outdoors.                             | 2024-07-25 09:00:00 | 2024-07-25 15:00:00 |         16
+ 121 | Volunteer Club Blood Donation Drive                        | Participate in a blood donation drive for hospitals.           | 2024-07-20 10:00:00 | 2024-07-20 14:00:00 |         16
+ 113 | Film Club Discussion: Contemporary Cinema Trends           | Discuss current trends in contemporary cinema.                 | 2024-07-10 17:00:00 | 2024-07-10 19:00:00 |         16
+  57 | Math Club Seminar: Geometry                                | Explore geometry concepts in-depth.                            | 2024-07-30 16:00:00 | 2024-07-30 18:00:00 |         16
+  61 | Chess Puzzle Challenge                                     | Solve challenging chess puzzles.                               | 2024-07-20 17:00:00 | 2024-07-20 19:00:00 |         16
+  77 | Robotics Competition: Robot Wars                           | Compete in a thrilling robot battle competition.               | 2024-07-10 16:00:00 | 2024-07-10 18:00:00 |         16
+  30 | Music Club Awards Night                                    | Celebrate achievements and talents in music.                   | 2024-07-30 19:00:00 | 2024-07-30 22:00:00 |         16
+  37 | Improvisation Workshop                                     | Improve your improvisational acting skills.                    | 2024-07-20 16:00:00 | 2024-07-20 18:00:00 |         16
+   5 | Hackathon                                                  | A coding competition to build innovative solutions.            | 2024-07-25 09:00:00 | 2024-07-26 09:00:00 |         16
+  91 | Travel Club Workshop: Sustainable Travel Practices         | Learn about sustainable travel practices.                      | 2024-07-20 17:00:00 | 2024-07-20 19:00:00 |         16
+  74 | Photography Masterclass: Light and Shadow                  | Learn to play with light and shadow in photography.            | 2024-07-25 16:00:00 | 2024-07-25 18:00:00 |         16
+   4 | Tech Talk: Cybersecurity                                   | Discuss cybersecurity best practices.                          | 2024-07-20 13:00:00 | 2024-07-20 15:00:00 |         16
+  67 | Farm-to-Table Cooking Workshop                             | Learn to cook using fresh farm ingredients.                    | 2024-07-20 16:00:00 | 2024-07-20 18:00:00 |         16
+  63 | Chess Club Awards Ceremony                                 | Celebrate achievements and milestones.                         | 2024-07-30 16:00:00 | 2024-07-30 18:00:00 |         16
+  90 | Travel Club Social: Travel Stories Night                   | Share and listen to travel stories from club members.          | 2024-07-15 19:00:00 | 2024-07-15 21:00:00 |         16
+  10 | Startup Pitch Competition                                  | Pitch your startup ideas to industry experts.                  | 2024-07-05 13:00:00 | 2024-07-05 16:00:00 |         16
+  35 | Scriptwriting Workshop                                     | Learn the art of writing compelling scripts.                   | 2024-07-10 15:00:00 | 2024-07-10 17:00:00 |         16
+ 107 | Historical Museum Visit                                    | Visit a local historical museum with the club.                 | 2024-07-10 11:00:00 | 2024-07-10 14:00:00 |         16
+   6 | Tech Club Meeting                                          | Regular meeting to discuss club activities.                    | 2024-07-10 18:00:00 | 2024-07-10 20:00:00 |         16
+ 134 | Marketing Strategies Workshop                              | A workshop on effective marketing strategies.                  | 2024-08-07 13:00:00 | 2024-08-07 15:00:00 |         16
+  86 | Gaming Club Social: Board Games Night                      | Play board games and socialize with club members.              | 2024-07-25 19:00:00 | 2024-07-25 21:00:00 |         16
+  93 | Travel Club Adventure Planning                             | Plan upcoming adventure trips with the club.                   | 2024-07-30 16:00:00 | 2024-07-30 18:00:00 |         16
+  36 | Drama Club Talent Show                                     | Showcase your talents on stage!                                | 2024-07-15 19:00:00 | 2024-07-15 22:00:00 |         16
+ 102 | Fitness Club Hiking Trip                                   | Embark on a scenic hiking trip with club members.              | 2024-07-15 07:00:00 | 2024-07-15 12:00:00 |         16
+  14 | Sculpture Workshop                                         | Create sculptures using various materials.                     | 2024-07-15 09:00:00 | 2024-07-15 13:00:00 |         16
+  66 | Cooking Competition: Best Dessert                          | Compete for the title of best dessert chef.                    | 2024-07-15 17:00:00 | 2024-07-15 19:00:00 |         16
+  13 | Art History Lecture                                        | Explore the history of art movements.                          | 2024-07-10 14:00:00 | 2024-07-10 16:00:00 |         16
+  16 | Art Club Social Night                                      | Socialize with fellow art enthusiasts.                         | 2024-07-25 19:00:00 | 2024-07-25 22:00:00 |         16
+  62 | Chess Simultaneous Exhibition                              | Play against a master in a simultaneous exhibition.            | 2024-07-25 18:00:00 | 2024-07-25 20:00:00 |         16
+ 123 | Volunteer Club Awareness Campaign                          | Organize an awareness campaign for social issues.              | 2024-07-30 12:00:00 | 2024-07-30 15:00:00 |         16
+ 128 | Debate Club Public Speaking Workshop                       | Attend a workshop to improve public speaking skills.           | 2024-07-25 16:00:00 | 2024-07-25 18:00:00 |         16
+  46 | Book Discussion: Classic Literature                        | Discussing classic literature masterpieces.                    | 2024-07-05 15:00:00 | 2024-07-05 17:00:00 |         16
+   7 | Tech Expo                                                  | Showcase tech projects and innovations.                        | 2024-07-30 10:00:00 | 2024-07-30 16:00:00 |         16
+ 100 | Fitness Bootcamp                                           | Join an intense fitness bootcamp session.                      | 2024-07-05 18:00:00 | 2024-07-05 20:00:00 |         16
+ 136 | Pitching Your Idea                                         | A workshop on how to pitch your business idea.                 | 2024-08-21 15:00:00 | 2024-08-21 17:00:00 |         16
+  78 | Robotics Club Project Showcase                             | Present your robotics projects to the club.                    | 2024-07-15 18:00:00 | 2024-07-15 20:00:00 |         16
+  24 | Live Concert Night                                         | Enjoy live performances by local artists.                      | 2024-07-05 20:00:00 | 2024-07-05 23:00:00 |         16
+  25 | Music Theory Workshop                                      | Learn music theory basics and notation.                        | 2024-07-10 14:00:00 | 2024-07-10 16:00:00 |         16
+  47 | Poetry Reading Night                                       | Share and enjoy poetry readings.                               | 2024-07-10 19:00:00 | 2024-07-10 21:00:00 |         16
+  76 | Robotics Workshop: Introduction to Robotics                | Learn the basics of robotics and programming.                  | 2024-07-05 14:00:00 | 2024-07-05 16:00:00 |         16
+  64 | Healthy Cooking Workshop                                   | Learn to cook nutritious and delicious meals.                  | 2024-07-05 16:00:00 | 2024-07-05 18:00:00 |         16
+  23 | Table Tennis Tournament                                    | Compete in a table tennis championship.                        | 2024-07-28 15:00:00 | 2024-07-28 18:00:00 |         16
+   8 | Digital Marketing Workshop                                 | Learn digital marketing strategies and tools.                  | 2024-07-12 15:00:00 | 2024-07-12 17:00:00 |         16
+  29 | Songwriting Workshop                                       | Learn the art of songwriting and composition.                  | 2024-07-08 15:00:00 | 2024-07-08 17:00:00 |         15
+  54 | Math Olympiad Training Session                             | Prepare for upcoming math competitions.                        | 2024-07-15 16:00:00 | 2024-07-15 18:00:00 |         15
+  99 | Nature Club Bird Watching Tour                             | Join a bird watching tour with experienced guides.             | 2024-07-30 08:00:00 | 2024-07-30 11:00:00 |         15
+  34 | Play Rehearsal                                             | Rehearsing for our upcoming drama play.                        | 2024-07-05 18:00:00 | 2024-07-05 21:00:00 |         15
+  96 | Nature Conservation Seminar                                | Attend a seminar on conservation and environmental protection. | 2024-07-15 16:00:00 | 2024-07-15 18:00:00 |         15
+  41 | Science Fair Preparation                                   | Preparing projects for the upcoming science fair.              | 2024-07-10 14:00:00 | 2024-07-10 16:00:00 |         15
+  83 | Esports Tournament: League of Legends                      | Compete in an exciting League of Legends tournament.           | 2024-07-10 16:00:00 | 2024-07-10 20:00:00 |         15
+  27 | Instrument Jam Session                                     | Play and jam with fellow musicians.                            | 2024-07-20 17:00:00 | 2024-07-20 19:00:00 |         15
+  53 | Math Workshop: Algebra Basics                              | Learn fundamental algebra concepts.                            | 2024-07-10 15:00:00 | 2024-07-10 17:00:00 |         15
+  32 | Music Club Annual Showcase                                 | Showcase performances by club members.                         | 2024-07-27 18:00:00 | 2024-07-27 22:00:00 |         15
+ 105 | Fitness Club Zumba Party                                   | Dance and exercise with high-energy Zumba routines.            | 2024-07-30 19:00:00 | 2024-07-30 21:00:00 |         15
+ 106 | History Lecture Series: Ancient Civilizations              | Attend a lecture series on ancient civilizations.              | 2024-07-05 14:00:00 | 2024-07-05 16:00:00 |         15
+  45 | Science Club Social Night                                  | Socialize and discuss science topics.                          | 2024-07-30 19:00:00 | 2024-07-30 22:00:00 |         15
+  18 | Art Club Annual Exhibition                                 | Showcase artworks created by club members.                     | 2024-07-30 10:00:00 | 2024-07-30 16:00:00 |         15
+  87 | Gaming Tournament: FIFA 2024                               | Compete in a FIFA 2024 tournament.                             | 2024-07-30 16:00:00 | 2024-07-30 20:00:00 |         15
+  38 | Costume Design Session                                     | Designing costumes for our next play.                          | 2024-07-25 14:00:00 | 2024-07-25 16:00:00 |         15
+  12 | Oil Painting Workshop                                      | Learn oil painting techniques from experts.                    | 2024-07-05 10:00:00 | 2024-07-05 12:00:00 |         15
+  39 | Drama Club Social Night                                    | Socialize with fellow drama enthusiasts.                       | 2024-07-30 19:00:00 | 2024-07-30 22:00:00 |         15
+  89 | Travel Club Destination Presentation                       | Discover upcoming travel destinations.                         | 2024-07-10 18:00:00 | 2024-07-10 20:00:00 |         15
+ 110 | History Club Debate: Historical Figures                    | Engage in a debate about prominent historical figures.         | 2024-07-25 17:00:00 | 2024-07-25 19:00:00 |         15
+  55 | Math Club Social Night                                     | Socialize and discuss math concepts.                           | 2024-07-20 19:00:00 | 2024-07-20 21:00:00 |         15
+  31 | DJ Battle                                                  | Compete in a DJ battle with fellow DJs.                        | 2024-07-12 21:00:00 | 2024-07-13 01:00:00 |         15
+  50 | Literature Club Social Mixer                               | Socialize and share literary interests.                        | 2024-07-25 18:00:00 | 2024-07-25 20:00:00 |         15
+ 130 | Startup Workshop                                           | A workshop on how to start your own business.                  | 2024-07-10 09:00:00 | 2024-07-10 11:00:00 |         15
+ 122 | Volunteer Club Mentorship Program Launch                   | Launch a mentorship program for underprivileged youth.         | 2024-07-25 16:00:00 | 2024-07-25 18:00:00 |         15
+  22 | Fitness Bootcamp                                           | Intensive fitness training sessions.                           | 2024-07-22 07:00:00 | 2024-07-22 16:00:00 |         15
+ 108 | History Club Book Discussion                               | Discuss and analyze a historical book together.                | 2024-07-15 16:00:00 | 2024-07-15 18:00:00 |         15
+ 127 | Debate Club International Relations Forum                  | Discuss international relations and diplomacy.                 | 2024-07-20 18:00:00 | 2024-07-20 20:00:00 |         15
+  94 | Nature Walk: Forest Exploration                            | Explore the local forest and learn about its ecosystems.       | 2024-07-05 09:00:00 | 2024-07-05 12:00:00 |         15
+  98 | Nature Documentary Screening                               | Watch a documentary on wildlife and nature conservation.       | 2024-07-25 19:00:00 | 2024-07-25 21:00:00 |         15
+ 109 | Historical Film Screening: World War II Documentaries      | Watch documentaries about World War II history.                | 2024-07-20 18:00:00 | 2024-07-20 20:00:00 |         15
+ 103 | Fitness Club Nutrition Workshop                            | Learn about nutrition and healthy eating habits.               | 2024-07-20 17:00:00 | 2024-07-20 19:00:00 |         15
+  49 | Author Spotlight: Shakespeare                              | Exploring the works of William Shakespeare.                    | 2024-07-20 17:00:00 | 2024-07-20 19:00:00 |         15
+  11 | Art Exhibition Opening Night                               | Grand opening of our art exhibition.                           | 2024-07-01 18:00:00 | 2024-07-01 21:00:00 |         15
+  42 | Physics Experiment Demonstration                           | Demonstrating interesting physics experiments.                 | 2024-07-15 15:00:00 | 2024-07-15 17:00:00 |         15
+ 118 | Community Cleanup Day                                      | Join in cleaning up local parks and streets.                   | 2024-07-05 09:00:00 | 2024-07-05 12:00:00 |         15
+ 117 | Film Club Awards Night: Celebrating Cinematic Achievements | Celebrate cinematic achievements with an awards night.         | 2024-07-30 18:00:00 | 2024-07-30 22:00:00 |         15
+  88 | Travel Photography Workshop                                | Learn photography techniques for travel photography.           | 2024-07-05 16:00:00 | 2024-07-05 18:00:00 |         15
+  82 | Gaming Night: Retro Games                                  | Enjoy classic retro games with fellow gamers.                  | 2024-07-05 18:00:00 | 2024-07-05 21:00:00 |         15
+ 133 | Guest Speaker: John Doe                                    | A talk by John Doe on entrepreneurial success.                 | 2024-07-31 10:00:00 | 2024-07-31 12:00:00 |         15
+ 125 | Debate Club Mock Trial: Legal System                       | Participate in a mock trial focusing on legal issues.          | 2024-07-10 14:00:00 | 2024-07-10 16:00:00 |         15
+ 119 | Volunteer Club Fundraising Gala                            | Attend a gala event to raise funds for charity.                | 2024-07-10 18:00:00 | 2024-07-10 22:00:00 |         15
+  40 | Robotics Workshop                                          | Learn robotics basics and build robots.                        | 2024-07-05 10:00:00 | 2024-07-05 12:00:00 |         15
+  43 | Chemistry Lab Session                                      | Performing chemistry experiments and demonstrations.           | 2024-07-20 16:00:00 | 2024-07-20 18:00:00 |         15
+  97 | Nature Club Camping Trip                                   | Enjoy a camping trip surrounded by nature.                     | 2024-07-20 17:00:00 | 2024-07-22 10:00:00 |         15
+ 120 | Food Drive Campaign                                        | Collect and distribute food to those in need.                  | 2024-07-15 13:00:00 | 2024-07-15 16:00:00 |         15
+  15 | Abstract Art Seminar                                       | Discuss techniques and concepts in abstract art.               | 2024-07-20 16:00:00 | 2024-07-20 18:00:00 |         15
+ 115 | Film Club Movie Marathon: Genre Exploration                | Experience a movie marathon exploring different film genres.   | 2024-07-20 14:00:00 | 2024-07-20 20:00:00 |         15
+  48 | Literary Quiz Competition                                  | Test your knowledge in literature!                             | 2024-07-15 16:00:00 | 2024-07-15 18:00:00 |         15
+  26 | Open Mic Night                                             | Showcase your musical talents on stage.                        | 2024-07-15 18:00:00 | 2024-07-15 22:00:00 |         15
+  85 | Gaming Marathon: Fortnite Night                            | Join a gaming marathon featuring Fortnite.                     | 2024-07-20 18:00:00 | 2024-07-20 22:00:00 |         15
+  92 | Travel Club Film Screening: Travel Documentaries           | Watch inspiring travel documentaries with the club.            | 2024-07-25 18:00:00 | 2024-07-25 20:00:00 |         15
+  95 | Nature Photography Expedition                              | Capture stunning nature photographs during this expedition.    | 2024-07-10 14:00:00 | 2024-07-10 17:00:00 |         15
+ 111 | Historical Site Excursion: Colonial Era                    | Explore local historical sites from the colonial era.          | 2024-07-30 10:00:00 | 2024-07-30 14:00:00 |         15
+  81 | Robotics Hackathon                                         | Collaborate and innovate in a robotics hackathon.              | 2024-07-30 15:00:00 | 2024-07-30 19:00:00 |         15
+ 132 | Business Plan Competition                                  | A competition to present your business plan.                   | 2024-07-24 14:00:00 | 2024-07-24 16:00:00 |         15
+  19 | Football Tournament                                        | An inter-club football tournament.                             | 2024-07-05 09:00:00 | 2024-07-07 17:00:00 |         15
+ 129 | Debate Club Debate Competition Finals                      | Witness the finals of the debate competition.                  | 2024-07-30 15:00:00 | 2024-07-30 18:00:00 |         15
+  20 | Basketball Workshop                                        | Learn basketball skills and drills.                            | 2024-07-12 14:00:00 | 2024-07-12 16:00:00 |         15
+  21 | Swimming Competition                                       | A swimming competition for club members.                       | 2024-07-18 10:00:00 | 2024-07-18 13:00:00 |         15
+ 131 | Networking Night                                           | An event to network with business professionals.               | 2024-07-17 18:00:00 | 2024-07-17 20:00:00 |         15
+  84 | Gaming Workshop: Game Development Basics                   | Learn the basics of game development.                          | 2024-07-15 17:00:00 | 2024-07-15 19:00:00 |         15
+  17 | Watercolor Painting Workshop                               | Learn watercolor painting techniques.                          | 2024-07-12 13:00:00 | 2024-07-12 15:00:00 |         15
+  33 | Music Production Masterclass                               | Learn music production techniques.                             | 2024-07-17 16:00:00 | 2024-07-17 18:00:00 |         15
+  28 | Music Club Social Mixer                                    | Socialize with other music enthusiasts.                        | 2024-07-25 19:00:00 | 2024-07-25 21:00:00 |         15
+ 104 | Fitness Club Marathon Training                             | Prepare for a marathon with structured training sessions.      | 2024-07-25 18:00:00 | 2024-07-25 20:00:00 |         15
+ 116 | Film Club Guest Speaker: Industry Insights                 | Listen to a guest speaker talk about the film industry.        | 2024-07-25 17:00:00 | 2024-07-25 19:00:00 |         15
+  56 | Math Puzzle Challenge                                      | Solve challenging math puzzles as a team.                      | 2024-07-25 17:00:00 | 2024-07-25 19:00:00 |         15
+  52 | Math Problem Solving Competition                           | Test your math skills in this competition.                     | 2024-07-05 14:00:00 | 2024-07-05 16:00:00 |         15
+ 126 | Debate Club Policy Debate: Education Reform                | Debate policies related to education reform.                   | 2024-07-15 15:00:00 | 2024-07-15 17:00:00 |         15
+(136 rows)

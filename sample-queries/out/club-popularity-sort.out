@@ -1,0 +1,24 @@
+       name       |      avg_rsvp       
+------------------+---------------------
+ Cooking Club     | 16.5000000000000000
+ Photography Club | 16.1666666666666667
+ Chess Club       | 16.1666666666666667
+ Robotics Club    | 16.0000000000000000
+ Business Club    | 15.5714285714285714
+ Tech Club        | 15.5000000000000000
+ Drama Club       | 15.5000000000000000
+ Fitness Club     | 15.5000000000000000
+ Travel Club      | 15.5000000000000000
+ Literature Club  | 15.5000000000000000
+ Film Club        | 15.5000000000000000
+ Art Club         | 15.3750000000000000
+ Debate Club      | 15.3333333333333333
+ Volunteer Club   | 15.3333333333333333
+ Music Club       | 15.3000000000000000
+ Sports Club      | 15.2000000000000000
+ Gaming Club      | 15.1666666666666667
+ Math Club        | 15.1666666666666667
+ History Club     | 15.1666666666666667
+ Science Club     | 15.1666666666666667
+ Nature Club      | 15.0000000000000000
+(21 rows)
