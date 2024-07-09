@@ -1,5 +1,7 @@
 CREATE INDEX idx_event_cid ON "Event" (cID);
 
+CREATE INDEX idx_event_eid ON "Event" (eID);
+
 CREATE INDEX idx_rsvp_eid ON "RSVP" (eID);
 
 CREATE INDEX idx_club_cid ON "Club" (cID);

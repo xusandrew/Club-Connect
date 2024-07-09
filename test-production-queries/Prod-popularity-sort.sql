@@ -18,7 +18,7 @@ SELECT
     e.description,
     e.start_time,
     e.end_time,
-    COALESCE(rc.rsvp_count, 0) AS rsvp_count
+    rc.rsvp_count AS rsvp_count
 FROM
     "Event" e
     LEFT JOIN RSVP_counts rc ON e.eID = rc.eID

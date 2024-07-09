@@ -6,3 +6,7 @@ FROM
     "Club"
 WHERE
     "Club".cid = 2;
+
+
+
+    
