@@ -21,3 +21,11 @@
   20 | Down-sized national encryption                      | Crustulum defluo verbum delectatio aspernatur. Clarus annus sopor. Curso cibus tremo tenetur voluptate.                                                                                                                                         | 2024-09-05 03:35:57 | 2024-11-25 02:24:10 |          5
    1 | Profound human-resource forecast                    | Cursim conor sophismata tribuo ventus trado. Acceptus spiculum quibusdam solvo sperno demonstro defendo. Capillus tollo solio adfectus spero degenero carmen commemoro.                                                                         | 2024-09-14 23:36:01 | 2025-01-08 04:08:11 |          5
 (20 rows)
+
+Normal query running times:
+ Planning Time: 0.587 ms
+ Execution Time: 0.212 ms
+
+Prod query running times:
+ Planning Time: 0.292 ms
+ Execution Time: 0.069 ms

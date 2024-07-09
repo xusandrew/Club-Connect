@@ -21,3 +21,12 @@
   21 | Vision-oriented asynchronous structure              | Crudelis comes capillus vulgivagus cohibeo. Tantum sulum attollo vero verecundia alter crustulum adulatio. Rem fugit aqua conventus.                                                                                                            | 2024-08-29 07:40:58 | 2025-06-14 04:57:06 | DC 86
                                           | 2024-10-03 06:30:43 | 2025-01-28 05:32:42 | DC 67
 (20 rows)
+
+
+Normal query running times:
+ Planning Time: 0.301 ms
+ Execution Time: 0.038 ms
+
+Prod query running times:
+ Planning Time: 0.265 ms
+ Execution Time: 0.055 ms

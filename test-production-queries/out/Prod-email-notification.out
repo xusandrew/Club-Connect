@@ -6,3 +6,12 @@
  Sam_Leuschke23@yahoo.com     | Accusator acquiro virga capto urbs tabula. Turpis capillus vapulus conventus tandem. Conturbo damno sint arbor aer atque abbas vigor aestus.
  Thalia_Schmeler0@gmail.com   | Accusator acquiro virga capto urbs tabula. Turpis capillus vapulus conventus tandem. Conturbo damno sint arbor aer atque abbas vigor aestus.
 (5 rows)
+
+
+Normal query running times:
+ Planning Time: 0.142 ms
+ Execution Time: 0.050 ms
+
+Prod query running times:
+ Planning Time: 0.214 ms
+ Execution Time: 0.054 ms

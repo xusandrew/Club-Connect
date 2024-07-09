@@ -21,3 +21,11 @@
  Mosciski LLC               | 5.0000000000000000
  Stamm Inc                  | 5.0000000000000000
 (20 rows)
+
+Normal query running times:
+ Planning Time: 2.427 ms
+ Execution Time: 6.842 ms
+
+Prod query running times:
+ Planning Time: 0.682 ms
+ Execution Time: 4.575 ms
