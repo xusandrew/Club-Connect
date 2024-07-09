@@ -93,7 +93,7 @@ export async function fetchEventsInWeek(weekDate: Date, category?: string) {
       where: {
         AND: [{ start_time: { gte: startOfWeekDate } }, { start_time: { lte: endOfWeekDate } }],
       },
-      include: { club: true },
+      include: { club: true, rsvp_emails: true },
     }
 
     if (category) {
