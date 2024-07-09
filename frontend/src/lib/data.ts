@@ -46,9 +46,9 @@ export async function fetchPopularEvents(limit: number, idCursor?: number, categ
     let events
     let queryOptions: any = {
       take: limit,
-      include: { club: true, rvsp_emails: true },
+      include: { club: true, rsvp_emails: true },
       orderBy: {
-        rvsp_emails: {
+        rsvp_emails: {
           _count: 'desc',
         },
       },

@@ -1,23 +1,24 @@
 /*
-  Warnings:
+Warnings:
 
-  - You are about to drop the `RVSP` table. If the table is not empty, all the data it contains will be lost.
+- You are about to drop the `RSVP` table. If the table is not empty, all the data it contains will be lost.
 
-*/
+ */
 -- DropForeignKey
-ALTER TABLE "RVSP" DROP CONSTRAINT "RVSP_eid_fkey";
+ALTER TABLE "RSVP"
+DROP CONSTRAINT "RSVP_eid_fkey";
 
 -- DropTable
-DROP TABLE "RVSP";
+DROP TABLE "RSVP";
 
 -- CreateTable
-CREATE TABLE "RSVP" (
+CREATE TABLE
+  "RSVP" (
     "eid" INTEGER NOT NULL,
     "email" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "RSVP_pkey" PRIMARY KEY ("eid","email")
-);
+    CONSTRAINT "RSVP_pkey" PRIMARY KEY ("eid", "email")
+  );
 
 -- AddForeignKey
-ALTER TABLE "RSVP" ADD CONSTRAINT "RSVP_eid_fkey" FOREIGN KEY ("eid") REFERENCES "Event"("eid") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "RSVP" ADD CONSTRAINT "RSVP_eid_fkey" FOREIGN KEY ("eid") REFERENCES "Event" ("eid") ON DELETE RESTRICT ON UPDATE CASCADE;
