@@ -1,7 +1,7 @@
 SELECT
     "Club".description,
     "Club".instagram,
-    "Club".discord,
+    "Club".discord
 FROM
     "Club"
 WHERE
