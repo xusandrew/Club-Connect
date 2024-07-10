@@ -27,5 +27,5 @@ Normal query running times:
  Execution Time: 6.842 ms
 
 Prod query running times:
- Planning Time: 0.682 ms
- Execution Time: 4.575 ms
+ Planning Time: 0.888 ms
+ Execution Time: 4.976 ms
