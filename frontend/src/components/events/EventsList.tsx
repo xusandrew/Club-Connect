@@ -77,6 +77,7 @@ export default function EventsList({ category }: EventsListProps) {
           closeModal={() => setModalIsOpen(false)}
         />
       )}
+
       {weekEvents.map(
         (events, index) =>
           events[0].start_time && (

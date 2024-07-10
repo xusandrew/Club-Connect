@@ -1,6 +1,6 @@
 import type { Event } from '@/types/Event'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
-import { CalendarIcon, LocateIcon } from '../icons'
+import { CalendarIcon, EmailIcon, LocateIcon } from '../icons'
 import { Button } from '@/data/components/ui/button'
 
 type CardProps = {
@@ -20,7 +20,7 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
       <h3 className='text-2xl font-bold'>{event.title}</h3>
       <p className='text-yellow-500'>@{event.club.name}</p>
       <p className='mt-2 '>{event.description}</p>
-      <div className='flex items-center mt-4 space-x-4'>
+      <div className='flex items-center content-center mt-4 space-x-4'>
         <div className='flex items-center space-x-2'>
           <CalendarIcon className='h-5 w-5' />
           {event.start_time !== null && (
@@ -36,14 +36,15 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
         <span className='ml-auto text-gray-500'>
           {event.start_time ? timeFromNow(event.start_time) : ''}
         </span>
-      </div>
-      <div className='flex items-center'>
-        <Button
-          onClick={handleRSVPButton}
-          className='w-[800px] mt-5 hover:bg-white hover:text-gray-600 transition-colors duration-300'
-        >
-          RSVP
-        </Button>
+        <div className='flex items-center'>
+          <Button
+            onClick={handleRSVPButton}
+            className='w-[70px] flex items-centerhover:bg-white hover:text-gray-600 transition-colors gap-2 duration-300 bg-black'
+          >
+            <EmailIcon />
+            {event.rsvp_emails && <p>{event.rsvp_emails.length}</p>}
+          </Button>
+        </div>
       </div>
     </div>
   )
