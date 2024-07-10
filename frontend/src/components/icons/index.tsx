@@ -207,3 +207,38 @@ export function IconGlobalLine(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
+
+export function EmailIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox='0 0 24 24' width='24' height='24' fill='currentColor' {...props}>
+      <path d='M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6m-2 0l-8 5-8-5h16m0 12H4V8l8 5 8-5v10z' />
+    </svg>
+  )
+}
+
+export function FireIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      {...props}
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      viewBox='0 0 24 24'
+      strokeWidth={1.5}
+      stroke='currentColor'
+      className='size-6'
+      width='24'
+      height='24'
+    >
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z'
+      />
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z'
+      />
+    </svg>
+  )
+}

@@ -1,7 +1,8 @@
 'use client'
-import { Category } from '@prisma/client'
+import { Category } from '@/types/Category'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import clsx from 'clsx'
+import { FireIcon } from '../icons'
 
 type FilterProps = {
   categories: Category[]
@@ -24,10 +25,31 @@ export default function Filter({ categories }: FilterProps) {
     replace(`${pathname}?${params.toString()}`)
   }
 
+  function handleSortButton(type: boolean) {
+    const params = new URLSearchParams(searchParams)
+
+    if (type) {
+      params.set('byPopularity', 'true')
+    } else {
+      params.delete('byPopularity')
+    }
+    replace(`${pathname}?${params.toString()}`)
+  }
+
   return (
     <div className='bg-background p-4 rounded-lg flex-col align-middle'>
       <div className='flex items-center justify-between mb-4'>
         <h3 className='text-2xl font-semibold '>Categories</h3>
+        {pathname === '/events' && (
+          <button
+            className={clsx('text-gray-500 mr-4', {
+              'text-yellow-500': searchParams.get('byPopularity') == 'true',
+            })}
+            onClick={() => handleSortButton(searchParams.get('byPopularity') !== 'true')}
+          >
+            <FireIcon />
+          </button>
+        )}
       </div>
       <div className='grid gap-3 mt-20'>
         {categories.map((category, index) => {

@@ -40,6 +40,15 @@ CREATE TABLE "ClubCategory" (
     CONSTRAINT "ClubCategory_pkey" PRIMARY KEY ("cid","type")
 );
 
+-- CreateTable
+CREATE TABLE "RSVP" (
+    "eid" INTEGER NOT NULL,
+    "email" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "RSVP_pkey" PRIMARY KEY ("eid","email")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Club_email_key" ON "Club"("email");
 
@@ -54,3 +63,6 @@ ALTER TABLE "ClubCategory" ADD CONSTRAINT "ClubCategory_cid_fkey" FOREIGN KEY ("
 
 -- AddForeignKey
 ALTER TABLE "ClubCategory" ADD CONSTRAINT "ClubCategory_type_fkey" FOREIGN KEY ("type") REFERENCES "Category"("type") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "RSVP" ADD CONSTRAINT "RSVP_eid_fkey" FOREIGN KEY ("eid") REFERENCES "Event"("eid") ON DELETE RESTRICT ON UPDATE CASCADE;

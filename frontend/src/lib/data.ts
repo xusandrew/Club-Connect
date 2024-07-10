@@ -39,6 +39,46 @@ export async function fetchEvents(limit: number, idCursor?: number, category?: s
   }
 }
 
+export async function fetchPopularEvents(limit: number, idCursor?: number, category?: string) {
+  noStore()
+
+  try {
+    let events
+    let queryOptions: any = {
+      take: limit,
+      include: { club: true, rsvp_emails: true },
+      orderBy: {
+        rsvp_emails: {
+          _count: 'desc',
+        },
+      },
+    }
+
+    if (idCursor) {
+      queryOptions.cursor = { eid: idCursor }
+      queryOptions.skip = 1
+    }
+
+    if (category) {
+      queryOptions.where = {
+        club: {
+          category: {
+            some: {
+              type: category,
+            },
+          },
+        },
+      }
+    }
+
+    events = await prisma.event.findMany(queryOptions)
+    return events as Event[]
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch post data.')
+  }
+}
+
 export async function fetchEventsInWeek(weekDate: Date, category?: string) {
   noStore()
 
@@ -53,7 +93,7 @@ export async function fetchEventsInWeek(weekDate: Date, category?: string) {
       where: {
         AND: [{ start_time: { gte: startOfWeekDate } }, { start_time: { lte: endOfWeekDate } }],
       },
-      include: { club: true },
+      include: { club: true, rsvp_emails: true },
     }
 
     if (category) {
