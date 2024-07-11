@@ -1,3 +1,8 @@
+CREATE INDEX idx_rsvp_eid ON "RSVP"(eID);
+CREATE INDEX idx_rsvp_email ON "RSVP"(email);
+CREATE INDEX idx_event_cid ON "Event"(cID);
+CREATE INDEX idx_event_eid ON "Event"(eID);
+
 SELECT DISTINCT
     r.email
 FROM
@@ -21,7 +26,5 @@ WHERE
                     cID = 1
             )
     );
-
-
 
     

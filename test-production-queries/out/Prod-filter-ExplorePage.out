@@ -1,0 +1,15 @@
+          description          |           instagram           |               discord                
+-------------------------------+-------------------------------+--------------------------------------
+ Organic incremental framework | https://cultured-quiver.info/ | https://inconsequential-gazelle.com/
+(1 row)
+
+Normal query running times:
+ Planning Time: 0.109 ms
+ Execution Time: 0.033 ms
+
+Prod query running times:
+ Planning Time: 0.097 ms
+ Execution Time: 0.022 ms
+
+
+ 
