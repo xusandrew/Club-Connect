@@ -1,4 +1,6 @@
-# cs-348-project
+# Club Connect
+
+cs-348 Project
 
 ## Project Description
 
