@@ -42,7 +42,7 @@ export default function Filter({ categories }: FilterProps) {
         <h3 className='text-2xl font-semibold '>Categories</h3>
         {pathname === '/events' && (
           <button
-            className={clsx('text-gray-500 mr-4', {
+            className={clsx('text-gray-500 mr-4 hover:text-white', {
               'text-yellow-500': searchParams.get('byPopularity') == 'true',
             })}
             onClick={() => handleSortButton(searchParams.get('byPopularity') !== 'true')}
@@ -58,10 +58,10 @@ export default function Filter({ categories }: FilterProps) {
             <button
               onClick={() => handleFilter(category.type)}
               key={index}
-              className='flex gap-2 flex-col md:flex-row justify-start text-left'
+              className='flex gap-2 flex-col md:flex-row justify-start text-left '
             >
               <h1
-                className={clsx('text-gray-500', {
+                className={clsx('text-gray-500 hover:text-white', {
                   'text-yellow-500': isActive,
                 })}
               >
