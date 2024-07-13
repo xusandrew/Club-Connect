@@ -13,6 +13,7 @@ const NUMBER_OF_EVENTS_TO_FETCH = 10
 
 export default function PopularEventsList({ category }: PopularEventsListProps) {
   const [cursor, setCursor] = useState<number | undefined>()
+  const [noData, setNoData] = useState<boolean>(true)
   const [events, setEvents] = useState<Event[]>()
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
   const [modalEvent, setModalEvent] = useState<Event | undefined>()
@@ -21,7 +22,10 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
   const { ref, inView } = useInView()
 
   const loadMoreEvents = async () => {
-    if (!hasMoreData) return
+    if (!hasMoreData) {
+      setNoData(false)
+      return
+    }
 
     const params = new URLSearchParams({
       category: category,
@@ -41,9 +45,11 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
       setHasMoreData(false)
     } else if (!events) {
       setEvents(newEvents)
+      setNoData(false)
       newEvents[newEvents.length - 1].eid
     } else {
       setEvents([...events, ...newEvents])
+      setNoData(false)
       setCursor(newEvents[newEvents.length - 1].eid)
     }
   }
@@ -53,6 +59,7 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
     setEvents([])
     setHasMoreData(true)
     setCursor(undefined)
+    setNoData(true)
   }, [category])
 
   useEffect(() => {
@@ -65,6 +72,8 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
     <div>
       <h1 className='text-xl font-bold tracking-tighter sm:text-3xl mb-10'>Most Popular</h1>
 
+      {noData && <div className='w-[800px]' />}
+
       {modalEvent && modalIsOpen && (
         <RSVP
           setIsOpen={setModalIsOpen}
@@ -73,6 +82,7 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
           closeModal={() => setModalIsOpen(false)}
         />
       )}
+
       {events && (
         <div className='flex flex-col gap-3'>
           {events.map((event) => (
@@ -83,7 +93,7 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
               openModal={() => setModalIsOpen(true)}
             />
           ))}
-          {hasMoreData && <div ref={ref}>Loading...</div>}
+          {hasMoreData && <div ref={ref}></div>}
         </div>
       )}
     </div>
