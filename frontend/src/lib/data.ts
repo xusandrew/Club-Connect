@@ -145,7 +145,7 @@ export async function fetchClubs(category?: string, query?: string) {
       }
     }
 
-    if (query) {
+    if (query !== '') {
       queryOptions.where.OR = [
         {
           name: {

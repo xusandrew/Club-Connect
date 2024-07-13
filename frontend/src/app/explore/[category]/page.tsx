@@ -26,6 +26,8 @@ export default async function FilteredPage({
           <Filter categories={categories} />
         </div>
         <div className='flex flex-col gap-3 '>
+          <div className='w-[800px]'></div>
+
           {clubs.map((club) => (
             <ClubCard key={club.cid} club={club} />
           ))}
