@@ -22,7 +22,7 @@ export default async function Navbar() {
           </div>
           <NavbarLinks />
         </div>
-        <div className='flex gap-10 items-center'>
+        <div className='flex gap-10 items-center w-[350px]'>
           {club ? (
             <>
               {club.name}
