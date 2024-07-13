@@ -19,12 +19,15 @@ The infinite scroll page will be the main page /homepage of the website. This is
 ## Features Implemented
 
 #### Club registration and login
+<img width="1567" alt="Screenshot 2024-07-13 at 2 14 34 PM" src="https://github.com/user-attachments/assets/85344689-b70e-44e8-ab74-ab36bce759fb">
+<img width="1565" alt="Screenshot 2024-07-13 at 2 14 40 PM" src="https://github.com/user-attachments/assets/165e4340-0a10-4535-b282-7263362facec">
 
 - Registration and login pages can be found in frontend/src/app/{register | login}/page.tsx
 - These pages point to forms located in frontend/data/components/{register | login}.tsx
 - These forms call server actions defined in frontend/src/auth/index.ts which make requests to the database
 
 #### Sorting events by category
+<img width="1568" alt="Screenshot 2024-07-13 at 2 13 29 PM" src="https://github.com/user-attachments/assets/ae6e1e96-6a1c-454d-a725-8b5f8fcb5f6f">
 
 - The events page can be found in frontend/src/app/events/[category]/page.tsx
 - The filter bar is located on the events page and is implemented in frontend/src/components/ui/FilterBar.tsx
@@ -35,6 +38,7 @@ The infinite scroll page will be the main page /homepage of the website. This is
 - The api route fetches events calls getEventsInWeek from frontend/src/lib/data.ts to fetch events from the database
 
 #### Sorting by most popular
+<img width="1565" alt="Screenshot 2024-07-13 at 2 13 44 PM" src="https://github.com/user-attachments/assets/494cb225-2d82-423f-a4e9-a9a9450530fd">
 
 - The events page can be found in frontend/src/app/events/[category]/page.tsx
 - The filter bar is located on the events page and is implemented in frontend/src/components/ui/FilterBar.tsx
@@ -45,6 +49,13 @@ The infinite scroll page will be the main page /homepage of the website. This is
   frontend/src/app/api/events/popularity/[route].ts
 - The api route fetches events calls fetchPopularEvents defined in frontend/src/lib/data.ts
   to fetch events from the database
+
+#### Searching clubs by name and description
+<img width="1572" alt="Screenshot 2024-07-13 at 2 14 20 PM" src="https://github.com/user-attachments/assets/99b2659c-af08-480e-8980-81b672d47129">
+
+
+#### Calendar page
+<img width="1572" alt="Screenshot 2024-07-13 at 2 14 28 PM" src="https://github.com/user-attachments/assets/924322b3-2b5a-4a9f-b2df-553cd448c5da">
 
 ## Setup
 
