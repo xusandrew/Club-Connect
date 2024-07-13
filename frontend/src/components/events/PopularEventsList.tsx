@@ -96,6 +96,12 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
           {hasMoreData && <div ref={ref}></div>}
         </div>
       )}
+
+      {!hasMoreData && (
+        <div className='flex flex-col items-center justify-center py-10 mb-8'>
+          <p className='text-muted-foreground'>That&apos;s all the events!</p>
+        </div>
+      )}
     </div>
   )
 }
