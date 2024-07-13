@@ -18,7 +18,7 @@ export default async function FilteredPage({
       <section className='w-full py-4 md:py-10 lg:py-20'>
         <div className='container px-4 md:px-6 text-center space-y-4'>
           <h1 className='text-2xl font-bold tracking-tighter sm:text-5xl'>Clubs Directory</h1>
-          <Search placeholder='test' />
+          <Search placeholder='search for a club...' />
         </div>
       </section>
       <div className='flex h-full flex-col md:flex-row'>

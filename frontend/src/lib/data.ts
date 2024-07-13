@@ -137,7 +137,7 @@ export async function fetchClubs(category?: string, query?: string) {
       where: {},
     }
 
-    if (category) {
+    if (category !== '') {
       queryOptions.where.category = {
         some: {
           type: category,

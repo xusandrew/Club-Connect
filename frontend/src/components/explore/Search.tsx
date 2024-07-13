@@ -11,7 +11,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams)
-    params.set('page', '1')
+
     if (term) {
       params.set('query', term)
     } else {
@@ -26,7 +26,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         Search
       </label>
       <input
-        className='peer block w-full rounded-md border text-black border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500'
+        className='peer outline-white block w-full rounded-md bg-[#27292B] text-white py-[12px] pl-10 text-sm outline-[0.5px] placeholder:text-gray-500'
         placeholder={placeholder}
         onChange={(e) => {
           handleSearch(e.target.value)
