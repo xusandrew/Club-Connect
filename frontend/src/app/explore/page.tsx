@@ -1,4 +1,4 @@
-import ScrollTopButton from '@/components/events/BackToTopButton'
+import ScrollTopButton from '@/components/ui/BackToTopButton'
 import FilteredPage from './[category]/page'
 
 export default function Page({
