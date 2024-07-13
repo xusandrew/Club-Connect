@@ -12,6 +12,7 @@ type EventsListProps = {
 
 export default function EventsList({ category }: EventsListProps) {
   const [weekEvents, setWeekEvents] = useState<Event[][]>([])
+  const [noData, setNoData] = useState<boolean>(true)
   const [hasMoreData, setHasMoreData] = useState<boolean>(true)
   const [weekCursor, setWeekCursor] = useState<Date>(new Date())
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
@@ -24,13 +25,16 @@ export default function EventsList({ category }: EventsListProps) {
     setWeekEvents([])
     setHasMoreData(true)
     setWeekCursor(new Date())
+    setNoData(true)
   }, [category])
 
   // Load more events when component is in view
   useEffect(() => {
     const loadMoreEvents = async () => {
-      if (!hasMoreData) return
-
+      if (!hasMoreData) {
+        setNoData(false)
+        return
+      }
       const params = new URLSearchParams({
         category: category,
         weekDate: weekCursor.toISOString(),
@@ -51,6 +55,7 @@ export default function EventsList({ category }: EventsListProps) {
           if (newEvents.length === 0) {
             setHasMoreData(false)
           } else {
+            setNoData(false)
             setWeekEvents([...weekEvents, newEvents])
             setWeekCursor(startOfWeek(addWeeks(weekCursor, 1)))
           }
@@ -78,6 +83,8 @@ export default function EventsList({ category }: EventsListProps) {
         />
       )}
 
+      {noData && <div className='w-[800px]' />}
+
       {weekEvents.map(
         (events, index) =>
           events[0].start_time && (
@@ -94,9 +101,9 @@ export default function EventsList({ category }: EventsListProps) {
         <div ref={ref}>
           <div className='flex justify-center items-center py-10 mb-8 '>
             <div className='flex items-center space-x-2'>
-              <div className='w-3 h-3 bg-white rounded-full animate-bounce' />
+              {/* <div className='w-3 h-3 bg-white rounded-full animate-bounce' />
               <div className='w-3 h-3 bg-white rounded-full animate-bounce animation-delay-200' />
-              <div className='w-3 h-3 bg-white rounded-full animate-bounce animation-delay-400' />
+              <div className='w-3 h-3 bg-white rounded-full animate-bounce animation-delay-400' /> */}
             </div>
           </div>
         </div>
