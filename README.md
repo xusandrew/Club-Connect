@@ -51,8 +51,7 @@ The infinite scroll page will be the main page /homepage of the website. This is
   to fetch events from the database
 
 #### Searching clubs by name and description
-<img width="1572" alt="Screenshot 2024-07-13 at 2 14 20 PM" src="https://github.com/user-attachments/assets/99b2659c-af08-480e-8980-81b672d47129">
-
+<img width="1183" alt="Screenshot 2024-07-13 at 4 07 25 PM" src="https://github.com/user-attachments/assets/bfde6bd0-8371-426e-9d2c-4f810c234afe">
 
 #### Calendar page
 <img width="1572" alt="Screenshot 2024-07-13 at 2 14 28 PM" src="https://github.com/user-attachments/assets/924322b3-2b5a-4a9f-b2df-553cd448c5da">
