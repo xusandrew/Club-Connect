@@ -1,4 +1,4 @@
-import Filter from '@/components/events/FilterBar'
+import Filter from '@/components/ui/FilterBar'
 import EventsList from '@/components/events/EventsList'
 import PopularEventsList from '@/components/events/PopularEventsList'
 import { fetchCategories } from '@/lib/data'

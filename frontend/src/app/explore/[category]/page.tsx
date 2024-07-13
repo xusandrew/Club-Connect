@@ -1,4 +1,4 @@
-import Filter from '@/components/events/FilterBar'
+import Filter from '@/components/ui/FilterBar'
 import ClubCard from '@/components/explore/ClubCard'
 import { fetchCategories, fetchClubs } from '@/lib/data'
 
