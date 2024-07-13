@@ -11,7 +11,7 @@ import { CalendarIcon } from '../icons'
 const links = [
   { name: 'Home', href: '/events', icon: HomeIcon },
   { name: 'Explore', href: '/explore', icon: BookOpenIcon },
-  { name: 'Calendar', href: '/calendar', icon: CalendarIcon},
+  { name: 'Calendar', href: '/calendar', icon: CalendarIcon },
 ]
 
 export default function NavbarLinks() {
@@ -25,7 +25,9 @@ export default function NavbarLinks() {
           <Link
             key={link.name}
             href={link.href}
-            className={clsx('text-gray-500', { 'text-yellow-500': pathname === link.href })}
+            className={clsx('text-gray-500 hover:text-white', {
+              'text-yellow-500': pathname === link.href,
+            })}
           >
             <div className='flex items-center space-x-2'>
               <LinkIcon className='w-6' />
