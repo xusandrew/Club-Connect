@@ -128,31 +128,45 @@ export async function fetchCategories() {
   }
 }
 
-export async function fetchClubs(category?: string) {
+export async function fetchClubs(category?: string, query?: string) {
   try {
-    let clubs
-    if (category) {
-      clubs = await prisma.club.findMany({
-        where: {
-          category: {
-            some: {
-              type: category,
-            },
+    let queryOptions: any = {
+      include: {
+        category: true,
+      },
+      where: {},
+    }
+
+    if (category !== '') {
+      queryOptions.where.category = {
+        some: {
+          type: category,
+        },
+      }
+    }
+
+    if (query !== '') {
+      queryOptions.where.OR = [
+        {
+          name: {
+            contains: query,
+            mode: 'insensitive',
           },
         },
-        include: {
-          category: true,
+        {
+          description: {
+            contains: query,
+            mode: 'insensitive',
+          },
         },
-      })
-    } else {
-      clubs = await prisma.club.findMany({
-        include: {
-          category: true,
-        },
-      })
+      ]
     }
+
+    const clubs = await prisma.club.findMany(queryOptions)
+
     return clubs as Club[]
   } catch (error) {
+    console.log(query)
     console.error('Database Error:', error)
     throw new Error('Failed to fetch club data.')
   }

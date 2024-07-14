@@ -19,12 +19,22 @@ export default function Component({ club }: ClubCardProps) {
 
       <section className='flex mt-4 mr-6 gap-4 justify-end'>
         {club.instagram && (
-          <a href={`${club.instagram}`} target='_blank' rel='noopener noreferrer'>
+          <a
+            href={`${club.instagram}`}
+            className='hover:text-[#E1306C]'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <InstagramIcon />
           </a>
         )}
         {club.discord && (
-          <a href={`${club.discord}`} target='_blank' rel='noopener noreferrer'>
+          <a
+            href={`${club.discord}`}
+            className='hover:text-[#5865F2]'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <DiscordIcon />
           </a>
         )}
