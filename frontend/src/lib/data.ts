@@ -1,7 +1,7 @@
 import type { Event } from '@/types/Event'
 import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
-import { endOfWeek, startOfWeek } from 'date-fns'
+import { endOfWeek, startOfTomorrow, startOfWeek } from 'date-fns'
 import { Club } from '@/types/Club'
 
 export async function fetchEvents(limit: number, idCursor?: number, category?: string) {
@@ -77,6 +77,25 @@ export async function fetchPopularEvents(limit: number, idCursor?: number, categ
     console.error('Database Error:', error)
     throw new Error('Failed to fetch post data.')
   }
+}
+
+export async function fetchEventsTomorrow() {
+  const startOfTomorrowDate = startOfTomorrow()
+  const endOfTomorrowDate = startOfTomorrow()
+
+  const events = await prisma.event.findMany({
+    orderBy: {
+      start_time: 'asc',
+    },
+    where: {
+      AND: [
+        { start_time: { gte: startOfTomorrowDate } },
+        { start_time: { lte: endOfTomorrowDate } },
+      ],
+    },
+    include: { club: true, rsvp_emails: true },
+  })
+  return events as Event[]
 }
 
 export async function fetchEventsInWeek(weekDate: Date, category?: string) {

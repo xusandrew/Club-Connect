@@ -3,6 +3,7 @@
 import prisma from './prisma'
 import { RSVP } from '../types/RSVP'
 import mailer from './nodemailer'
+import { rsvpSignUp } from '@/app/email/mailOptions'
 
 export const rsvp = async (formData: FormData) => {
   const rsvpData: RSVP = {
@@ -17,12 +18,7 @@ export const rsvp = async (formData: FormData) => {
   //create record
   await prisma.rSVP.create({ data: rsvpData })
 
-  const mailOptions = {
-    from: 'mxc.maggiechen@gmail.com',
-    to: rsvpData.email,
-    subject: `RSVP to an event!`,
-    text: "You've successfully RSVP'ed to an event!",
-  }
+  const mailOptions = rsvpSignUp(rsvpData.email);
 
   //send email
   mailer.sendMail(mailOptions, (error, info) => {
