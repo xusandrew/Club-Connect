@@ -24,15 +24,20 @@ type RSVPProps = {
 }
 export function RSVP({ event, closeModal, isOpen, setIsOpen }: RSVPProps) {
   const [email, setEmail] = useState('')
-  const onSubmit = (formData: FormData) => {
-    rsvp(formData);
+  const [RsvpFailureMessage, setRsvpFailureMessage] = useState<null|string>(null)
+  const onSubmit = async (formData: FormData) => {
+    const failure = await rsvp(formData);
+    if(failure){
+        setRsvpFailureMessage(failure);
+        return;
+    }
+
     closeModal();
+    return
   }
 
-  return (
-    <>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent>
+  const RsvpContent = () => {
+    return(
           <form action={onSubmit}>
             <div className='flex items-center justify-center'>
               <Card className='w-full max-w-md border-0'>
@@ -64,6 +69,29 @@ export function RSVP({ event, closeModal, isOpen, setIsOpen }: RSVPProps) {
               </Card>
             </div>
           </form>
+    )
+  }
+
+  const RsvpFailure = () => {
+    return(
+            <div className='flex items-center justify-center'>
+              <Card className='w-full max-w-md border-0'>
+                <CardHeader className='space-y-1 text-center'>
+                  <CardTitle className='text-3xl font-bold'>RSVP</CardTitle>
+                </CardHeader>
+                <CardContent className='space-y-4 text-center'>
+                {RsvpFailureMessage}
+                </CardContent>
+              </Card>
+            </div>
+    )
+  }
+
+  return (
+    <>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent>
+          {RsvpFailureMessage? RsvpFailure(): RsvpContent()}
         </DialogContent>
       </Dialog>
     </>
