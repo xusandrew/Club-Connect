@@ -5,6 +5,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const weekDate = searchParams.get('weekDate')
   const category = searchParams.get('category')
+  const clubId = searchParams.get('clubId')
 
   if (!weekDate) {
     return NextResponse.json({ error: 'Missing weekDate parameter.' }, { status: 400 })
@@ -22,7 +23,11 @@ export async function GET(req: NextRequest) {
       )
     }
 
-    const events = await fetchEventsInWeek(week, category ? String(category) : undefined)
+    const events = await fetchEventsInWeek(
+      week,
+      category ? String(category) : undefined,
+      parseInt(clubId || '') || undefined,
+    )
     return NextResponse.json({ events })
   } catch (error) {
     console.error('Database Error:', error)
