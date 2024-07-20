@@ -24,12 +24,16 @@ type RSVPProps = {
 }
 export function RSVP({ event, closeModal, isOpen, setIsOpen }: RSVPProps) {
   const [email, setEmail] = useState('')
+  const onSubmit = (formData: FormData) => {
+    rsvp(formData);
+    closeModal();
+  }
 
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
-          <form action={rsvp}>
+          <form action={onSubmit}>
             <div className='flex items-center justify-center'>
               <Card className='w-full max-w-md border-0'>
                 <CardHeader className='space-y-1 text-center'>
