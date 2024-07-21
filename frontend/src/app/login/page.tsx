@@ -1,12 +1,11 @@
-import { login } from '@/auth'
-import { Login } from 'data/components/login'
+import { getSession } from '@/auth'
+import { LoginForm } from '@/components/LoginForm'
 
-const LoginPage: React.FC = () => {
-  return (
-    <form action={login}>
-      <Login />
-    </form>
-  )
+export default async function LoginPage() {
+  const session = await getSession()
+  if (session) {
+    return <div>Already logged in</div>
+  }
+
+  return <LoginForm />
 }
-
-export default LoginPage
