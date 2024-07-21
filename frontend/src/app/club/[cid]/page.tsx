@@ -1,7 +1,7 @@
 import { ClubInfo } from '@/data/components/club-info'
 import { fetchClubById } from '@/lib/data'
 
-export default async function FilteredPage({ params }: { params: { cid?: string | undefined } }) {
+export default async function ClubPage({ params }: { params: { cid?: string | undefined } }) {
   const cid = params.cid || ''
   const club = await fetchClubById(parseInt(cid))
 
