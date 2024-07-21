@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Button } from '@/data/components/ui/button'
 import type { Club } from '@/types/Club'
 import EventsList from '@/components/events/EventsList'
 import { InstagramIcon, DiscordIcon } from '@/components/icons'
@@ -45,7 +46,11 @@ export async function ClubInfo({ club }: { club: Club }) {
             )}
           </div>
         </div>
-        {isAdmin && <Link href={`/create-event`}>Create a event</Link>}
+        {isAdmin && (
+          <Link href={`/create-event`}>
+            <Button variant='outline'>Create an event</Button>
+          </Link>
+        )}
         <div className='space-y-4'>
           <h2 className='text-4xl font-bold text-primary'>Upcoming Events</h2>
           <EventsList category={''} clubId={club.cid} />
