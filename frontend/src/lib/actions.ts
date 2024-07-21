@@ -3,6 +3,7 @@
 import prisma from './prisma'
 import { RSVP } from '../types/RSVP'
 import mailer from './nodemailer'
+import { getRsvpSignUpHTML } from '@/app/email/getTemplate';
 
 export const rsvp = async (formData: FormData) => {
   const rsvpData: RSVP = {
@@ -14,14 +15,29 @@ export const rsvp = async (formData: FormData) => {
     throw new Error('Missing required fields')
   }
 
+  const event = await prisma.event.findUnique({
+    where:{
+      eid: rsvpData.eid
+    },
+    include:{
+      club:true,
+      rsvp_emails:true
+    }
+  })
+
+  if(!event){
+    throw new Error('cannot find event')
+  }
+
   //create record
   await prisma.rSVP.create({ data: rsvpData })
+  const emailTemplate = getRsvpSignUpHTML(event);
 
   const mailOptions = {
     from: 'mxc.maggiechen@gmail.com',
     to: rsvpData.email,
     subject: `RSVP to an event!`,
-    text: "You've successfully RSVP'ed to an event!",
+    html: emailTemplate,
   }
 
   //send email

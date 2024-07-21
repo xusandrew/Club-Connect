@@ -1,49 +1,46 @@
-import { Event } from "@/types/Event";
+import { Event } from '@/types/Event'
 import {
-    Body,
-    Container,
-    Head,
-    Heading,
-    Hr,
-    Html,
-    Img,
-    Link,
-    Preview,
-    Section,
-    Text,
-  } from "@react-email/components";
-  import * as React from "react";
-  
-  //source: https://demo.react.email/preview/magic-links/raycast-magic-link?view=source
-  interface RsvpSignUpProps{
-    event: Event;
-  }
-  
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "";
-  
-  export const RsvpSignUpEmail = ({
-    event,
-  }: RsvpSignUpProps) => (
+  Body,
+  Container,
+  Head,
+  Heading,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Section,
+  Text,
+} from '@react-email/components'
+import * as React from 'react'
+interface RsvpSignUpProps {
+  event: Event
+}
+
+const RsvpSignUpEmail = ({ event }: RsvpSignUpProps) => {
+  return (
     <Html>
       <Head />
       <Preview>Log in with this magic link.</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Heading style={heading}>RSVP Confirmation: {event.title} by {event.club.name}</Heading>
+          <Heading style={heading}>
+            RSVP Confirmation: {event.title} by {event.club.name}
+          </Heading>
           <Section style={body}>
             <Text style={paragraph}>
-            Thank you for RSVPing to {event.title} hosted by {event.club.name}!
-            Here are the details of the event:
+              Thank you for RSVPing to {event.title} hosted by {event.club.name}! Here are the
+              details of the event:
             </Text>
           </Section>
           <Section style={body}>
             <Text style={paragraph}>
-             <b>Event Details:</b>
+              <b>Event Details:</b>
               <li>Event: {event.title}</li>
-              <li>Start Time: {event.start_time? event.start_time.toLocaleString(): 'Unspecified'}</li>
-              <li>End Time: {event.end_time? event.end_time.toLocaleString() : 'Unspecified'}</li>
+              <li>
+                Start Time: {event.start_time ? event.start_time.toLocaleString() : 'Unspecified'}
+              </li>
+              <li>End Time: {event.end_time ? event.end_time.toLocaleString() : 'Unspecified'}</li>
               <li>Location: {event.location}</li>
               <li>Event Description: {event.description}</li>
             </Text>
@@ -53,30 +50,17 @@ import {
             <br />- Club Connect
           </Text>
           <Hr style={hr} />
-        
+
           <Text style={footer}>Club Connect</Text>
         </Container>
       </Body>
     </Html>
-  );
-  
-RsvpSignUpEmail.PreviewProps = {
-    event: {
-      title: "Intro to Coding Workshop",
-      description: "Learn the basics of coding with Python",
-      start_time: new Date(),
-      end_time: new Date(),
-      location: "Tech Lab",
-      club: {
-        name: "Tech Club"
-      }
+  )
+}
 
-    },
-  } as RsvpSignUpProps;
+export default RsvpSignUpEmail;
 
-  export default RsvpSignUpEmail;
-  
-  const main = {
+const main = {
     backgroundColor: "#ffffff",
     fontFamily:
       '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
