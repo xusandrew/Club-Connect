@@ -8,9 +8,10 @@ import { RSVP } from './Rsvp'
 
 type EventsListProps = {
   category: string
+  clubId?: number
 }
 
-export default function EventsList({ category }: EventsListProps) {
+export default function EventsList({ category, clubId }: EventsListProps) {
   const [weekEvents, setWeekEvents] = useState<Event[][]>([])
   const [noData, setNoData] = useState<boolean>(true)
   const [hasMoreData, setHasMoreData] = useState<boolean>(true)
@@ -36,6 +37,7 @@ export default function EventsList({ category }: EventsListProps) {
         return
       }
       const params = new URLSearchParams({
+        clubId: clubId?.toString() || '',
         category: category,
         weekDate: weekCursor.toISOString(),
       })
@@ -70,7 +72,7 @@ export default function EventsList({ category }: EventsListProps) {
     if (inView) {
       loadMoreEvents()
     }
-  }, [inView, category, hasMoreData, weekCursor, weekEvents])
+  }, [inView, category, clubId, hasMoreData, weekCursor, weekEvents])
 
   return (
     <div className='flex flex-col gap-3'>

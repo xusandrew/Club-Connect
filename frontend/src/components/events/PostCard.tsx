@@ -1,4 +1,5 @@
 import type { Event } from '@/types/Event'
+import Link from 'next/link'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
 import { CalendarIcon, EmailIcon, LocateIcon } from '../icons'
 import { Button } from '@/data/components/ui/button'
@@ -15,10 +16,14 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
     setModalEvent(event)
   }
 
+  const clubPageLink = `/club/${event.club.cid}`
+
   return (
     <div className='p-4 border border-gray-700 rounded-lg w-[800px]'>
       <h3 className='text-2xl font-bold'>{event.title}</h3>
-      <p className='text-yellow-500'>@{event.club.name}</p>
+      <Link href={clubPageLink} className='text-yellow-500'>
+        @{event.club.name}
+      </Link>
       <p className='mt-2 '>{event.description}</p>
       <div className='flex items-center content-center mt-4 space-x-4'>
         <div className='flex items-center space-x-2'>

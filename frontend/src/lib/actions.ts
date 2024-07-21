@@ -29,23 +29,31 @@ export const rsvp = async (formData: FormData) => {
     throw new Error('cannot find event')
   }
 
-  //create record
-  await prisma.rSVP.create({ data: rsvpData })
-  const emailTemplate = getRsvpSignUpHTML(event);
+  const existingRSVP = await prisma.rSVP.findFirst({
+    where:{
+      email: rsvpData.email,
+      eid: rsvpData.eid
+    }
+  })
 
+  if(existingRSVP){
+    return  "This email address has already RSVP'd to this event. Please check you email for more information.";
+  }
+   //create record
+   await prisma.rSVP.create({ data: rsvpData })
+  const emailTemplate = getRsvpSignUpHTML(event);
   const mailOptions = {
     from: 'mxc.maggiechen@gmail.com',
     to: rsvpData.email,
     subject: `RSVP to an event!`,
     html: emailTemplate,
   }
-
   //send email
   mailer.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email: ', error)
-    } else {
-      console.log('Email sent: ', info.response)
-    }
+      return "Error with sending email, please try again.";
+    } 
   })
+
+  return null;
 }
