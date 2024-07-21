@@ -1550,7 +1550,7 @@ async function main() {
   const rsvp: { email: string; eid: number }[] = []
 
   for (let j = 0; j < 20; j++) {
-    events.forEach((event: any, i) => {
+    events.forEach((event: any, i: number) => {
       if ((i + j) % 11 === 0) return
       if ((i + j) % 7 === 0) return
       rsvp.push({
