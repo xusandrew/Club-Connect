@@ -102,11 +102,7 @@ export default function EventsList({ category, clubId }: EventsListProps) {
       {hasMoreData && (
         <div ref={ref}>
           <div className='flex justify-center items-center py-10 mb-8 '>
-            <div className='flex items-center space-x-2'>
-              {/* <div className='w-3 h-3 bg-white rounded-full animate-bounce' />
-              <div className='w-3 h-3 bg-white rounded-full animate-bounce animation-delay-200' />
-              <div className='w-3 h-3 bg-white rounded-full animate-bounce animation-delay-400' /> */}
-            </div>
+            <div className='flex items-center space-x-2'></div>
           </div>
         </div>
       )}
