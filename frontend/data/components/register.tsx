@@ -13,7 +13,7 @@ import { Button } from '@/data/components/ui/button'
 
 export function Register() {
   return (
-    <div className='flex items-center justify-center h-full bg-background my-10'>
+    <div className='flex items-center justify-center h-full  my-10'>
       <Card className='w-full max-w-md'>
         <CardHeader className='space-y-1 text-center'>
           <CardTitle className='text-3xl font-bold'>Register</CardTitle>

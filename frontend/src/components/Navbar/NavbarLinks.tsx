@@ -25,7 +25,7 @@ export default function NavbarLinks() {
           <Link
             key={link.name}
             href={link.href}
-            className={clsx('text-gray-500 hover:text-white', {
+            className={clsx('text-gray-500 hover:text-foreground', {
               'text-yellow-500': pathname === link.href,
             })}
           >
