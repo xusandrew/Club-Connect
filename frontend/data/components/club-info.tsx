@@ -4,6 +4,7 @@ import type { Club } from '@/types/Club'
 import EventsList from '@/components/events/EventsList'
 import { InstagramIcon, DiscordIcon } from '@/components/icons'
 import { getSession } from '@/auth'
+import InstaEmbed from '@/components/ui/InstaEmbed'
 
 export async function ClubInfo({ club }: { club: Club }) {
   const session = await getSession()
@@ -16,6 +17,7 @@ export async function ClubInfo({ club }: { club: Club }) {
           <h1 className='text-6xl font-bold text-accent'>{club.name}</h1>
           <p className='mt-3 text-muted-foreground'>{club.description}</p>
         </div>
+        {club.instagram && <InstaEmbed link={club.instagram} />}
         <div className='grid grid-cols-2 gap-4'>
           <div className='flex flex-col items-center'>
             {club.instagram && (
