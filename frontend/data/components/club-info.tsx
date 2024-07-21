@@ -13,14 +13,14 @@ export async function ClubInfo({ club }: { club: Club }) {
     <div className='w-full mx-auto py-12 px-4 sm:px-6 lg:px-8'>
       <div className='space-y-6'>
         <div className='text-left'>
-          <h1 className='text-6xl font-bold text-primary'>{club.name}</h1>
+          <h1 className='text-6xl font-bold text-accent'>{club.name}</h1>
           <p className='mt-3 text-muted-foreground'>{club.description}</p>
         </div>
         <div className='grid grid-cols-2 gap-4'>
           <div className='flex flex-col items-center'>
             {club.instagram && (
               <>
-                <InstagramIcon className='w-8 h-8 text-primary' />
+                <InstagramIcon className='w-8 h-8 text-foreground' />
                 <Link
                   href='#'
                   className='mt-2 text-sm font-medium hover:underline'
@@ -34,7 +34,7 @@ export async function ClubInfo({ club }: { club: Club }) {
           <div className='flex flex-col items-center'>
             {club.discord && (
               <>
-                <DiscordIcon className='w-8 h-8 text-primary' />
+                <DiscordIcon className='w-8 h-8 text-foreground' />
                 <Link
                   href='#'
                   className='mt-2 text-sm font-medium hover:underline'
@@ -52,7 +52,7 @@ export async function ClubInfo({ club }: { club: Club }) {
           </Link>
         )}
         <div className='space-y-4'>
-          <h2 className='text-4xl font-bold text-primary'>Upcoming Events</h2>
+          <h2 className='text-4xl font-bold text-accent'>Upcoming Events</h2>
           <EventsList category={''} clubId={club.cid} />
         </div>
       </div>

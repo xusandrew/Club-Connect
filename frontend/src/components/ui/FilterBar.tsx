@@ -37,12 +37,12 @@ export default function Filter({ categories }: FilterProps) {
   }
 
   return (
-    <div className='bg-background p-4 rounded-lg flex-col align-middle'>
+    <div className=' p-4 rounded-lg flex-col align-middle'>
       <div className='flex items-center justify-between mb-4'>
         <h3 className='text-2xl font-semibold '>Categories</h3>
         {pathname === '/events' && (
           <button
-            className={clsx('text-gray-500 mr-4 hover:text-white', {
+            className={clsx('text-gray-500 mr-4 hover:text-foreground', {
               'text-yellow-500': searchParams.get('byPopularity') == 'true',
             })}
             onClick={() => handleSortButton(searchParams.get('byPopularity') !== 'true')}
@@ -61,7 +61,7 @@ export default function Filter({ categories }: FilterProps) {
               className='flex gap-2 flex-col md:flex-row justify-start text-left '
             >
               <h1
-                className={clsx('text-gray-500 hover:text-white', {
+                className={clsx('text-gray-500 hover:text-foreground', {
                   'text-yellow-500': isActive,
                 })}
               >
@@ -72,7 +72,7 @@ export default function Filter({ categories }: FilterProps) {
         })}
         <button
           onClick={() => handleFilter('')}
-          className='rounded-lg bg-black px-4 py-2 flex items-center gap-2 justify-center md:justify-start text-white hover:text-gray-600 hover:bg-white transition-colors duration-300'
+          className='rounded-lg bg-black px-4 py-2 flex items-center gap-2 justify-center md:justify-start text-foreground text-white hover:text-gray-600 hover:bg-white transition-colors duration-300'
         >
           reset
         </button>

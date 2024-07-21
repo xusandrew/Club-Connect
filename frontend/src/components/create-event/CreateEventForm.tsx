@@ -34,7 +34,7 @@ export default function CreateEventForm({ club }: CreateEventFormProps) {
   return (
     <form action={formAction}>
       <div className='flex h-screen flex-col md:flex-row'>
-        <div className='flex items-center justify-center h-full bg-background'>
+        <div className='flex items-center justify-center h-full '>
           <Card className='w-full max-w-md'>
             <CardHeader className='space-y-1 text-center'>
               <CardTitle className='text-3xl font-bold'>Create an Event</CardTitle>
