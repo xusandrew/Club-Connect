@@ -11,25 +11,33 @@ export const rsvp = async (formData: FormData) => {
   }
 
   if (!(rsvpData.eid && rsvpData.email)) {
-    throw new Error('Missing required fields')
+    return  "Required fields missing, please try again.";
   }
 
-  //create record
-  await prisma.rSVP.create({ data: rsvpData })
+  const existingRSVP = await prisma.rSVP.findFirst({
+    where:{
+      email: rsvpData.email,
+      eid: rsvpData.eid
+    }
+  })
 
+  if(existingRSVP){
+    return  "This email address has already RSVP'd to this event. Please check you email for more information.";
+  }
+   //create record
+   await prisma.rSVP.create({ data: rsvpData })
   const mailOptions = {
     from: 'mxc.maggiechen@gmail.com',
     to: rsvpData.email,
     subject: `RSVP to an event!`,
     text: "You've successfully RSVP'ed to an event!",
   }
-
   //send email
   mailer.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email: ', error)
-    } else {
-      console.log('Email sent: ', info.response)
-    }
+      return "Error with sending email, please try again.";
+    } 
   })
+
+  return null;
 }
