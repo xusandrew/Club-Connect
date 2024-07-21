@@ -12,7 +12,18 @@ export const rsvp = async (formData: FormData) => {
   }
 
   if (!(rsvpData.eid && rsvpData.email)) {
-    throw new Error('Missing required fields')
+    return  "Missing fields. Please try again.";
+  }
+
+  const existingRSVP = await prisma.rSVP.findFirst({
+    where:{
+      email: rsvpData.email,
+      eid: rsvpData.eid
+    }
+  })
+
+  if(existingRSVP){
+    return  "This email address has already RSVP'd to this event. Please check you email for more information.";
   }
 
   const event = await prisma.event.findUnique({
@@ -26,19 +37,9 @@ export const rsvp = async (formData: FormData) => {
   })
 
   if(!event){
-    throw new Error('cannot find event')
+    return  "Missing event. Please try again.";
   }
 
-  const existingRSVP = await prisma.rSVP.findFirst({
-    where:{
-      email: rsvpData.email,
-      eid: rsvpData.eid
-    }
-  })
-
-  if(existingRSVP){
-    return  "This email address has already RSVP'd to this event. Please check you email for more information.";
-  }
    //create record
    await prisma.rSVP.create({ data: rsvpData })
   const emailTemplate = getRsvpSignUpHTML(event);
