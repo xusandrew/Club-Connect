@@ -88,7 +88,9 @@ export function RSVP({ event, closeModal, isOpen, setIsOpen }: RSVPProps) {
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent>{RsvpFailureMessage ? RsvpFailure() : RsvpContent()}</DialogContent>
+        <DialogContent className='bg-primary text-white'>
+          {RsvpFailureMessage ? RsvpFailure() : RsvpContent()}
+        </DialogContent>
       </Dialog>
     </>
   )

@@ -53,16 +53,14 @@ export default function Component() {
   }, [targetDate])
 
   if (!events) {
-    console.log(events);
-    return (null);
+    console.log(events)
+    return null
   }
 
   return (
     <>
       <div className='flex items-center justify-between mb-4'>
-        <div className='text-lg font-semibold'>
-          {format(targetDate, "MMMM, yyyy")}
-        </div>
+        <div className='text-lg font-semibold'>{format(targetDate, 'MMMM, yyyy')}</div>
         <div className='flex items-center gap-2'>
           <Button
             variant='ghost'
@@ -79,7 +77,6 @@ export default function Component() {
             }}
             className='bg-transparent hover:bg-accent text-lg'
           >
-
             Today
           </Button>
           <Button
@@ -94,12 +91,19 @@ export default function Component() {
         </div>
       </div>
 
-      <div className='overflow h-[93%] overflow-scroll' style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}}>
+      <div
+        className='overflow h-[93%] overflow-scroll'
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         <div className='grid grid-cols-7 gap-4'>
           {daysOfWeek.map((day, i) => (
             <div key={i} className='flex flex-col items-center gap-1 text-sm text-muted-foreground'>
-              <div className='sticky top-0 w-full bg-background text-center pb-2'>
-                <div className={`border-b p-2 ${!isSameMonth(day, targetDate)? 'text-secondary border-secondary' : ''} ${isSameDay(day, new Date()) ? 'text-accent border-accent' : ''}`}>{format(day, 'ccc')} {format(day, 'd')}</div>
+              <div className='sticky top-0 w-full  text-center pb-2'>
+                <div
+                  className={`border-b p-2 bg-background ${!isSameMonth(day, targetDate) ? 'text-secondary border-secondary' : ''} ${isSameDay(day, new Date()) ? 'text-accent border-accent' : ''}`}
+                >
+                  {format(day, 'ccc')} {format(day, 'd')}
+                </div>
               </div>
               <div className='flex flex-col gap-1 w-full'>
                 {(events[format(day, 'ccc')] ?? []).map((event, j) => (

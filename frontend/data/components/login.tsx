@@ -13,7 +13,7 @@ import Link from 'next/link'
 
 export function Login() {
   return (
-    <div className='flex items-center justify-center h-full bg-background'>
+    <div className='flex items-center justify-center h-full'>
       <Card className='w-full max-w-md'>
         <CardHeader className='space-y-1 text-center'>
           <CardTitle className='text-3xl font-bold'>Welcome Back</CardTitle>
