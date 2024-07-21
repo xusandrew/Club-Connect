@@ -119,7 +119,7 @@ export const register = async (formData: FormData) => {
     .create({
       data: clubData,
     })
-    .catch((error) => {
+    .catch((error: any) => {
       if (error.code === 'P2002') {
         throw new Error('Club information already exists')
       }

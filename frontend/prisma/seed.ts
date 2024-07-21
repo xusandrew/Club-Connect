@@ -1565,7 +1565,7 @@ async function main() {
       cid: club1.cid,
     },
   })
-  club1_events_db.forEach((event) => {
+  club1_events_db.forEach((event: any) => {
     rsvp.push({
       eid: event.eid,
       email: 'balls1@example.com',
