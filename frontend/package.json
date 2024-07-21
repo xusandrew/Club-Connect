@@ -7,7 +7,8 @@
     "postdev": "ts-node ./src/lib/cron.ts",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.4",
