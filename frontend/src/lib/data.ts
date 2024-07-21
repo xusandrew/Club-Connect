@@ -98,7 +98,26 @@ export async function fetchEventsTomorrow() {
   return events as Event[]
 }
 
-export async function fetchEventsInWeek(weekDate: Date, category?: string) {
+export async function fetchEventsTomorrow() {
+  const startOfTomorrowDate = startOfTomorrow()
+  const endOfTomorrowDate = startOfTomorrow()
+
+  const events = await prisma.event.findMany({
+    orderBy: {
+      start_time: 'asc',
+    },
+    where: {
+      AND: [
+        { start_time: { gte: startOfTomorrowDate } },
+        { start_time: { lte: endOfTomorrowDate } },
+      ],
+    },
+    include: { club: true, rsvp_emails: true },
+  })
+  return events as Event[]
+}
+
+export async function fetchEventsInWeek(weekDate: Date, category?: string, clubId?: number) {
   noStore()
 
   try {
@@ -124,6 +143,12 @@ export async function fetchEventsInWeek(weekDate: Date, category?: string) {
             },
           },
         },
+      })
+    }
+
+    if (clubId) {
+      queryOptions.where.AND.push({
+        cid: clubId,
       })
     }
 
@@ -188,5 +213,19 @@ export async function fetchClubs(category?: string, query?: string) {
     console.log(query)
     console.error('Database Error:', error)
     throw new Error('Failed to fetch club data.')
+  }
+}
+
+export async function fetchClubById(cid: number) {
+  noStore()
+
+  try {
+    const club = await prisma.club.findUnique({
+      where: { cid },
+    })
+    return club
+  } catch (error) {
+    console.error('Database Error:', error)
+    // throw new Error('Failed to fetch club data.')
   }
 }
