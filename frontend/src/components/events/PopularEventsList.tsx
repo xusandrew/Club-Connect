@@ -66,6 +66,7 @@ export default function PopularEventsList({ category }: PopularEventsListProps) 
     if (inView) {
       loadMoreEvents()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView])
 
   return (
