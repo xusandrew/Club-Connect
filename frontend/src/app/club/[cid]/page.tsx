@@ -6,7 +6,7 @@ export default async function ClubPage({ params }: { params: { cid?: string | un
   const club = await fetchClubById(parseInt(cid))
 
   return (
-    <div className='flex h-screen flex-col md:flex-row bg-background'>
+    <div className='flex h-full flex-col md:flex-row bg-background'>
       <main>
         <section className='mb-8 border-l-8 border-yellow-500 pl-6'></section>
         {club ? <ClubInfo club={club} /> : <div>Club not found</div>}

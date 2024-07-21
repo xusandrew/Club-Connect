@@ -14,7 +14,7 @@ export default async function FilteredPage({
   const categories = await fetchCategories()
 
   return (
-    <div className='flex h-max flex-col md:flex-row'>
+    <div className='flex h-full flex-col md:flex-row'>
       <div className='w-full flex-none md:w-64 '>
         <Filter categories={categories} />
       </div>
