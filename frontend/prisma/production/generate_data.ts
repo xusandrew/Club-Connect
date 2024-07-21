@@ -2,8 +2,8 @@ import { faker } from '@faker-js/faker'
 import * as csvWriter from 'csv-writer'
 import prisma from '@/lib/prisma'
 import path from 'path'
+import { hashPassword } from '@/auth'
 
-import type { Club } from '@/types/Club'
 import type { Event } from '@/types/Event'
 import type { RSVP } from '@/types/RSVP'
 
@@ -31,7 +31,7 @@ const saveToCSV = async (data: any[], filePath: string) => {
   await csvWriterInstance.writeRecords(data)
 }
 
-const generateClubs = (numClubs: number): Omit<Club, 'cid'>[] => {
+async function generateClubs(numClubs: number) {
   const clubs = []
   const uniqueEmails = new Set<string>()
   const uniqueNames = new Set<string>()
@@ -52,7 +52,7 @@ const generateClubs = (numClubs: number): Omit<Club, 'cid'>[] => {
       description: faker.company.catchPhrase(),
       category: [CATEGORIES[categoryIndex]],
       email: email,
-      password: faker.internet.password(),
+      password: await hashPassword(faker.internet.password()),
       instagram: faker.internet.url(),
       discord: faker.internet.url(),
     })
@@ -117,7 +117,7 @@ const main = async () => {
   const numEvents = 1000
   const numRSVP = 5000
 
-  const clubs = generateClubs(numClubs)
+  const clubs = await generateClubs(numClubs)
   const events = generateEvents(numEvents)
   const rsvps = generateRSVPs(numRSVP)
 
