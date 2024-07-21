@@ -3,7 +3,7 @@
 import prisma from './prisma'
 import { RSVP } from '../types/RSVP'
 import mailer from './nodemailer'
-import { getRsvpSignUpHTML } from '@/app/email/getTemplate';
+import { rsvpSignUp } from '@/app/email/mailOptions';
 
 export const rsvp = async (formData: FormData) => {
   const rsvpData: RSVP = {
@@ -42,13 +42,7 @@ export const rsvp = async (formData: FormData) => {
 
    //create record
    await prisma.rSVP.create({ data: rsvpData })
-  const emailTemplate = getRsvpSignUpHTML(event);
-  const mailOptions = {
-    from: 'mxc.maggiechen@gmail.com',
-    to: rsvpData.email,
-    subject: `RSVP to an event!`,
-    html: emailTemplate,
-  }
+    const mailOptions = rsvpSignUp(rsvpData.email, event)
   //send email
   mailer.sendMail(mailOptions, (error, info) => {
     if (error) {

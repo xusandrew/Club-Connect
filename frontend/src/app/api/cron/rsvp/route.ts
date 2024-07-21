@@ -11,7 +11,7 @@ export async function GET() {
   eventsNextDay.map((event) => {
     event.rsvp_emails.map((rsvp) => {
       //send email
-      const mailOptions = rsvpReminder(rsvp.email)
+      const mailOptions = rsvpReminder(rsvp.email, event)
 
       mailer.sendMail(mailOptions, (error, info) => {
         if (error) {
