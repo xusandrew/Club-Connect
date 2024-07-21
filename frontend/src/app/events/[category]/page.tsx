@@ -14,17 +14,17 @@ export default async function FilteredPage({
   const categories = await fetchCategories()
 
   return (
-    <div className='flex h-screen flex-col md:flex-row'>
+    <div className='flex h-max flex-col md:flex-row'>
       <div className='w-full flex-none md:w-64 '>
         <Filter categories={categories} />
       </div>
-      <main>
+      <div>
         {byPopularity ? (
           <PopularEventsList category={category} />
         ) : (
           <EventsList category={category} />
         )}
-      </main>
+      </div>
     </div>
   )
 }

@@ -2,15 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-[data-theme="light"] {
+[data-theme='light'] {
   --background: 'white';
-  --foreground: '#323437'
+  --foreground: '#323437';
 }
-
 
 [data-theme='dark'] {
   --background: #323437;
-  --foreground: 'white'
+  --foreground: 'white';
 }
 
 :root {
