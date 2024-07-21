@@ -4,12 +4,13 @@ import { newsletter, rsvpReminder } from '@/app/email/mailOptions'
 import { startOfWeek } from 'date-fns'
 
 export async function GET() {
+  //cron jobs happen every monday at 2 AM UTC, 6 AM EST
   const startOfWeekDate = startOfWeek(new Date())
   const eventsNextDay = await fetchEventsInWeek(startOfWeekDate)
 
   //TODO: make newsletter table
+    // Right now it sends to m29chen@uwaterloo.ca every monday
 
-  //TODO: call a function that formats it into a newsletter
   const mailOptions = newsletter('m29chen@uwaterloo.ca', eventsNextDay)
   mailer.sendMail(mailOptions, (error, info) => {
     if (error) {
