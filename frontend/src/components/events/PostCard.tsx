@@ -44,10 +44,10 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
         <div className='flex items-center'>
           <Button
             onClick={handleRSVPButton}
-            className='w-[70px] flex items-centerhover:bg-white hover:text-gray-600 transition-colors gap-2 duration-300 bg-black'
+            className='w-[70px] flex items-center transition-colors gap-2 duration-300 bg-black'
           >
-            <EmailIcon />
-            {event.rsvp_emails && <p>{event.rsvp_emails.length}</p>}
+            <EmailIcon className='text-white' />
+            {event.rsvp_emails && <p className='text-white'>{event.rsvp_emails.length}</p>}
           </Button>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { getSession } from '@/auth'
 import NavbarLinks from './NavbarLinks'
 import LogoutButton from '../LogoutButton'
 import { RabbitIcon } from '../icons'
+import { ModeToggle } from './ThemeToggleButton'
 
 export default async function Navbar() {
   const session = await getSession()
@@ -25,20 +26,21 @@ export default async function Navbar() {
         <div className='flex gap-10 items-center w-[350px]'>
           {club ? (
             <>
-              <Link href={`/club/${club.cid}`}>{club.name}</Link>
+              {club.name}
               <LogoutButton />
             </>
           ) : (
             <Link
               href='/login'
               className={
-                'text-nowrap inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
+                'text-nowrap inline-flex h-10 items-center justify-center rounded-md border border-input px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
               }
             >
               Login as a Club
             </Link>
           )}
         </div>
+        <ModeToggle />
       </header>
     </>
   )

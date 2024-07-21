@@ -1551,7 +1551,7 @@ async function main() {
   const rsvp: { email: string; eid: number }[] = []
 
   for (let j = 0; j < 20; j++) {
-    events.forEach((event, i) => {
+    events.forEach((event: any, i: number) => {
       if ((i + j) % 11 === 0) return
       if ((i + j) % 7 === 0) return
       rsvp.push({
@@ -1566,7 +1566,7 @@ async function main() {
       cid: club1.cid,
     },
   })
-  club1_events_db.forEach((event) => {
+  club1_events_db.forEach((event: any) => {
     rsvp.push({
       eid: event.eid,
       email: 'balls1@example.com',

@@ -2,14 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --primary: #f9a826;
-  --background: #323437;
-  --accent: #f9a826;
-  --secondary: rgb(107, 114, 128);
-  /* Add more colors here */
+[data-theme="light"] {
+  --background: 'white';
+  --foreground: '#323437'
 }
 
-body {
-  color: white;
+
+[data-theme='dark'] {
+  --background: #323437;
+  --foreground: 'white'
+}
+
+:root {
+  --primary: #323437;
+  --accent: #f9a826;
+  --secondary: rgb(107, 114, 128);
 }
