@@ -1,6 +1,4 @@
-import { RSVP } from '@/types/RSVP'
 import prisma from '../src/lib/prisma'
-import { Event } from '@prisma/client'
 
 async function main() {
   // Create Categories
@@ -1552,7 +1550,7 @@ async function main() {
   const rsvp: { email: string; eid: number }[] = []
 
   for (let j = 0; j < 20; j++) {
-    events.forEach((event: Event, i) => {
+    events.forEach((event: any, i) => {
       if ((i + j) % 11 === 0) return
       if ((i + j) % 7 === 0) return
       rsvp.push({
