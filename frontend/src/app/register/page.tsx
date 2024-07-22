@@ -1,12 +1,7 @@
-import { register } from '@/auth'
-import { Register } from '@/data/components/register'
+import { RegisterForm } from '@/components/RegisterForm'
 
 const RegisterPage: React.FC = () => {
-  return (
-    <form action={register}>
-      <Register />
-    </form>
-  )
+  return <RegisterForm />
 }
 
 export default RegisterPage

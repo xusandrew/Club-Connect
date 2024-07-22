@@ -57,14 +57,14 @@ export const updateSession = async (request: NextRequest) => {
   return res
 }
 
-export const login = async (formData: FormData) => {
+export const login = async (_prevState: any, formData: FormData) => {
   const clubLoginInfo = {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
   }
 
   if (!(clubLoginInfo.email && clubLoginInfo.password)) {
-    throw new Error('Missing required fields')
+    return { error: 'Missing required fields', message: '' }
   }
 
   const club = await prisma.club.findUnique({
@@ -72,13 +72,13 @@ export const login = async (formData: FormData) => {
   })
 
   if (!club) {
-    throw new Error('Club not found')
+    return { error: `Club not found with email`, message: '' }
   }
 
   const match = await bcrypt.compare(clubLoginInfo.password, club.password)
 
   if (!match) {
-    throw new Error('Invalid password')
+    return { error: `Invalid password`, message: '' }
   }
 
   const expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) // 1 year
@@ -93,7 +93,16 @@ export const logout = () => {
   redirect('/login') // TODO: Redirect to club page
 }
 
-export const register = async (formData: FormData) => {
+export const hashPassword = async (password: string) => {
+  return new Promise<string>((resolve, reject) => {
+    bcrypt.hash(password, saltRounds, (err, hash) => {
+      if (err) reject(err)
+      else resolve(hash)
+    })
+  })
+}
+
+export const register = async (_prevState: any, formData: FormData) => {
   const clubData = {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
@@ -104,33 +113,27 @@ export const register = async (formData: FormData) => {
   }
 
   if (!(clubData.email && clubData.password && clubData.name)) {
-    throw new Error('Missing required fields')
+    return { error: 'Missing required fields', message: '' }
   }
 
-  const hash = await new Promise<string>((resolve, reject) => {
-    bcrypt.hash(clubData.password, saltRounds, (err, hash) => {
-      if (err) reject(err)
-      else resolve(hash)
-    })
-  })
-  clubData.password = hash
+  try {
+    clubData.password = await hashPassword(clubData.password)
 
-  const club = await prisma.club
-    .create({
+    const club = await prisma.club.create({
       data: clubData,
     })
-    .catch((error: any) => {
-      if (error.code === 'P2002') {
-        throw new Error('Club information already exists')
-      }
-      throw error
-    })
 
-  //   const expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) // 1 year
-  const expires = new Date(Date.now() + 10000) // 10 seconds
+    const expires = new Date(Date.now() + 1000 * 60 * 60 * 24 * 365) // 1 year
 
-  const session = await encrypt({ club, expires })
+    const session = await encrypt({ club, expires })
 
-  cookies().set('session', session, { expires, httpOnly: true })
-  redirect('/') // TODO: Redirect to club page
+    cookies().set('session', session, { expires, httpOnly: true })
+
+    redirect(`/club/${club.cid}`)
+  } catch (error: any) {
+    if (error.code === 'P2002') {
+      return { error: 'Club information already exists', message: '' }
+    }
+    return { error: 'An error occurred', message: '' }
+  }
 }

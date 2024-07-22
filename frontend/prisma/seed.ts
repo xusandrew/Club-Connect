@@ -1,4 +1,5 @@
-import prisma from '../src/lib/prisma'
+import prisma from '@/lib/prisma'
+import { hashPassword } from '@/auth'
 
 async function main() {
   // Create Categories
@@ -23,7 +24,7 @@ async function main() {
   const club1 = await prisma.club.create({
     data: {
       email: 'club1@example.com',
-      password: 'password1',
+      password: await hashPassword('password1'),
       name: 'Tech Club',
       description: 'A club for tech enthusiasts.',
       instagram: 'https://instagram.com/techclub',
@@ -37,7 +38,7 @@ async function main() {
   const club2 = await prisma.club.create({
     data: {
       email: 'club2@example.com',
-      password: 'password2',
+      password: await hashPassword('password2'),
       name: 'Art Club',
       description: 'A club for art lovers.',
       instagram: 'https://instagram.com/artclub',
@@ -51,7 +52,7 @@ async function main() {
   const club3 = await prisma.club.create({
     data: {
       email: 'club3@example.com',
-      password: 'password3',
+      password: await hashPassword('password3'),
       name: 'Sports Club',
       description: 'A club for sports enthusiasts.',
       instagram: 'https://instagram.com/sportsclub',
@@ -65,7 +66,7 @@ async function main() {
   const club4 = await prisma.club.create({
     data: {
       email: 'club4@example.com',
-      password: 'password4',
+      password: await hashPassword('password4'),
       name: 'Music Club',
       description: 'A club for music lovers.',
       instagram: 'https://instagram.com/musicclub',
@@ -79,7 +80,7 @@ async function main() {
   const club5 = await prisma.club.create({
     data: {
       email: 'club5@example.com',
-      password: 'password5',
+      password: await hashPassword('password5'),
       name: 'Drama Club',
       description: 'A club for drama enthusiasts.',
       instagram: 'https://instagram.com/dramaclub',
@@ -96,7 +97,7 @@ async function main() {
   const club6 = await prisma.club.create({
     data: {
       email: 'club6@example.com',
-      password: 'password6',
+      password: await hashPassword('password6'),
       name: 'Science Club',
       description: 'A club for science enthusiasts.',
       instagram: 'https://instagram.com/scienceclub',
@@ -110,7 +111,7 @@ async function main() {
   const club7 = await prisma.club.create({
     data: {
       email: 'club7@example.com',
-      password: 'password7',
+      password: await hashPassword('password7'),
       name: 'Literature Club',
       description: 'A club for literature lovers.',
       instagram: 'https://instagram.com/literatureclub',
@@ -127,7 +128,7 @@ async function main() {
   const club8 = await prisma.club.create({
     data: {
       email: 'club8@example.com',
-      password: 'password8',
+      password: await hashPassword('password8'),
       name: 'Math Club',
       description: 'A club for math enthusiasts.',
       instagram: 'https://instagram.com/mathclub',
@@ -141,7 +142,7 @@ async function main() {
   const club9 = await prisma.club.create({
     data: {
       email: 'club9@example.com',
-      password: 'password9',
+      password: await hashPassword('password9'),
       name: 'Chess Club',
       description: 'A club for chess lovers.',
       instagram: 'https://instagram.com/chessclub',
@@ -155,7 +156,7 @@ async function main() {
   const club10 = await prisma.club.create({
     data: {
       email: 'club10@example.com',
-      password: 'password10',
+      password: await hashPassword('password10'),
       name: 'Cooking Club',
       description: 'A club for cooking enthusiasts.',
       instagram: 'https://instagram.com/cookingclub',
@@ -169,7 +170,7 @@ async function main() {
   const club11 = await prisma.club.create({
     data: {
       email: 'club11@example.com',
-      password: 'password11',
+      password: await hashPassword('password11'),
       name: 'Photography Club',
       description: 'A club for photography enthusiasts.',
       instagram: 'https://instagram.com/photographyclub',
@@ -186,7 +187,7 @@ async function main() {
   const club12 = await prisma.club.create({
     data: {
       email: 'club12@example.com',
-      password: 'password12',
+      password: await hashPassword('password12'),
       name: 'Robotics Club',
       description: 'A club for robotics enthusiasts.',
       instagram: 'https://instagram.com/roboticsclub',
@@ -200,7 +201,7 @@ async function main() {
   const club13 = await prisma.club.create({
     data: {
       email: 'club13@example.com',
-      password: 'password13',
+      password: await hashPassword('password13'),
       name: 'Gaming Club',
       description: 'A club for gaming enthusiasts.',
       instagram: 'https://instagram.com/gamingclub',
@@ -214,7 +215,7 @@ async function main() {
   const club14 = await prisma.club.create({
     data: {
       email: 'club14@example.com',
-      password: 'password14',
+      password: await hashPassword('password14'),
       name: 'Travel Club',
       description: 'A club for travel enthusiasts.',
       instagram: 'https://instagram.com/travelclub',
@@ -228,7 +229,7 @@ async function main() {
   const club15 = await prisma.club.create({
     data: {
       email: 'club15@example.com',
-      password: 'password15',
+      password: await hashPassword('password15'),
       name: 'Nature Club',
       description: 'A club for nature lovers.',
       instagram: 'https://instagram.com/natureclub',
@@ -242,7 +243,7 @@ async function main() {
   const club16 = await prisma.club.create({
     data: {
       email: 'club16@example.com',
-      password: 'password16',
+      password: await hashPassword('password16'),
       name: 'Fitness Club',
       description: 'A club for fitness enthusiasts.',
       instagram: 'https://instagram.com/fitnessclub',
@@ -259,7 +260,7 @@ async function main() {
   const club17 = await prisma.club.create({
     data: {
       email: 'club17@example.com',
-      password: 'password17',
+      password: await hashPassword('password17'),
       name: 'History Club',
       description: 'A club for history enthusiasts.',
       instagram: 'https://instagram.com/historyclub',
@@ -273,7 +274,7 @@ async function main() {
   const club18 = await prisma.club.create({
     data: {
       email: 'club18@example.com',
-      password: 'password18',
+      password: await hashPassword('password18'),
       name: 'Film Club',
       description: 'A club for film enthusiasts.',
       instagram: 'https://instagram.com/filmclub',
@@ -290,7 +291,7 @@ async function main() {
   const club19 = await prisma.club.create({
     data: {
       email: 'club19@example.com',
-      password: 'password19',
+      password: await hashPassword('password19'),
       name: 'Volunteer Club',
       description: 'A club for volunteers.',
       instagram: 'https://instagram.com/volunteerclub',
@@ -304,7 +305,7 @@ async function main() {
   const club20 = await prisma.club.create({
     data: {
       email: 'club20@example.com',
-      password: 'password20',
+      password: await hashPassword('password20'),
       name: 'Debate Club',
       description: 'A club for debate enthusiasts.',
       instagram: 'https://instagram.com/debateclub',
@@ -318,7 +319,7 @@ async function main() {
   const club21 = await prisma.club.create({
     data: {
       email: 'club21@example.com',
-      password: 'password21',
+      password: await hashPassword('password21'),
       name: 'Business Club',
       description: 'A club for business and entrepreneurial enthusiasts.',
       instagram: 'https://instagram.com/businessclub',

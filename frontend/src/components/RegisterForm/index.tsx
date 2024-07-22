@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Card,
   CardHeader,
@@ -10,10 +12,22 @@ import { Label } from '@/data/components/ui/label'
 import { Input } from '@/data/components/ui/input'
 import { Textarea } from '@/data/components/ui/textarea'
 import { Button } from '@/data/components/ui/button'
+import { useFormState } from 'react-dom'
+import { register } from '@/auth'
 
-export function Register() {
+const initialState = {
+  error: '',
+  message: '',
+}
+
+export function RegisterForm() {
+  const [state, formAction] = useFormState(register, initialState)
+
   return (
-    <div className='flex items-center justify-center h-full  my-10'>
+    <form
+      action={formAction}
+      className='flex items-center justify-center h-full bg-background my-10'
+    >
       <Card className='w-full max-w-md'>
         <CardHeader className='space-y-1 text-center'>
           <CardTitle className='text-3xl font-bold'>Register</CardTitle>
@@ -51,11 +65,13 @@ export function Register() {
           </div>
         </CardContent>
         <CardFooter>
+          {state?.error && <p className='text-red-500 text-xs'>{state.error}</p>}
+          {state?.message && <p className='text-green-500 text-xs'>{state.message}</p>}
           <Button type='submit' className='w-full' variant='outline'>
             Register
           </Button>
         </CardFooter>
       </Card>
-    </div>
+    </form>
   )
 }
