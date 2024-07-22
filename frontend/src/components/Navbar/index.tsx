@@ -26,7 +26,7 @@ export default async function Navbar() {
         <div className='flex gap-10 items-center w-[350px]'>
           {club ? (
             <>
-              {club.name}
+              <Link href={`/club/${club.cid}`}> {club.name}</Link>
               <LogoutButton />
             </>
           ) : (
