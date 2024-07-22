@@ -5,6 +5,7 @@
 import { fetchEventsTomorrow } from '@/lib/data'
 import mailer from '@/lib/nodemailer'
 import { rsvpReminder } from '@/app/email/mailOptions'
+import { NextResponse } from 'next/server'
 
 export async function GET() {
   //cron job happens every day at 2 AM UTC, 6 AM EST
@@ -18,11 +19,12 @@ export async function GET() {
 
       mailer.sendMail(mailOptions, (error, info) => {
         if (error) {
-          console.error('Error sending email: ', error)
-        } else {
-          console.log('Email sent: ', info.response)
+          console.log(`Error sending email: ${error}`, { status:500 })
         }
       })
     })
+    
   })
+
+  return NextResponse.json(`RSVP reminders cron job finished`, { status:200 })
 }

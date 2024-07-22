@@ -2,6 +2,7 @@ import { fetchEventsInWeek, fetchEventsTomorrow } from '@/lib/data'
 import mailer from '@/lib/nodemailer'
 import { newsletter, rsvpReminder } from '@/app/email/mailOptions'
 import { startOfWeek } from 'date-fns'
+import { NextResponse } from 'next/server'
 
 export async function GET() {
   //cron jobs happen every monday at 2 AM UTC, 6 AM EST
@@ -9,14 +10,14 @@ export async function GET() {
   const eventsNextDay = await fetchEventsInWeek(startOfWeekDate)
 
   //TODO: make newsletter table
-    // Right now it sends to m29chen@uwaterloo.ca every monday
+  // Right now it sends to m29chen@uwaterloo.ca every monday
 
   const mailOptions = newsletter('m29chen@uwaterloo.ca', eventsNextDay)
   mailer.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email: ', error)
-    } else {
-      console.log('Email sent: ', info.response)
+      console.log(`Error sending email: ${error}`, { status: 500 })
     }
   })
+
+  return NextResponse.json(`Newsletter cron job finished`, { status: 200 })
 }
