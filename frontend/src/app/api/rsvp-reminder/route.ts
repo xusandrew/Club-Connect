@@ -1,10 +1,6 @@
-
-
-
-
 import { fetchEventsTomorrow } from '@/lib/data'
 import mailer from '@/lib/nodemailer'
-import { rsvpReminder } from '@/app/email/mailOptions'
+import { rsvpReminder } from '@/lib/email/mailOptions'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
@@ -19,12 +15,11 @@ export async function GET() {
 
       mailer.sendMail(mailOptions, (error, info) => {
         if (error) {
-          console.log(`Error sending email: ${error}`, { status:500 })
+          console.log(`Error sending email: ${error}`, { status: 500 })
         }
       })
     })
-    
   })
 
-  return NextResponse.json(`RSVP reminders cron job finished`, { status:200 })
+  return NextResponse.json(`RSVP reminders cron job finished`, { status: 200 })
 }

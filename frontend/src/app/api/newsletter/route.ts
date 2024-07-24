@@ -1,6 +1,6 @@
 import { fetchEventsInWeek, fetchEventsTomorrow } from '@/lib/data'
 import mailer from '@/lib/nodemailer'
-import { newsletter, rsvpReminder } from '@/app/email/mailOptions'
+import { newsletter, rsvpReminder } from '@/lib/email/mailOptions'
 import { startOfWeek } from 'date-fns'
 import { NextResponse } from 'next/server'
 
