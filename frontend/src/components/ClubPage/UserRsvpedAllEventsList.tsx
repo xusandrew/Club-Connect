@@ -37,12 +37,16 @@ export async function UserRvspedAllEventsList({ club }: { club: Club }) {
 
   return (
     <div className='py-10'>
-      <div className='text-xl font-bold text-accent'>Emails RSVPed to all club events</div>
-      <div className='ml-10'>
-        {rsvps.map((rsvp) => (
-          <div key={rsvp.email}>{rsvp.email}</div>
-        ))}
-      </div>
+      {rsvps.length !== 0 && (
+        <>
+          <div className='text-xl font-bold text-accent'>Emails RSVPed to all club events</div>
+          <div className='ml-10'>
+            {rsvps.map((rsvp) => (
+              <div key={rsvp.email}>{rsvp.email}</div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   )
 }
