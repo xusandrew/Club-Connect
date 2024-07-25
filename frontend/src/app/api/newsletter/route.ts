@@ -13,10 +13,15 @@ export async function GET() {
   // Right now it sends to m29chen@uwaterloo.ca every monday
 
   const mailOptions = newsletter('m29chen@uwaterloo.ca', eventsNextDay)
-  mailer.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(`Error sending email: ${error}`, { status: 500 })
-    }
+  await new Promise((resolve, reject) => {
+    mailer.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(`Error sending email: ${error}`, { status: 500 })
+        reject(error)
+      }
+
+      resolve(info)
+    })
   })
 
   return NextResponse.json(`Newsletter cron job finished`, { status: 200 })
