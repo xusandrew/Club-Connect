@@ -1,5 +1,5 @@
 import Filter from '@/components/ui/FilterBar'
-import { fetchCategories, fetchClubs, fetchPopularClubs } from '@/lib/data'
+import { fetchCategories } from '@/lib/data'
 import Search from '@/components/explore/Search'
 import ClubsList from '@/components/explore/ClubsList'
 
