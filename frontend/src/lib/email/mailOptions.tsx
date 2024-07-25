@@ -37,9 +37,8 @@ export const newsletter = (email: string, events: Event[]) => {
   }
 }
 
-
 export const newsletterSignUp = (email: string) => {
-  const template = render(<NewsletterSignUpEmail/>)
+  const template = render(<NewsletterSignUpEmail />)
 
   return {
     from: SENDER_EMAIL,

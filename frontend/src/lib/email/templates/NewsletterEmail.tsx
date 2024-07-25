@@ -20,7 +20,7 @@ const NewsletterEmail = ({ events }: RsvpSignUpProps) => {
     <ul key={event.eid}>
       <Section style={body}>
         <Text style={paragraph}>
-          <b>{event.title}</b> 
+          <b>{event.title}</b>
           <br />
           <b>Start Time:</b>{' '}
           {event.start_time ? new Date(event.start_time).toLocaleString() : 'Unspecified'}

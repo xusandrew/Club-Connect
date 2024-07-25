@@ -15,7 +15,7 @@ interface RsvpReminderProps {
   event: Event
 }
 
-const RsvpReminder= ({ event }:RsvpReminderProps ) => {
+const RsvpReminder = ({ event }: RsvpReminderProps) => {
   return (
     <Html>
       <Head />
