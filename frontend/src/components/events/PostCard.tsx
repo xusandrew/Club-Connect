@@ -3,6 +3,10 @@ import Link from 'next/link'
 import { formatDate, formatTimeRange, timeFromNow } from '@/lib/utils'
 import { CalendarIcon, EmailIcon, LocateIcon } from '../icons'
 import { Button } from '@/data/components/ui/button'
+import { useState, useEffect } from 'react'
+import { getSession } from '@/auth'
+import { Club } from '@/types/Club'
+import { useRouter } from 'next/navigation'
 
 type CardProps = {
   event: Event
@@ -10,10 +14,37 @@ type CardProps = {
   setModalEvent: React.Dispatch<React.SetStateAction<Event | undefined>>
 }
 
+type StateType = {
+  [key: string]: any;
+  club: Club;
+} | undefined;
+
 export function Card({ event, openModal, setModalEvent }: CardProps) {
+
+  const [session, setSession] = useState<StateType>();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(()=>{
+    getSession().then((s) => {setSession(s)}).catch((error) => {alert(error)})
+  }, [])
+
+  useEffect(()=>{
+    setIsAdmin(session?.club?.cid === event.cid)
+  }, [session])
+
   const handleRSVPButton = () => {
     openModal()
     setModalEvent(event)
+  }
+
+  const router = useRouter();
+  const handleEditEvent = (event : Event) => {
+    const stringifiedEvent = Object.fromEntries(
+      Object.entries(event).map(([key, value]) => [key, String(value)])
+    )
+
+    const queryString = new URLSearchParams(stringifiedEvent).toString();
+    router.push(`/edit-event?${queryString}`);
   }
 
   const clubPageLink = `/club/${event.club.cid}`
@@ -50,6 +81,13 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
             {event.rsvp_emails && <p className='text-white'>{event.rsvp_emails.length}</p>}
           </Button>
         </div>
+        {isAdmin &&
+        <div>
+          <button onClick={() => handleEditEvent(event)}>
+            edit
+          </button>
+        </div>
+        }
       </div>
     </div>
   )
