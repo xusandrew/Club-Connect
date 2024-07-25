@@ -7,9 +7,9 @@ export default async function FilteredPage({
   params,
 }: {
   params: {
-    category?: string | undefined
-    query?: string | undefined
-    byPopularity?: boolean | undefined
+    category?: string
+    query?: string
+    byPopularity?: boolean
   }
 }) {
   const category = params.category || ''
