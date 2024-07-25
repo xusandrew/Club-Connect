@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-export const SENDER_EMAIL = 'mxc.maggiechen@gmail.com'
+export const SENDER_EMAIL = 'cs348clubconnect@gmail.com'
 const mailer = nodemailer.createTransport(
   {
     service: 'Gmail',
