@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from './prisma'
+import prisma from '@/lib/prisma'
 import { RSVP } from '../types/RSVP'
 import mailer from './nodemailer'
 import { rsvpSignUp } from '@/lib/email/mailOptions'

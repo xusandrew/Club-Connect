@@ -3,12 +3,14 @@ import { Roboto_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '../components/Navbar'
 import { ThemeProvider } from '@/components/ThemeProvider'
-
 const roboto = Roboto_Mono({ subsets: ['latin'], weight: ['400', '700'] })
 
 export const metadata: Metadata = {
-  title: '',
-  description: '',
+  title: 'ClubsConnect',
+  description: 'Explore a centralized hub for clubs',
+  icons: {
+    icon: '/static/rabbit.ico',
+  },
 }
 
 export default function RootLayout({

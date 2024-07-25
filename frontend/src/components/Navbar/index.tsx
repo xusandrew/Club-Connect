@@ -21,22 +21,24 @@ export default async function Navbar() {
               </div>
             </Link>
           </div>
-          <NavbarLinks />
+          <NavbarLinks club={club} />
         </div>
-        <div className='flex gap-10 items-center w-[350px]'>
+        <div className='flex gap-6 items-center w-[300px]'>
           {club ? (
             <>
-              <Link href={`/club/${club.cid}`}> {club.name}</Link>
+              <Link className='hover:bg-black/10 p-2 px-4 text-sm' href='/create-event'>
+                + Create
+              </Link>
               <LogoutButton />
             </>
           ) : (
             <Link
               href='/login'
               className={
-                'text-nowrap inline-flex h-10 items-center justify-center rounded-md border border-input px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50'
+                'text-nowrap inline-flex h-10 items-center justify-center rounded-md border border-input px-8 text-sm font-medium transition-colors hover:bg-black/100'
               }
             >
-              Login as a Club
+              Login
             </Link>
           )}
         </div>
