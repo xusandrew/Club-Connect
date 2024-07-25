@@ -6,7 +6,7 @@ import { InstagramIcon, DiscordIcon } from '@/components/icons'
 import { getSession } from '@/auth'
 import InstaEmbed from '@/components/ui/InstaEmbed'
 
-export async function ClubInfo({ club }: { club: Club }) {
+export async function ClubPage({ club }: { club: Club }) {
   const session = await getSession()
   const isAdmin = session?.club?.cid === club.cid
 
