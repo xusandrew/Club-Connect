@@ -1550,12 +1550,18 @@ async function main() {
   const events = await prisma.event.findMany()
   const rsvp: { email: string; eid: number }[] = []
 
+  const newsletters: { email: string }[] = []
+
   for (let j = 0; j < 20; j++) {
     events.forEach((event: any, i: number) => {
       if ((i + j) % 11 === 0) return
       if ((i + j) % 7 === 0) return
       rsvp.push({
         eid: event.eid,
+        email: `help${i + j}@example.com`,
+      })
+
+      newsletters.push({
         email: `help${i + j}@example.com`,
       })
     })
@@ -1574,6 +1580,10 @@ async function main() {
   })
 
   await prisma.rSVP.createMany({ data: rsvp })
+
+  await prisma.newsletterSubscription.createMany({
+    data: newsletters
+  })
 
   console.log('Seed data created successfully')
 }

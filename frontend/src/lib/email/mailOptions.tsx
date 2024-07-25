@@ -4,6 +4,7 @@ import { render } from '@react-email/render'
 import RsvpSignUpEmail from './templates/RsvpSignUpEmail'
 import RsvpReminderEmail from './templates/RsvpReminderEmail'
 import NewsletterEmail from './templates/NewsletterEmail'
+import NewsletterSignUpEmail from './templates/NewsletterSignUpEmail'
 
 export const rsvpSignUp = (email: string, event: Event) => {
   const template = render(<RsvpSignUpEmail event={event} />)
@@ -32,6 +33,18 @@ export const newsletter = (email: string, events: Event[]) => {
     from: SENDER_EMAIL,
     to: email,
     subject: `Club Connect Newsletter!`,
+    html: template,
+  }
+}
+
+
+export const newsletterSignUp = (email: string) => {
+  const template = render(<NewsletterSignUpEmail/>)
+
+  return {
+    from: SENDER_EMAIL,
+    to: email,
+    subject: `Club Connect Newsletter Sign Up Confirmation`,
     html: template,
   }
 }
