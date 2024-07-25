@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { UserRvspedAllEventsList } from './UserRsvpedAllEventsList'
 import { Button } from '@/data/components/ui/button'
 import type { Club } from '@/types/Club'
 import EventsList from '@/components/events/EventsList'
@@ -48,6 +49,7 @@ export async function ClubPage({ club }: { club: Club }) {
             )}
           </div>
         </div>
+        {isAdmin && <UserRvspedAllEventsList club={club} />}
         {isAdmin && (
           <Link href={`/create-event`}>
             <Button variant='outline'>Create an event</Button>
