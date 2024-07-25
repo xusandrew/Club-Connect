@@ -53,7 +53,6 @@ export default function Component() {
   }, [targetDate])
 
   if (!events) {
-    console.log(events)
     return null
   }
 

@@ -1,5 +1,5 @@
 import Filter from '@/components/ui/FilterBar'
-import { fetchCategories, fetchClubs, fetchPopularClubs } from '@/lib/data'
+import { fetchCategories } from '@/lib/data'
 import Search from '@/components/explore/Search'
 import ClubsList from '@/components/explore/ClubsList'
 
@@ -7,9 +7,9 @@ export default async function FilteredPage({
   params,
 }: {
   params: {
-    category?: string | undefined
-    query?: string | undefined
-    byPopularity?: boolean | undefined
+    category?: string
+    query?: string
+    byPopularity?: boolean
   }
 }) {
   const category = params.category || ''

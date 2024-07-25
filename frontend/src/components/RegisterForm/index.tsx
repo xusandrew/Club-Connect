@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import {
   Card,
   CardHeader,
@@ -14,6 +15,7 @@ import { Textarea } from '@/data/components/ui/textarea'
 import { Button } from '@/data/components/ui/button'
 import { useFormState } from 'react-dom'
 import { register } from '@/auth'
+import { useEffect } from 'react'
 
 const initialState = {
   error: '',
@@ -22,6 +24,13 @@ const initialState = {
 
 export function RegisterForm() {
   const [state, formAction] = useFormState(register, initialState)
+  const router = useRouter()
+
+  useEffect(() => {
+    if (state?.success) {
+      router.push(`/club/${state.cid}`) // Redirect to the club's page
+    }
+  }, [state?.success, state.cid, router])
 
   return (
     <form

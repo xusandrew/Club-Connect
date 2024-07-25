@@ -1,5 +1,5 @@
 import type { Event } from '@/types/Event'
-import prisma from './prisma'
+import prisma from '@/lib/prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 import { endOfWeek, startOfTomorrow, startOfWeek } from 'date-fns'
 import { Club } from '@/types/Club'
@@ -198,7 +198,6 @@ export async function fetchClubs(category?: string, query?: string) {
 
     return clubs as Club[]
   } catch (error) {
-    console.log(query)
     console.error('Database Error:', error)
     throw new Error('Failed to fetch club data.')
   }

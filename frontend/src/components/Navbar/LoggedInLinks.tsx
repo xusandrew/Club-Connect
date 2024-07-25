@@ -5,26 +5,17 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { CalendarIcon } from '../icons'
-import { Club } from '@/types/Club'
-import { Group } from '../icons'
 
-type NavbarLinksProps = {
-  club: Club | undefined
-}
+// Map of links to display in the side navigation.
+// Depending on the size of the application, this would be stored in a database.
+const links = [
+  { name: 'Home', href: '/events', icon: HomeIcon },
+  { name: 'Explore', href: '/explore', icon: BookOpenIcon },
+  { name: 'Calendar', href: '/calendar', icon: CalendarIcon },
+]
 
-export default function NavbarLinks(props: NavbarLinksProps) {
+export default function NavbarLinks() {
   const pathname = usePathname()
-  // Map of links to display in the side navigation.
-  // Depending on the size of the application, this would be stored in a database.
-  let links = [
-    { name: 'Home', href: '/events', icon: HomeIcon },
-    { name: 'Explore', href: '/explore', icon: BookOpenIcon },
-    { name: 'Calendar', href: '/calendar', icon: CalendarIcon },
-  ]
-
-  if (props.club) {
-    links.push({ name: props.club.name, href: `/club/${props.club.cid}`, icon: Group })
-  }
 
   return (
     <nav className='flex space-x-4'>

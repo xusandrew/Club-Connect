@@ -1,7 +1,7 @@
 import { ClubPage } from '@/components/ClubPage'
 import { fetchClubById } from '@/lib/data'
 
-export default async function ClubInfoPage({ params }: { params: { cid?: string | undefined } }) {
+export default async function ClubInfoPage({ params }: { params: { cid?: string } }) {
   const cid = params.cid || ''
   const club = await fetchClubById(parseInt(cid))
 
