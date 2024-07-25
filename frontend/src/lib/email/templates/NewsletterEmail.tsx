@@ -6,51 +6,49 @@ import {
   Heading,
   Hr,
   Html,
-  Img,
-  Link,
   Preview,
   Section,
   Text,
 } from '@react-email/components'
 import * as React from 'react'
 interface RsvpSignUpProps {
-  event: Event
+  events: Event[]
 }
 
-const RsvpSignUpEmail = ({ event }: RsvpSignUpProps) => {
+const NewsletterEmail = ({ events }: RsvpSignUpProps) => {
+  const eventsThisWeek = events.map((event) => (
+    <ul key={event.eid}>
+      <Section style={body}>
+        <Text style={paragraph}>
+          <b>{event.title}</b> 
+          <br />
+          <b>Start Time:</b>{' '}
+          {event.start_time ? new Date(event.start_time).toLocaleString() : 'Unspecified'}
+          <br />
+          <b>End Time:</b>{' '}
+          {event.end_time ? new Date(event.end_time).toLocaleString() : 'Unspecified'}
+          <br />
+          <b>Location:</b> {event.location}
+          <br />
+          <b>Event Description:</b> {event.description}
+        </Text>
+      </Section>
+    </ul>
+  ))
+
   return (
     <Html>
       <Head />
-      <Preview>Log in with this magic link.</Preview>
+      <Preview>Club Connect Weekly Digest!</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Heading style={heading}>
-            RSVP Confirmation: {event.title} by {event.club.name}
-          </Heading>
-          <Section style={body}>
-            <Text style={paragraph}>
-              Thank you for RSVPing to {event.title} hosted by {event.club.name}! Here are the
-              details of the event:
-            </Text>
-          </Section>
-          <Section style={body}>
-            <Text style={paragraph}>
-              <b>Event Details:</b>
-              <li>Event: {event.title}</li>
-              <li>
-                Start Time: {event.start_time ? event.start_time.toLocaleString() : 'Unspecified'}
-              </li>
-              <li>End Time: {event.end_time ? event.end_time.toLocaleString() : 'Unspecified'}</li>
-              <li>Location: {event.location}</li>
-              <li>Event Description: {event.description}</li>
-            </Text>
-          </Section>
+          <Heading style={heading}>This Week&apos;s Events</Heading>
+          <ul>{eventsThisWeek}</ul>
           <Text style={paragraph}>
             Best regards,
             <br />- Club Connect
           </Text>
           <Hr style={hr} />
-
           <Text style={footer}>Club Connect</Text>
         </Container>
       </Body>
@@ -58,7 +56,7 @@ const RsvpSignUpEmail = ({ event }: RsvpSignUpProps) => {
   )
 }
 
-export default RsvpSignUpEmail
+export default NewsletterEmail
 
 const main = {
   backgroundColor: '#ffffff',
