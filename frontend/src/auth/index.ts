@@ -85,7 +85,7 @@ export const login = async (_prevState: any, formData: FormData) => {
   const session = await encrypt({ club, expires })
 
   cookies().set('session', session, { expires, httpOnly: true })
-  redirect('/')
+  redirect(`/club/${club.cid}`)
 }
 
 export const logout = () => {
