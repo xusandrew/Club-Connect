@@ -15,7 +15,14 @@ export async function ClubPage({ club }: { club: Club }) {
     <div className='w-full mx-auto py-12 px-4 sm:px-6 lg:px-8'>
       <div className='space-y-6'>
         <div className='text-left'>
-          <h1 className='text-6xl font-bold text-accent'>{club.name}</h1>
+          <div className='flex items-center gap-4 justify-between'>
+            <h1 className='text-6xl font-bold text-accent'>{club.name}</h1>
+            {isAdmin && (
+              <Link href={`/create-event`}>
+                <Button variant='outline'>Create an event</Button>
+              </Link>
+            )}
+          </div>
           <p className='mt-3 text-muted-foreground'>{club.description}</p>
         </div>
         {club.instagram && <InstaEmbed link={club.instagram} />}
@@ -50,11 +57,7 @@ export async function ClubPage({ club }: { club: Club }) {
           </div>
         </div>
         {isAdmin && <UserRvspedAllEventsList club={club} />}
-        {isAdmin && (
-          <Link href={`/create-event`}>
-            <Button variant='outline'>Create an event</Button>
-          </Link>
-        )}
+
         <div className='space-y-4'>
           <h2 className='text-4xl font-bold text-accent'>Upcoming Events</h2>
           <EventsList category={''} clubId={club.cid} />
