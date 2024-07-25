@@ -3,7 +3,7 @@
 import prisma from './prisma'
 import { Newsletter } from '../types/Newsletter'
 import mailer from './nodemailer'
-import { newsletterSignUp} from '@/lib/email/mailOptions'
+import { newsletterSignUp } from '@/lib/email/mailOptions'
 
 export const newsletterSignup = async (formData: FormData) => {
   const newsletterData: Newsletter = {
@@ -21,7 +21,7 @@ export const newsletterSignup = async (formData: FormData) => {
   })
 
   if (existingRSVP) {
-    return "This email address has already signed up for the weekly newsletter. Please use another email or check your inbox for more information."
+    return 'This email address has already signed up for the weekly newsletter. Please use another email or check your inbox for more information.'
   }
 
   //create record
@@ -38,6 +38,6 @@ export const newsletterSignup = async (formData: FormData) => {
       resolve(info)
     })
 
-  return null
-})
+    return null
+  })
 }

@@ -15,7 +15,7 @@ interface RsvpReminderEmailProps {
   event: Event
 }
 
-const RsvpReminderEmail= ({ event }:RsvpReminderEmailProps ) => {
+const RsvpReminderEmail = ({ event }: RsvpReminderEmailProps) => {
   return (
     <Html>
       <Head />
@@ -74,19 +74,17 @@ const RsvpReminderEmail= ({ event }:RsvpReminderEmailProps ) => {
 export default RsvpReminderEmail
 
 RsvpReminderEmail.PreviewProps = {
-    event: {
-      title: "Intro to Coding Workshop",
-      description: "Learn the basics of coding with Python",
-      start_time: new Date(),
-      end_time: new Date(),
-      location: "Tech Lab",
-      club: {
-        name: "Tech Club"
-      }
-
+  event: {
+    title: 'Intro to Coding Workshop',
+    description: 'Learn the basics of coding with Python',
+    start_time: new Date(),
+    end_time: new Date(),
+    location: 'Tech Lab',
+    club: {
+      name: 'Tech Club',
     },
-  } as RsvpReminderEmailProps;
-
+  },
+} as RsvpReminderEmailProps
 
 const main = {
   backgroundColor: '#ffffff',

@@ -36,14 +36,13 @@ export function NewsletterModal({ closeModal, isOpen, setIsOpen }: NewsletterMod
 
   const NewsletterContent = () => {
     return (
-      
       <form action={onSubmit}>
         <div className='flex items-center justify-center'>
           <Card className='w-full max-w-md border-0'>
             <CardHeader className='space-y-1 text-center'>
               <CardTitle className='text-3xl font-bold'>Weekly Newsletter</CardTitle>
               <CardDescription>
-              Subscribe with your email to receive our weekly event digests every Monday!
+                Subscribe with your email to receive our weekly event digests every Monday!
               </CardDescription>
             </CardHeader>
             <CardContent className='space-y-4'>

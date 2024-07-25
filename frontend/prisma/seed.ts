@@ -1582,7 +1582,7 @@ async function main() {
   await prisma.rSVP.createMany({ data: rsvp })
 
   await prisma.newsletterSubscription.createMany({
-    data: newsletters
+    data: newsletters,
   })
 
   console.log('Seed data created successfully')
