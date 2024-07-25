@@ -16,6 +16,11 @@ export default function Component({ club }: ClubCardProps) {
         {club.category && club.category[0] && <CategoryIcon category={club.category[0].type} />}
         <h3 className=' text-2xl font-bold'>{club.name}</h3>
       </Link>
+      {club.averageRSVPs !== undefined && (
+        <div className='mt-2'>
+          <p className='text-gray-500'>Average RSVPs: {club.averageRSVPs.toFixed(2)}</p>
+        </div>
+      )}
 
       <p className='mt-2 '>{club.description}</p>
       {!club.description && <p className='mt-2 text-gray-400'>No club description.</p>}
