@@ -53,7 +53,7 @@ export const rsvp = async (formData: FormData) => {
 
       resolve(info)
     })
-  })
 
   return null
+})
 }
