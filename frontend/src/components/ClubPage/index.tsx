@@ -17,11 +17,6 @@ export async function ClubPage({ club }: { club: Club }) {
         <div className='text-left'>
           <div className='flex items-center gap-4 justify-between'>
             <h1 className='text-6xl font-bold text-accent'>{club.name}</h1>
-            {isAdmin && (
-              <Link href={`/create-event`}>
-                <Button variant='outline'>Create an event</Button>
-              </Link>
-            )}
           </div>
           <p className='mt-3 text-muted-foreground'>{club.description}</p>
         </div>
