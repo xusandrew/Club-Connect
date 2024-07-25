@@ -9,4 +9,5 @@ export type Club = {
   instagram: string | null
   discord: string | null
   category?: Category[]
+  averageRSVPs?: number
 }

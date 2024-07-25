@@ -1,17 +1,21 @@
 import Filter from '@/components/ui/FilterBar'
-import ClubCard from '@/components/explore/ClubCard'
-import { fetchCategories, fetchClubs } from '@/lib/data'
+import { fetchCategories, fetchClubs, fetchPopularClubs } from '@/lib/data'
 import Search from '@/components/explore/Search'
+import ClubsList from '@/components/explore/ClubsList'
 
 export default async function FilteredPage({
   params,
 }: {
-  params: { category?: string | undefined; query?: string | undefined }
+  params: {
+    category?: string | undefined
+    query?: string | undefined
+    byPopularity?: boolean | undefined
+  }
 }) {
   const category = params.category || ''
+  const byPopularity = params.byPopularity || false
   const query = params.query || ''
   const categories = await fetchCategories()
-  const clubs = await fetchClubs(category, query)
 
   return (
     <>
@@ -27,10 +31,7 @@ export default async function FilteredPage({
         </div>
         <div className='flex flex-col gap-3 '>
           <div className='w-[800px]'></div>
-
-          {clubs.map((club) => (
-            <ClubCard key={club.cid} club={club} />
-          ))}
+          <ClubsList query={query} byPopularity={byPopularity} category={category} />
         </div>
       </div>
     </>
