@@ -85,7 +85,7 @@ export const login = async (_prevState: any, formData: FormData) => {
   const session = await encrypt({ club, expires })
 
   cookies().set('session', session, { expires, httpOnly: true })
-  redirect('/')
+  redirect(`/club/${club.cid}`)
 }
 
 export const logout = () => {
@@ -128,8 +128,7 @@ export const register = async (_prevState: any, formData: FormData) => {
     const session = await encrypt({ club, expires })
 
     cookies().set('session', session, { expires, httpOnly: true })
-
-    redirect(`/club/${club.cid}`)
+    return { success: true, message: 'Registration successful', cid: club.cid }
   } catch (error: any) {
     if (error.code === 'P2002') {
       return { error: 'Club information already exists', message: '' }

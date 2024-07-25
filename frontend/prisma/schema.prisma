@@ -63,3 +63,7 @@ model RSVP {
   @@id([eid, email])
 
 }
+
+model NewsletterSubscription {
+  email String @id
+}

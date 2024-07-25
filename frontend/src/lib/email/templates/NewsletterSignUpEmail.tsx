@@ -1,4 +1,3 @@
-import { Event } from '@/types/Event'
 import {
   Body,
   Container,
@@ -6,43 +5,24 @@ import {
   Heading,
   Hr,
   Html,
-  Img,
-  Link,
   Preview,
   Section,
   Text,
 } from '@react-email/components'
 import * as React from 'react'
-interface RsvpSignUpProps {
-  event: Event
-}
 
-const RsvpSignUpEmail = ({ event }: RsvpSignUpProps) => {
+const NewsletterSignUpEmail = () => {
   return (
     <Html>
       <Head />
-      <Preview>Log in with this magic link.</Preview>
+      <Preview> Thank you for signing up for the Club Connect weekly newsletter </Preview>
       <Body style={main}>
         <Container style={container}>
-          <Heading style={heading}>
-            RSVP Confirmation: {event.title} by {event.club.name}
-          </Heading>
+          <Heading style={heading}>Weekly Newsletter Sign Up Confirmation</Heading>
           <Section style={body}>
             <Text style={paragraph}>
-              Thank you for RSVPing to {event.title} hosted by {event.club.name}! Here are the
-              details of the event:
-            </Text>
-          </Section>
-          <Section style={body}>
-            <Text style={paragraph}>
-              <b>Event Details:</b>
-              <li>Event: {event.title}</li>
-              <li>
-                Start Time: {event.start_time ? event.start_time.toLocaleString() : 'Unspecified'}
-              </li>
-              <li>End Time: {event.end_time ? event.end_time.toLocaleString() : 'Unspecified'}</li>
-              <li>Location: {event.location}</li>
-              <li>Event Description: {event.description}</li>
+              Thank you for signing up for the Club Connect weekly newsletter! Expect the first
+              weekly digest to arrive at the upcoming Monday at 6 AM EST!
             </Text>
           </Section>
           <Text style={paragraph}>
@@ -58,7 +38,7 @@ const RsvpSignUpEmail = ({ event }: RsvpSignUpProps) => {
   )
 }
 
-export default RsvpSignUpEmail
+export default NewsletterSignUpEmail
 
 const main = {
   backgroundColor: '#ffffff',

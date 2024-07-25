@@ -1,6 +1,6 @@
 'use server'
 
-import prisma from './prisma'
+import prisma from '@/lib/prisma'
 import type { Club } from '@/types/Club'
 
 export async function createEvent(club: Club, _prevState: any, formData: FormData) {
