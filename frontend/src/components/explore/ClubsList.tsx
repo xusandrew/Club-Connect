@@ -4,9 +4,9 @@ import { Club } from '@prisma/client'
 import { useEffect, useState } from 'react'
 
 type ClubsListProps = {
-  category?: string | undefined
-  query?: string | undefined
-  byPopularity?: boolean | undefined
+  category?: string
+  query?: string
+  byPopularity?: boolean
 }
 
 export default function ClubsList(props: ClubsListProps) {
@@ -26,7 +26,6 @@ export default function ClubsList(props: ClubsListProps) {
 
         if (response.ok) {
           setClubs(data.clubs)
-          console.log(data)
         } else {
           console.error('Error loading more events:', data.error)
         }
