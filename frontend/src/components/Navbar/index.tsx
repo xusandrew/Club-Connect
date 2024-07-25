@@ -23,11 +23,11 @@ export default async function Navbar() {
           </div>
           <NavbarLinks club={club} />
         </div>
-        <div className='flex gap-6 items-center w-[200px]'>
+        <div className='flex gap-6 items-center w-[300px]'>
           {club ? (
             <>
-              <Link className='hover:bg-black/10 p-2 px-4' href='/create-event'>
-                +
+              <Link className='hover:bg-black/10 p-2 px-4 text-sm' href='/create-event'>
+                + Create
               </Link>
               <LogoutButton />
             </>
