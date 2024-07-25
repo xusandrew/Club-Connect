@@ -14,21 +14,28 @@ type CardProps = {
   setModalEvent: React.Dispatch<React.SetStateAction<Event | undefined>>
 }
 
-type StateType = {
-  [key: string]: any;
-  club: Club;
-} | undefined;
+type StateType =
+  | {
+      [key: string]: any
+      club: Club
+    }
+  | undefined
 
 export function Card({ event, openModal, setModalEvent }: CardProps) {
+  const [session, setSession] = useState<StateType>()
+  const [isAdmin, setIsAdmin] = useState(false)
 
-  const [session, setSession] = useState<StateType>();
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(()=>{
-    getSession().then((s) => {setSession(s)}).catch((error) => {alert(error)})
+  useEffect(() => {
+    getSession()
+      .then((s) => {
+        setSession(s)
+      })
+      .catch((error) => {
+        alert(error)
+      })
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     setIsAdmin(session?.club?.cid === event.cid)
   }, [session])
 
@@ -37,10 +44,10 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
     setModalEvent(event)
   }
 
-  const router = useRouter();
+  const router = useRouter()
   const handleEditEvent = () => {
-    const queryString = new URLSearchParams({eid: event.eid.toString()});
-    router.push(`/edit-event?${queryString}`);
+    const queryString = new URLSearchParams({ eid: event.eid.toString() })
+    router.push(`/edit-event?${queryString}`)
   }
 
   const clubPageLink = `/club/${event.club.cid}`
@@ -77,13 +84,11 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
             {event.rsvp_emails && <p className='text-white'>{event.rsvp_emails.length}</p>}
           </Button>
         </div>
-        {isAdmin &&
-        <div>
-          <button onClick={handleEditEvent}>
-            edit
-          </button>
-        </div>
-        }
+        {isAdmin && (
+          <div>
+            <button onClick={handleEditEvent}>edit</button>
+          </div>
+        )}
       </div>
     </div>
   )

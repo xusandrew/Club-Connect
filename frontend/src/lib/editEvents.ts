@@ -18,14 +18,14 @@ export async function editEvent(id: number, _prevState: any, formData: FormData)
 
   try {
     await prisma.event.update({
-      where: {eid : id},
+      where: { eid: id },
       data: {
         title,
         description,
         location,
         start_time,
         end_time,
-        },
+      },
     })
     return {
       error: '',

@@ -57,16 +57,14 @@ export default function Filter({ categories }: FilterProps) {
       <div className=' p-4 rounded-lg flex-col align-middle'>
         <div className='flex items-center justify-between mb-4'>
           <h3 className='text-2xl font-semibold '>Categories</h3>
-          {pathname === '/events' && (
-            <button
-              className={clsx('text-gray-500 mr-4 hover:text-foreground', {
-                'text-yellow-500': searchParams.get('byPopularity') == 'true',
-              })}
-              onClick={() => handleSortButton(searchParams.get('byPopularity') !== 'true')}
-            >
-              <FireIcon />
-            </button>
-          )}
+          <button
+            className={clsx('text-gray-500 mr-4 hover:text-foreground', {
+              'text-yellow-500': searchParams.get('byPopularity') == 'true',
+            })}
+            onClick={() => handleSortButton(searchParams.get('byPopularity') !== 'true')}
+          >
+            <FireIcon />
+          </button>
         </div>
         <div className='grid gap-3 mt-20'>
           {categories.map((category, index) => {

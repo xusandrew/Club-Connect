@@ -18,7 +18,7 @@ export async function isOverlap(newStartTime: Date) {
         },
       ],
     },
-  });
+  })
 
-  return overlappingEvents.length > 1;
+  return overlappingEvents.length > 1
 }
