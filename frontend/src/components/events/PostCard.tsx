@@ -38,12 +38,8 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
   }
 
   const router = useRouter();
-  const handleEditEvent = (event : Event) => {
-    const stringifiedEvent = Object.fromEntries(
-      Object.entries(event).map(([key, value]) => [key, String(value)])
-    )
-
-    const queryString = new URLSearchParams(stringifiedEvent).toString();
+  const handleEditEvent = () => {
+    const queryString = new URLSearchParams({eid: event.eid.toString()});
     router.push(`/edit-event?${queryString}`);
   }
 
@@ -83,7 +79,7 @@ export function Card({ event, openModal, setModalEvent }: CardProps) {
         </div>
         {isAdmin &&
         <div>
-          <button onClick={() => handleEditEvent(event)}>
+          <button onClick={handleEditEvent}>
             edit
           </button>
         </div>

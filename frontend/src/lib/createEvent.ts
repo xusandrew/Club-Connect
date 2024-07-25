@@ -14,11 +14,12 @@ export async function createEvent(club: Club, _prevState: any, formData: FormDat
     return {
       error: 'End time must be after start time.',
       message: '',
+      eventID: -1,
     }
   }
 
   try {
-    await prisma.event.create({
+    const new_event = await prisma.event.create({
       data: {
         title,
         description,
@@ -35,12 +36,14 @@ export async function createEvent(club: Club, _prevState: any, formData: FormDat
     return {
       error: '',
       message: 'Event created successfully.',
+      eventID: new_event.eid,
     }
   } catch (error) {
     console.error('Database Error:', error)
     return {
       error: 'An error occurred while creating the event.',
       message: '',
+      eventID: -1,
     }
   }
 }

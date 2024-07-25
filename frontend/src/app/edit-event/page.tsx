@@ -15,6 +15,10 @@ import { Input } from '@/data/components/ui/input'
 import { Button } from '@/data/components/ui/button'
 
 import { useFormState } from 'react-dom'
+import { getEvent } from '@/lib/getEvent';
+import { useEffect, useState } from 'react';
+import type { Event } from '@/types/Event';
+import { useRouter } from 'next/navigation';
 
 const initialState = {
   error: '',
@@ -25,17 +29,50 @@ const initialState = {
 export default function EditEventPage() {
 
   const searchParams = useSearchParams();
+  const eventID = Number(searchParams.get('eid'))
+  const router = useRouter()
+  const [event, setEvent] = useState<Event | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
+
 
   const [state, formAction] = useFormState(
-    (state: typeof initialState, payload: FormData) => editEvent(Number(searchParams.get("eid")), state, payload),
+    (state: typeof initialState, payload: FormData) => editEvent(eventID, state, payload),
     initialState,
   )
+
+  useEffect(() => {
+    if (eventID) {
+      const fetchAndSetEvent = async () => {
+        const fetchedEvent = await getEvent(eventID);
+        setEvent(fetchedEvent);
+        setLoading(false);
+      };
+      fetchAndSetEvent();
+    }
+  }, [eventID]);
+
+  useEffect(() => {
+    if (!state.error && state.message) {
+        const queryString = new URLSearchParams({eid: eventID.toString()});
+        router.push(`/overlap-event?${queryString}`);
+    }
+  },)
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!event) {
+    return <p>Event not found</p>;
+  }
+
 
 
   return (
     <div className='flex h-screen flex-col md:flex-row'>
       <div className='flex items-center justify-center h-full '>
         <form action={formAction} className=''>
+            { !state.message && !state.error &&
               <Card className='w-full max-w-md'>
                 <CardHeader className='space-y-1 text-center'>
                   <CardTitle className='text-3xl font-bold'>Edit Your Event</CardTitle>
@@ -47,8 +84,8 @@ export default function EditEventPage() {
                     <Input
                       id='title'
                       type='text'
-                      defaultValue={searchParams.get('title')?.toString()}
-                      placeholder={searchParams.get('title')?.toString()}
+                      defaultValue={event.title}
+                      placeholder={event.title}
                       name='title'
                       required
                     />
@@ -57,8 +94,8 @@ export default function EditEventPage() {
                     <Label htmlFor='description'>Description</Label>
                     <Textarea
                       id='description'
-                      defaultValue={searchParams.get('description')?.toString()}
-                      placeholder={searchParams.get('description')?.toString()}
+                      defaultValue={event.description != null ? event.description : ""}
+                      placeholder={event.description != null ? event.description : ""}
                       name='description'
                       className='min-h-[100px]'
                     />
@@ -68,8 +105,8 @@ export default function EditEventPage() {
                     <Input
                       id='location'
                       type='text'
-                      defaultValue={searchParams.get('location')?.toString()}
-                      placeholder={searchParams.get('location')?.toString()}
+                      defaultValue={event.location != null ? event.location: ""}
+                      placeholder={event.location != null ? event.location : ""}
                       name='location'
                       required
                     />
@@ -99,6 +136,7 @@ export default function EditEventPage() {
                   </Button>
                 </CardContent>
               </Card>
+              }
         </form>
       </div>
     </div>
