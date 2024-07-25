@@ -6,6 +6,7 @@ export default function Page({
 }: {
   searchParams: {
     category?: string
+    byPopularity?: boolean
   }
 }) {
   return (

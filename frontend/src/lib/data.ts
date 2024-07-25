@@ -3,6 +3,7 @@ import prisma from './prisma'
 import { unstable_noStore as noStore } from 'next/cache'
 import { endOfWeek, startOfTomorrow, startOfWeek } from 'date-fns'
 import { Club } from '@/types/Club'
+import { RSVP } from '@/types/RSVP'
 
 export async function fetchEvents(limit: number, idCursor?: number, category?: string) {
   noStore()
@@ -203,6 +204,68 @@ export async function fetchClubs(category?: string, query?: string) {
   }
 }
 
+export async function fetchPopularClubs(category?: string, query?: string) {
+  noStore()
+
+  try {
+    let queryOptions: any = {
+      include: {
+        category: true,
+        event: {
+          include: {
+            rsvp_emails: true,
+          },
+        },
+      },
+      where: {},
+    }
+
+    if (category) {
+      queryOptions.where.category = {
+        some: {
+          type: category,
+        },
+      }
+    }
+
+    if (query) {
+      queryOptions.where.OR = [
+        {
+          name: {
+            contains: query,
+            mode: 'insensitive',
+          },
+        },
+        {
+          description: {
+            contains: query,
+            mode: 'insensitive',
+          },
+        },
+      ]
+    }
+
+    const clubs = (await prisma.club.findMany(queryOptions)) as (Club & {
+      event: (Event & { rsvp_emails: RSVP[] })[]
+    })[]
+
+    const clubsWithAvgRSVP = clubs.map((club) => {
+      const events = club.event
+      const totalRSVPs = events.reduce((sum, event) => sum + event.rsvp_emails.length, 0)
+      const averageRSVPs = events.length > 0 ? totalRSVPs / events.length : 0
+      return {
+        ...club,
+        averageRSVPs,
+      }
+    })
+    const sortedClubs = clubsWithAvgRSVP.sort((a, b) => b.averageRSVPs - a.averageRSVPs)
+
+    return sortedClubs as Club[]
+  } catch (error) {
+    console.error('Database Error:', error)
+    throw new Error('Failed to fetch club data.')
+  }
+}
 export async function fetchClubById(cid: number) {
   noStore()
 
