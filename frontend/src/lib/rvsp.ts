@@ -44,10 +44,15 @@ export const rsvp = async (formData: FormData) => {
   await prisma.rSVP.create({ data: rsvpData })
   const mailOptions = rsvpSignUp(rsvpData.email, event)
   //send email
-  mailer.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return 'Error with sending email, please try again.'
-    }
+  await new Promise((resolve, reject) => {
+    mailer.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        reject(error)
+        return 'Error with sending email, please try again.'
+      }
+
+      resolve(info)
+    })
   })
 
   return null
