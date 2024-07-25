@@ -13,7 +13,6 @@ export function ModeToggle() {
         className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 hover:fill-foreground'
         onClick={() => {
           setTheme(theme === 'dark' ? 'light' : 'dark')
-          console.log(theme)
         }}
       />
     </Button>

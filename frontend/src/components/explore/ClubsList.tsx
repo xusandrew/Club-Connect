@@ -26,7 +26,6 @@ export default function ClubsList(props: ClubsListProps) {
 
         if (response.ok) {
           setClubs(data.clubs)
-          console.log(data)
         } else {
           console.error('Error loading more events:', data.error)
         }
