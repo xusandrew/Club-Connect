@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import { isOverlap } from '@/lib/overlapEvents'
 import { getEvent } from '@/lib/getEvent'
 import type { Event } from '@/types/Event'
+import { format } from 'date-fns'
 
 export default function OverlapPopup() {
   const searchParams = useSearchParams()
@@ -19,7 +20,7 @@ export default function OverlapPopup() {
   const clubID = Number(searchParams.get('cid'))
 
   const router = useRouter()
-  const [overlap, setOverlap] = useState(false)
+  const [overlap, setOverlap] = useState(0)
   const [event, setEvent] = useState<Event | undefined>(undefined)
   const [loading, setLoading] = useState(true)
 
@@ -45,8 +46,8 @@ export default function OverlapPopup() {
   useEffect(() => {
     if (event) {
       const fetchOverlapFcn = async () => {
-        if (event.start_time != null) {
-          const fetchOverlap = await isOverlap(event.start_time)
+        if (event.start_time != null && event.end_time) {
+          const fetchOverlap = await isOverlap(event.start_time, event.end_time)
           setOverlap(fetchOverlap)
           setLoading(false)
         }
@@ -63,29 +64,42 @@ export default function OverlapPopup() {
     }
   }, [loading])
 
-  return (
-    <div>
-      {overlap && (
-        <div className='flex'>
-          <Card className='w-full max-w-md'>
-            <CardHeader className='space-y-1 text-center'>
-              <CardTitle className='text-3xl font-bold'>Warning</CardTitle>
-              <CardDescription>
-                This timeslot {event?.start_time?.toString()}, {event?.end_time?.toString()}{' '}
-                overlaps with other events. Would you like to change it?{' '}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className='space-y-4'>
-              <Button onClick={handleEditEvent} className='w-full' variant='outline'>
-                Change
-              </Button>
-              <Button onClick={handleGoBack} className='w-full' variant='outline'>
-                No
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-    </div>
-  )
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (event?.start_time && event.end_time) {
+    return (
+      <div>
+        {overlap && (
+          <div className='flex'>
+            <Card className='w-full max-w-md'>
+              <CardHeader className='space-y-1 text-center'>
+                <CardTitle className='text-3xl font-bold'>Warning</CardTitle>
+                <CardDescription>
+                  <p> Your event is scheduled for: </p>
+                  <p>
+                    {format(event.start_time, 'LLL, d @ p')} to{' '}
+                    {format(event.end_time, 'LLL, d @ p')}
+                  </p>
+                  <p>
+                    This timeslot overlaps with {overlap} {overlap > 1 ? 'events' : 'event'}. Would
+                    you like to change it?
+                  </p>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className='space-y-4'>
+                <Button onClick={handleEditEvent} className='w-full' variant='outline'>
+                  Change
+                </Button>
+                <Button onClick={handleGoBack} className='w-full' variant='outline'>
+                  No
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+      </div>
+    )
+  }
 }
