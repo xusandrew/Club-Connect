@@ -66,7 +66,11 @@ export function RegisterForm() {
           </div>
           <div className='space-y-2'>
             <Label htmlFor='instagram'>Instagram</Label>
-            <Input name='instagram' id='instagram' placeholder='@username' />
+            <Input
+              name='instagram'
+              id='instagram'
+              placeholder='https://www.instagram.com/username/'
+            />
           </div>
           <div className='space-y-2'>
             <Label htmlFor='discord'>Discord</Label>
