@@ -14,6 +14,10 @@ export async function GET() {
   await Promise.all(
     subscriptions.map(async (subscription) => {
       const mailOptions = newsletter(subscription.email, eventsNextDay)
+      if(subscription.email.endsWith("example.com")){
+        // console.log(`Did not send to spoof email ${subscription.email}`)
+        return;
+      }
       await new Promise((resolve, reject) => {
         mailer.sendMail(mailOptions, (error, info) => {
           if (error) {
@@ -26,5 +30,7 @@ export async function GET() {
       })
     }),
   )
+  mailer.close();
+
   return NextResponse.json(`Newsletter cron job finished`, { status: 200 })
 }

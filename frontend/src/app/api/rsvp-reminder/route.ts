@@ -13,6 +13,10 @@ export async function GET() {
       await Promise.all(
         event.rsvp_emails.map(async (rsvp) => {
           // Send email
+          if(rsvp.email.endsWith("example.com")){
+            console.log(`Did not send to spoof email ${rsvp.email}`)
+            return;
+          }
           const mailOptions = rsvpReminder(rsvp.email, event)
           await new Promise((resolve, reject) => {
             mailer.sendMail(mailOptions, (error, info) => {
@@ -28,5 +32,6 @@ export async function GET() {
       )
     }),
   )
+  mailer.close();
   return NextResponse.json(`RSVP reminders cron job finished`, { status: 200 })
 }
