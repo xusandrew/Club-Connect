@@ -39,3 +39,39 @@ export async function editEvent(id: number, _prevState: any, formData: FormData)
     }
   }
 }
+
+export async function deleteEvent(id: number) {
+  try {
+    // Check if the event exists
+    const event = await prisma.event.findUnique({
+      where: {
+        eid: id,
+      },
+    })
+
+    if (!event) {
+      throw new Error(`Event with ID ${id} does not exist.`)
+    }
+
+    await prisma.$transaction(async (prisma) => {
+      // Delete RSVP records associated with the event
+      await prisma.rSVP.deleteMany({
+        where: {
+          eid: id,
+        },
+      })
+
+      // Delete the event
+      await prisma.event.delete({
+        where: {
+          eid: id,
+        },
+      })
+    })
+
+    console.log(`Event with ID ${id} and its associated RSVPs have been deleted.`)
+  } catch (error) {
+    console.error('Error deleting event:', error)
+    throw error
+  }
+}

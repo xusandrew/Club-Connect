@@ -30,7 +30,7 @@ export default function OverlapPopup() {
   }
 
   function handleGoBack() {
-    router.push('/')
+    router.push(`/club/${clubID}`)
   }
 
   useEffect(() => {
