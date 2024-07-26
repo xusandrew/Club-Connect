@@ -1,3 +1,4 @@
+import { RabbitIcon } from '@/components/icons'
 import Link from 'next/link'
 
 export default function Component() {
@@ -5,6 +6,9 @@ export default function Component() {
     <div className='flex flex-col h-full'>
       <main className='flex-1 flex flex-col items-center justify-center px-4 md:px-6'>
         <div className='max-w-2xl text-center space-y-4'>
+          <div className='flex justify-center'>
+            <RabbitIcon width='100' height='100' />
+          </div>
           <h1 className='text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl'>
             ClubsConnect
           </h1>
