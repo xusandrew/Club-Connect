@@ -15,7 +15,7 @@ export async function GET() {
     subscriptions.map(async (subscription) => {
       const mailOptions = newsletter(subscription.email, eventsNextDay)
       if(subscription.email.endsWith("example.com")){
-        console.log(`Did not send to spoof email ${subscription.email}`)
+        // console.log(`Did not send to spoof email ${subscription.email}`)
         return;
       }
       await new Promise((resolve, reject) => {
