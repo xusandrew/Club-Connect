@@ -7,7 +7,7 @@ export async function GET() {
   //cron job happens every day at 2 AM UTC, 6 AM EST
 
   const eventsNextDay = await fetchEventsTomorrow()
-
+  console.log('that was events next day')
   await Promise.all(
     eventsNextDay.map(async (event) => {
       await Promise.all(
