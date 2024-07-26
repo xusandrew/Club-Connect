@@ -1562,7 +1562,7 @@ async function main() {
       })
 
       newsletters.push({
-        email: `help${i + j}@example.com`,
+        email: `help${i * events.length + j}@example.com`,
       })
     })
   }
