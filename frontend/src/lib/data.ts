@@ -1,7 +1,7 @@
 import type { Event } from '@/types/Event'
 import prisma from '@/lib/prisma'
 import { unstable_noStore as noStore } from 'next/cache'
-import { endOfWeek, startOfTomorrow, startOfWeek } from 'date-fns'
+import { endOfTomorrow, endOfWeek, startOfTomorrow, startOfWeek } from 'date-fns'
 import { Club } from '@/types/Club'
 import { RSVP } from '@/types/RSVP'
 
@@ -82,8 +82,7 @@ export async function fetchPopularEvents(limit: number, idCursor?: number, categ
 
 export async function fetchEventsTomorrow() {
   const startOfTomorrowDate = startOfTomorrow()
-  const endOfTomorrowDate = startOfTomorrow()
-
+  const endOfTomorrowDate = endOfTomorrow()
   const events = await prisma.event.findMany({
     orderBy: {
       start_time: 'asc',
@@ -92,6 +91,7 @@ export async function fetchEventsTomorrow() {
       AND: [
         { start_time: { gte: startOfTomorrowDate } },
         { start_time: { lte: endOfTomorrowDate } },
+
       ],
     },
     include: { club: true, rsvp_emails: true },
