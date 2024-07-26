@@ -158,12 +158,7 @@ export default function EditEventForm(props: Props) {
                   </div>
                   {state?.error && <p className='text-red-500 text-xs'>{state.error}</p>}
                   {state?.message && <p className='text-green-500 text-xs'>{state.message}</p>}
-                  <Button
-                    type='submit'
-                    onClick={() => router.push(`/club/${props.clubID}`)}
-                    className='w-full mt-5'
-                    variant='outline'
-                  >
+                  <Button type='submit' className='w-full mt-5' variant='outline'>
                     Make Changes
                   </Button>
                 </form>
