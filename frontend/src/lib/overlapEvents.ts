@@ -2,13 +2,13 @@
 
 import prisma from './prisma'
 
-export async function isOverlap(newStartTime: Date) {
+export async function isOverlap(newStartTime: Date, newEndTime: Date) {
   const overlappingEvents = await prisma.event.findMany({
     where: {
       AND: [
         {
           start_time: {
-            lte: newStartTime,
+            lt: newEndTime,
           },
         },
         {
@@ -20,5 +20,5 @@ export async function isOverlap(newStartTime: Date) {
     },
   })
 
-  return overlappingEvents.length > 1
+  return overlappingEvents.length - 1
 }

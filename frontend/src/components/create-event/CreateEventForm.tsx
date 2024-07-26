@@ -37,7 +37,10 @@ export default function CreateEventForm({ club }: CreateEventFormProps) {
 
   useEffect(() => {
     if (!state.error && state.message && state.eventID != -1) {
-      const queryString = new URLSearchParams({ eid: state.eventID.toString(), cid : club.cid.toString() })
+      const queryString = new URLSearchParams({
+        eid: state.eventID.toString(),
+        cid: club.cid.toString(),
+      })
       router.push(`/overlap-event?${queryString}`)
     }
   })
