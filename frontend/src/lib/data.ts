@@ -96,6 +96,9 @@ export async function fetchEventsTomorrow() {
     },
     include: { club: true, rsvp_emails: true },
   })
+
+  console.log("tomorrow events");
+  console.log(events);
   return events as Event[]
 }
 
