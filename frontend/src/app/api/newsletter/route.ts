@@ -30,5 +30,7 @@ export async function GET() {
       })
     }),
   )
+  mailer.close();
+
   return NextResponse.json(`Newsletter cron job finished`, { status: 200 })
 }

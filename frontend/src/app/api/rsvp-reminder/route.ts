@@ -32,5 +32,6 @@ export async function GET() {
       )
     }),
   )
+  mailer.close();
   return NextResponse.json(`RSVP reminders cron job finished`, { status: 200 })
 }
