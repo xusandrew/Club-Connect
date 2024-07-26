@@ -49,6 +49,13 @@ CREATE TABLE "RSVP" (
     CONSTRAINT "RSVP_pkey" PRIMARY KEY ("eid","email")
 );
 
+-- CreateTable
+CREATE TABLE "NewsletterSubscription" (
+    "email" TEXT NOT NULL,
+
+    CONSTRAINT "NewsletterSubscription_pkey" PRIMARY KEY ("email")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Club_email_key" ON "Club"("email");
 

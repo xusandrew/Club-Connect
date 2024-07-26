@@ -15,6 +15,8 @@ import { Button } from '@/data/components/ui/button'
 import { useFormState } from 'react-dom'
 import { createEvent } from '@/lib/createEvent'
 import type { Club } from '@/types/Club'
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 type CreateEventFormProps = {
   club: Club
@@ -23,18 +25,27 @@ type CreateEventFormProps = {
 const initialState = {
   error: '',
   message: '',
+  eventID: -1,
 }
 
 export default function CreateEventForm({ club }: CreateEventFormProps) {
+  const router = useRouter()
   const [state, formAction] = useFormState(
     (state: typeof initialState, payload: FormData) => createEvent(club, state, payload),
     initialState,
   )
 
+  useEffect(() => {
+    if (!state.error && state.message && state.eventID != -1) {
+      const queryString = new URLSearchParams({ eid: state.eventID.toString(), cid : club.cid.toString() })
+      router.push(`/overlap-event?${queryString}`)
+    }
+  })
+
   return (
-    <form action={formAction}>
-      <div className='flex h-screen flex-col md:flex-row'>
-        <div className='flex items-center justify-center h-full '>
+    <div className='flex h-screen flex-col md:flex-row'>
+      <div className='flex items-center justify-center h-full '>
+        <form action={formAction}>
           <Card className='w-full max-w-md'>
             <CardHeader className='space-y-1 text-center'>
               <CardTitle className='text-3xl font-bold'>Create an Event</CardTitle>
@@ -97,8 +108,8 @@ export default function CreateEventForm({ club }: CreateEventFormProps) {
               </Button>
             </CardContent>
           </Card>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   )
 }
