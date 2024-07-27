@@ -1,7 +1,5 @@
 # Club Connect
 
-cs-348 Project
-
 ## Project Description
 
 Ever get confused about which club events are happening and when? Well look no further, we are creating a social media platform to centralize all clubs within the University of Waterloo. The users would be any students interested in the clubs at the University. On ClubConnect, students will find events they want to attend, get more information on clubs, and check for upcoming club events.
