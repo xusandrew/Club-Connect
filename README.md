@@ -23,8 +23,19 @@ The infinite scroll page will be the main page /homepage of the website. This is
 <img width="1565" alt="Screenshot 2024-07-13 at 2 14 40 PM" src="https://github.com/user-attachments/assets/165e4340-0a10-4535-b282-7263362facec">
 
 - Registration and login pages can be found in frontend/src/app/{register | login}/page.tsx
-- These pages point to forms located in frontend/data/components/{register | login}.tsx
-- These forms call server actions defined in frontend/src/auth/index.ts which make requests to the database
+- These pages call server actions defined in frontend/src/auth/index.ts which make requests to the database
+
+### Create, Edit and Delete Postings
+
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/241ad092-5e64-43fa-a60d-0c87b59e6cfa">
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/65cae720-8269-4269-8d51-f02b944a9aff">
+- Create posting page can be found at frontend/src/app/create-event/page.tsx
+- Edit posting page can be found at frontend/src/app/edit-event/page.tsx
+
+### Infinite scroll feed
+<img width="504" alt="image" src="https://github.com/user-attachments/assets/d2448c08-ea78-45e3-ab03-faf55bd4003f">
+
+- The infinite scroll features are implemented in frontend/src/components/events/{PopularEventsList | EventsList}.tsx
 
 #### Sorting events by category
 <img width="1568" alt="Screenshot 2024-07-13 at 2 13 29 PM" src="https://github.com/user-attachments/assets/ae6e1e96-6a1c-454d-a725-8b5f8fcb5f6f">
@@ -50,14 +61,55 @@ The infinite scroll page will be the main page /homepage of the website. This is
 - The api route fetches events calls fetchPopularEvents defined in frontend/src/lib/data.ts
   to fetch events from the database
 
-#### Searching clubs by name and description
+#### Searching clubs by name
 <img width="1183" alt="Screenshot 2024-07-13 at 4 07 25 PM" src="https://github.com/user-attachments/assets/bfde6bd0-8371-426e-9d2c-4f810c234afe">
+- Search a club by name
+- frontend/src/app/explore/[category]/page.tsx
 
 #### Calendar page
 <img width="1572" alt="Screenshot 2024-07-13 at 2 14 28 PM" src="https://github.com/user-attachments/assets/924322b3-2b5a-4a9f-b2df-553cd448c5da">
+- All upcoming events in a pretty format
+- frontend/src/app/calendar/page.tsx
+
+### Club page
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/4554a4e3-4bea-48db-a157-206ba4206672">
+- Displays information about a club and lists only its events
+- frontend/src/app/club/[cid]/page.tsx
+
+### Reminder / Notification Email for emails that have RSVPed
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/0eae20d7-1ffa-46e6-bb11-66224157dd96">
+<img width="968" alt="image" src="https://github.com/user-attachments/assets/246505bf-48c3-4ada-b75f-c38e32065259">
+<img width="968" alt="image" src="https://github.com/user-attachments/assets/3e521abd-a27e-4733-b4b4-b6a75be8195a">
+- Sends a email to user when they RSVP, and reminder emails every day at 6am for events the next day
+- RSVP modal in frontend/src/components/events/Rsvp.tsx
+- RSVP reminder emails are triggered in frontend/src/app/api/rsvp-reminder/route.ts
+
+### Newsletter
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/2babeb58-cc8d-4d15-9d6d-96a0837055bc">
+<img width="965" alt="image" src="https://github.com/user-attachments/assets/8c691f69-a0b3-4470-9d38-336c20710128">
+<img width="971" alt="image" src="https://github.com/user-attachments/assets/3217021e-e889-4ae1-b057-7937234f2295">
+- Users can press the "sign up for newsletter" button on homepage, and get emails weekly regarding the events for that week
+- Modal implemented in frontend/src/components/events/NewsletterModal.tsx
+- Auto emails are triggered in frontend/src/app/api/newsletter/route.ts
+
+### Notify if there is an overlap between events between any other club on create/edit
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/b932ed5b-b77d-4da9-acf6-e40f5a92d5c7">
+- Implemented in frontend/src/app/overlap-event/page.tsx
+
+### For admins, emails that have attended all events of their club
+<img width="675" alt="image" src="https://github.com/user-attachments/assets/6ad8275f-5064-4c2c-82ae-605b248e3252">
+- Implemented in frontend/src/components/ClubPage/UserRsvpedAllEventsList.tsx
+
+### Dark/Light mode
+- You have already seen dark mode, heres light mode
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/113ec1c4-7afc-41f2-8ba6-4d4819a0eefc">
+- Implemented in frontend/src/components/ThemeProvider.tsx
+
+### Instagram embed into club page
+<img width="1470" alt="image" src="https://github.com/user-attachments/assets/9572f80f-c0a7-471c-a7b0-240ba6ddf3e2">
+- Implemented in frontend/src/components/ui/InstaEmbed.tsx
 
 ## Setup
-
 - Clone this repository
 - Run the Postgres database: `docker compose up -d`
 - cd into "frontend", this folder contains the entire app but it is named frontend because git has an aneurysm whenever I try to rename it to something else
