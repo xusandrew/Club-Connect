@@ -98,6 +98,7 @@ The infinite scroll page will be the main page /homepage of the website. This is
 
 ### For admins, emails that have attended all events of their club
 <img width="675" alt="image" src="https://github.com/user-attachments/assets/6ad8275f-5064-4c2c-82ae-605b248e3252">
+
 - Implemented in frontend/src/components/ClubPage/UserRsvpedAllEventsList.tsx
 
 ### Dark/Light mode
